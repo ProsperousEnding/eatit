@@ -1,0 +1,130 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:   # 忽略这些文件的更改
+      - '**.md'
+      - '.gitignore'
+      - '.editorconfig'
+      - 'LICENSE'
+  pull_request:     # 在PR时也运行检查
+    branches:
+      - main
+  workflow_dispatch: # 手动触发
+
+# 设置环境变量
+env:
+  NODE_VERSION: '18'
+  PNPM_VERSION: '8'
+  DEPLOY_TARGET: 'gh-pages'
+
+# 并发控制
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true   # 取消正在进行的重复工作流
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write     # 用于部署到 Pages
+      pull-requests: write # 用于创建和更新 PR
+      
+    steps:
+      - name: Checkout Repository 🛎️
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 获取完整的git历史用于缓存判断
+          
+      - name: Setup Node.js ⚙️
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'   # 启用 Node modules 缓存
+          
+      - name: Setup PNPM 📦
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+          run_install: false
+          
+      - name: Get PNPM Store Directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup PNPM Cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install Dependencies 🔧
+        run: |
+          pnpm install --frozen-lockfile
+        continue-on-error: false
+          
+      - name: Lint Check 🔍
+        run: |
+          if [ -f "package.json" ] && grep -q "\"lint\"" "package.json"; then
+            pnpm run lint
+          fi
+        continue-on-error: true
+
+      - name: Type Check 📝
+        run: |
+          if [ -f "package.json" ] && grep -q "\"type-check\"" "package.json"; then
+            pnpm run type-check
+          fi
+        continue-on-error: true
+
+      - name: Build Project 🏗️
+        run: pnpm run build
+        env:
+          NODE_ENV: production
+          VITE_APP_VERSION: ${{ github.sha }}
+          
+      - name: Run Tests 🧪
+        run: |
+          if [ -f "package.json" ] && grep -q "\"test\"" "package.json"; then
+            pnpm run test
+          fi
+        continue-on-error: true
+
+      - name: Deploy to GitHub Pages 🚀
+        if: github.ref == 'refs/heads/main'  # 只在main分支部署
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: ${{ env.DEPLOY_TARGET }}
+          folder: dist
+          clean: true
+          clean-exclude: |
+            .nojekyll
+            CNAME
+          commit-message: |
+            deploy: update site
+
+            Deployed from ${{ github.sha }} by GitHub Actions
+            
+      - name: Upload Artifacts 📤
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist
+          retention-days: 7
+          
+      - name: Deployment Status 📢
+        if: always()
+        run: |
+          if [ ${{ job.status }} == 'success' ]; then
+            echo "✅ Deployment successful!"
+            echo "🌐 Site available at: https://${{ github.repository_owner }}.github.io/eatit"
+          else
+            echo "❌ Deployment failed"
+            exit 1
+          fi 
