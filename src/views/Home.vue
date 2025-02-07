@@ -300,14 +300,9 @@ onMounted(async () => {
 }
 
 .header {
+  background: linear-gradient(135deg, #409EFF, #66b1ff);
+  padding: 80px 0;
   text-align: center;
-  margin-bottom: 0;
-  position: relative;
-  padding: 100px 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/header-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   color: #fff;
 }
 

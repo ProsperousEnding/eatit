@@ -18,9 +18,28 @@ const routes = [
   }
 ]
 
+// 获取基础路径
+const base = import.meta.env.BASE_URL
+
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(base),
   routes
+})
+
+// 添加路由守卫处理 URL 参数
+router.beforeEach((to, from, next) => {
+  // 处理来自 404.html 的重定向
+  const redirectPath = to.query.p
+  if (redirectPath) {
+    // 移除 URL 中的 p 参数并重定向到实际路径
+    const { p, ...query } = to.query
+    next({
+      path: redirectPath,
+      query
+    })
+    return
+  }
+  next()
 })
 
 export default router 
