@@ -34,8 +34,7 @@ export default defineConfig({
       }
     },
     minify: 'esbuild',
-    cssCodeSplit: true,
-    cssTarget: true
+    cssCodeSplit: true
   },
   server: {
     port: 8889,
