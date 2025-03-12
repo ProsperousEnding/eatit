@@ -35,7 +35,7 @@
         </div>
         <el-card class="recipe-card" @click="viewRecipeDetail(currentRecipe.id)">
           <div class="recipe-image">
-            <img :src="currentRecipe.image" :alt="currentRecipe.name">
+            <img :src="getImageUrl(currentRecipe.image)" :alt="currentRecipe.name">
             <div class="recipe-overlay">
               <span class="cooking-time">
                 <el-icon><Clock /></el-icon>
@@ -77,7 +77,7 @@
             @click="viewRecipeDetail(dish.id)"
           >
             <div class="recommend-image">
-              <img :src="dish.image" :alt="dish.name">
+              <img :src="getImageUrl(dish.image)" :alt="dish.name">
               <div class="recommend-overlay">
                 <span class="cooking-time">
                   <el-icon><Clock /></el-icon>
@@ -110,6 +110,7 @@ import { useRouter } from 'vue-router'
 import { useRecipeStore } from '../stores/recipe'
 import { storeToRefs } from 'pinia'
 import { ElMessage } from 'element-plus'
+import { getImageUrl } from '@/utils/image'
 import { 
   Clock, 
   Search, 
