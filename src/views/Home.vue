@@ -22,11 +22,8 @@
       <p>每天为您精选美味佳肴</p>
     </div>
 
-    <!-- 下拉刷新区域 -->
-    <el-pull-refresh
-      v-model="isRefreshing"
-      @refresh="handleRefresh"
-    >
+    <!-- 内容区域 -->
+    <div class="content-area">
       <!-- 随机推荐区域 -->
       <div class="random-recommend" v-if="currentRecipe">
         <div class="section-title">
@@ -103,7 +100,7 @@
       <div class="load-more" v-if="hasMore">
         <el-button text @click="loadMore">加载更多</el-button>
       </div>
-    </el-pull-refresh>
+    </div>
   </div>
 </template>
 
@@ -132,7 +129,6 @@ const searchKeyword = ref('')
 const showSuggestions = ref(false)
 const searchSuggestions = ref([])
 const activeFilters = ref([])
-const isRefreshing = ref(false)
 const hasMore = ref(true)
 const page = ref(1)
 
@@ -267,22 +263,6 @@ const categories = [
   { id: 8, name: '饮品', icon: 'Coffee' }
 ]
 
-// 下拉刷新处理
-const handleRefresh = async () => {
-  try {
-    await Promise.all([
-      getNewRecommend(),
-      getTodayRecommends()
-    ])
-    page.value = 1
-    hasMore.value = true
-  } catch (error) {
-    ElMessage.error('刷新失败，请稍后重试')
-  } finally {
-    isRefreshing.value = false
-  }
-}
-
 // 加载更多
 const loadMore = async () => {
   try {
@@ -303,14 +283,12 @@ const navigateToCategory = (category) => {
   })
 }
 
-// 页面加载时获取数据
+// 初始化数据
 onMounted(async () => {
-  if (!currentRecipe.value) {
-    await recipeStore.getHomePageRecipe()
-  }
-  if (!todayRecommends.value?.length) {
-    await recipeStore.getHomePageRecommends()
-  }
+  await Promise.all([
+    recipeStore.getHomePageRecipe(),
+    recipeStore.getHomePageRecommends()
+  ])
 })
 </script>
 
