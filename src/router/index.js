@@ -1,25 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-// 预加载组件
-const Home = () => import('@/views/Home.vue')
-const Search = () => import('@/views/Search.vue')
-const RecipeDetail = () => import('@/views/RecipeDetail.vue')
-
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import('@/views/Home.vue')
   },
   {
     path: '/search',
     name: 'Search',
-    component: Search
+    component: () => import('@/views/Search.vue')
   },
   {
     path: '/recipe/:id',
     name: 'RecipeDetail',
-    component: RecipeDetail
+    component: () => import('@/views/RecipeDetail.vue')
+  },
+  {
+    path: '/category',
+    name: 'CategoryList',
+    component: () => import('@/views/CategoryList.vue')
   }
 ]
 
@@ -28,14 +28,7 @@ const base = import.meta.env.BASE_URL
 
 const router = createRouter({
   history: createWebHistory(base),
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    } else {
-      return { top: 0 }
-    }
-  }
+  routes
 })
 
 // 添加路由守卫处理 URL 参数

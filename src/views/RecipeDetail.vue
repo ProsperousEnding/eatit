@@ -91,19 +91,21 @@
     <el-dialog
       v-model="pairingsDialogVisible"
       :title="`${currentRecipe.name}的最佳搭配`"
-      width="50%"
-      class="pairings-dialog"
+      width="90%"
+      class="pairings-dialog mobile-dialog"
+      :fullscreen="true"
     >
-      <div class="pairings-content">
-        <div class="current-dish">
-          <div class="dish-card">
+      <div class="mobile-pairings-content">
+        <!-- 当前菜品信息 -->
+        <div class="current-dish-section">
+          <div class="current-dish-card">
             <el-image 
               :src="currentRecipe.image || '/default-food.jpg'"
-              class="dish-image"
+              class="current-dish-image"
             />
-            <div class="dish-info">
+            <div class="current-dish-info">
               <h3>{{ currentRecipe.name }}</h3>
-              <div class="dish-properties">
+              <div class="current-dish-tags">
                 <el-tag size="small" effect="plain" type="danger">{{ currentRecipe.taste }}</el-tag>
                 <el-tag size="small" effect="plain" type="warning">{{ currentRecipe.cookingMethod }}</el-tag>
               </div>
@@ -111,74 +113,73 @@
           </div>
         </div>
 
-        <div class="pairing-explanation">
-          <el-divider>
-            <el-icon class="divider-icon"><ArrowDown /></el-icon>
-          </el-divider>
-          <div class="explanation-content">
-            <h4>搭配推荐理由</h4>
-            <div class="reason-cards">
-              <div class="reason-card">
-                <el-icon class="reason-icon"><Food /></el-icon>
-                <h5>营养均衡</h5>
-                <p>合理搭配荤素</p>
-              </div>
-              <div class="reason-card">
-                <el-icon class="reason-icon"><Sugar /></el-icon>
-                <h5>口感互补</h5>
-                <p>提升饮食体验</p>
-              </div>
-              <div class="reason-card">
-                <el-icon class="reason-icon"><Dish /></el-icon>
-                <h5>健康饮食</h5>
-                <p>注重荤素比例</p>
-              </div>
+        <!-- 搭配理由说明 -->
+        <div class="pairing-reason-section">
+          <div class="reason-title">
+            <el-divider>搭配理由</el-divider>
+          </div>
+          <div class="reason-grid">
+            <div class="reason-item">
+              <el-icon class="reason-icon"><Food /></el-icon>
+              <h5>营养均衡</h5>
+              <p>合理搭配荤素</p>
+            </div>
+            <div class="reason-item">
+              <el-icon class="reason-icon"><Sugar /></el-icon>
+              <h5>口感互补</h5>
+              <p>提升饮食体验</p>
+            </div>
+            <div class="reason-item">
+              <el-icon class="reason-icon"><Dish /></el-icon>
+              <h5>健康饮食</h5>
+              <p>注重荤素比例</p>
             </div>
           </div>
         </div>
 
-        <div class="pairings-list">
-          <h4>推荐搭配</h4>
-          <el-row :gutter="16">
-            <el-col 
+        <!-- 推荐菜品列表 -->
+        <div class="recommended-dishes-section">
+          <div class="section-title">
+            <h4>推荐搭配</h4>
+          </div>
+          <div class="dishes-grid">
+            <div 
               v-for="pairing in recommendedPairings" 
               :key="pairing.id"
-              :span="12"
+              class="dish-item"
+              @click="goToDetail(pairing.id)"
             >
-              <el-card class="pairing-card" @click="goToDetail(pairing.id)">
-                <div class="pairing-content">
-                  <div class="pairing-image-wrapper">
-                    <el-image 
-                      :src="pairing.image || '/default-food.jpg'"
-                      class="pairing-thumb"
-                      fit="cover"
-                    />
+              <div class="dish-image-wrapper">
+                <el-image 
+                  :src="pairing.image || '/default-food.jpg'"
+                  fit="cover"
+                  class="dish-thumb"
+                />
+              </div>
+              <div class="dish-content">
+                <h5>{{ pairing.name }}</h5>
+                <div class="dish-meta">
+                  <div class="dish-tags">
+                    <el-tag size="small" effect="plain">{{ pairing.category }}</el-tag>
+                    <el-tag size="small" effect="plain" type="info">{{ pairing.taste }}</el-tag>
                   </div>
-                  <div class="pairing-info">
-                    <h4>{{ pairing.name }}</h4>
-                    <div class="pairing-meta">
-                      <div class="pairing-tags">
-                        <el-tag size="small" effect="plain" type="success">{{ pairing.category }}</el-tag>
-                        <el-tag size="small" effect="plain" type="info">{{ pairing.taste }}</el-tag>
-                      </div>
-                      <span class="cooking-time">
-                        <el-icon><Clock /></el-icon>
-                        <span class="time-value">{{ pairing.cookingTime }}</span>
-                      </span>
-                    </div>
-                    <p class="reason-text">{{ pairing.pairingReason }}</p>
-                  </div>
+                  <span class="cooking-time">
+                    <el-icon><Clock /></el-icon>
+                    {{ pairing.cookingTime }}
+                  </span>
                 </div>
-              </el-card>
-            </el-col>
-          </el-row>
+                <p class="pairing-desc">{{ pairing.pairingReason }}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
+      <!-- 底部操作栏 -->
       <template #footer>
-        <div class="dialog-footer">
-          <el-button @click="pairingsDialogVisible = false">关闭</el-button>
-          <el-button type="primary" @click="refreshPairings">换一批搭配</el-button>
+        <div class="mobile-dialog-footer">
+          <el-button @click="pairingsDialogVisible = false" block>关闭</el-button>
+          <el-button type="primary" @click="refreshPairings" block>换一批搭配</el-button>
         </div>
       </template>
     </el-dialog>
@@ -503,933 +504,242 @@ const highlightStepValues = (text) => {
   box-shadow: 0 4px 12px rgba(64, 158, 255, 0.3);
 }
 
-.pairings-content {
-  padding: 24px;
+.mobile-dialog :deep(.el-dialog) {
+  margin: 0 !important;
+  border-radius: 0;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.dish-card {
+.mobile-dialog :deep(.el-dialog__header) {
+  padding: 16px;
+  margin: 0;
+  border-bottom: 1px solid #f0f0f0;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+}
+
+.mobile-dialog :deep(.el-dialog__body) {
+  padding: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.mobile-pairings-content {
+  padding: 16px;
+  background: #f8f9fa;
+}
+
+/* 当前菜品卡片样式 */
+.current-dish-section {
+  margin-bottom: 20px;
+}
+
+.current-dish-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 20px;
-  background: #f8f9fa;
-  border-radius: 12px;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.dish-image {
-  width: 120px;
-  height: 120px;
+.current-dish-image {
+  width: 80px;
+  height: 80px;
   border-radius: 8px;
   object-fit: cover;
 }
 
-.dish-info h3 {
-  margin: 0 0 12px 0;
-  color: #2c3e50;
-  font-size: 1.4em;
-  font-weight: 600;
+.current-dish-info {
+  flex: 1;
 }
 
-.dish-properties {
+.current-dish-info h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  color: #333;
+}
+
+.current-dish-tags {
   display: flex;
-  gap: 10px;
+  gap: 6px;
 }
 
-.dish-properties .el-tag {
-  background: linear-gradient(135deg, #F56C6C 0%, #f89898 100%);
-  border: none;
-  color: #fff;
+/* 搭配理由部分样式 */
+.pairing-reason-section {
+  margin: 20px 0;
 }
 
-.dish-properties .el-tag + .el-tag {
-  background: linear-gradient(135deg, #E6A23C 0%, #f0c78a 100%);
-}
-
-.pairing-explanation {
-  margin: 30px 0;
+.reason-title {
   text-align: center;
+  color: #666;
+  font-size: 14px;
 }
 
-.divider-icon {
-  font-size: 24px;
-  color: #409EFF;
+.reason-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.reason-item {
   background: #fff;
-  border-radius: 50%;
-  padding: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.explanation-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.explanation-content h4 {
-  color: #2c3e50;
-  font-size: 1.3em;
-  margin: 20px 0;
-}
-
-.reason-cards {
-  gap: 20px;
-  margin: 20px 0;
-}
-
-.reason-card {
-  padding: 16px;
   border-radius: 12px;
+  padding: 16px 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .reason-icon {
   font-size: 24px;
-  margin-bottom: 12px;
+  color: #409EFF;
+  margin-bottom: 8px;
 }
 
-.reason-card h5 {
-  font-size: 1.1em;
-  margin: 0 0 8px 0;
+.reason-item h5 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  color: #333;
 }
 
-.reason-card p {
-  color: #666;
-  font-size: 0.9em;
-  line-height: 1.6;
+.reason-item p {
   margin: 0;
+  font-size: 12px;
+  color: #666;
 }
 
-.pairings-list {
-  margin: 24px 0 0 0;
+/* 推荐菜品列表样式 */
+.recommended-dishes-section {
+  margin-top: 20px;
 }
 
-.pairings-list h4 {
-  font-size: 1.1em;
-  margin: 0 0 16px 0;
-  color: #2c3e50;
-  font-weight: 600;
+.section-title {
+  margin-bottom: 16px;
 }
 
-.pairing-card {
-  margin-bottom: 12px;
-  padding: 12px;
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  transition: all 0.3s ease;
+.section-title h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
 }
 
-.pairing-content {
+.dishes-grid {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 12px;
 }
 
-.pairing-image-wrapper {
-  width: 72px;
-  height: 72px;
-  border-radius: 6px;
+.dish-item {
+  background: #fff;
+  border-radius: 12px;
   overflow: hidden;
-  flex-shrink: 0;
-  background: #f8f9fa;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.pairing-thumb {
+.dish-image-wrapper {
+  width: 100%;
+  height: 160px;
+}
+
+.dish-thumb {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.pairing-info {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding-right: 0;
+.dish-content {
+  padding: 12px;
 }
 
-.pairing-info h4 {
-  font-size: 0.95em;
-  color: #2c3e50;
-  font-weight: 600;
-  margin: 0;
-  line-height: 1.3;
-  white-space: normal;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.dish-content h5 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: #333;
 }
 
-.pairing-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-}
-
-.pairing-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.pairing-tags .el-tag {
-  font-size: 10px !important;
-  padding: 0 6px !important;
-  height: 18px !important;
-  line-height: 18px !important;
-}
-
-.cooking-time {
-  font-size: 0.75em;
-  color: #666;
-  display: flex;
-  align-items: center;
-  gap: 3px;
-}
-
-.cooking-time .time-value {
-  color: #F56C6C;
-  font-weight: 600;
-}
-
-.cooking-time .el-icon {
-  font-size: 1em;
-}
-
-.reason-text {
-  font-size: 0.75em;
-  color: #666;
-  margin: 0;
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.benefit-list {
-  list-style: none;
-  padding: 0;
-  margin: 15px 0 0 0;
-}
-
-.benefit-list li {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #666;
-  font-size: 0.85em;
-  margin: 6px 0;
-}
-
-.benefit-list li .el-icon {
-  color: #67C23A;
-}
-
-.nutrition-tips {
-  margin-top: 40px;
-}
-
-.nutrition-tips :deep(.el-alert) {
-  margin-bottom: 15px;
-  border-radius: 12px;
-}
-
-.dialog-footer .el-button {
-  padding: 8px 20px;
-  font-size: 0.95em;
-  min-width: 100px;
-}
-
-@media screen and (max-width: 768px) {
-  .recipe-detail {
-    padding: 0;
-    background: #fff;
-  }
-
-  .main-info {
-    margin-bottom: 16px;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .recipe-image {
-    height: 240px;
-    border-radius: 0;
-    margin-bottom: 16px;
-    box-shadow: none;
-  }
-
-  .main-info h1 {
-    font-size: 1.6em;
-    margin: 16px;
-    text-align: left;
-  }
-
-  .nutrition-info {
-    margin: 16px;
-    padding: 12px;
-    border-radius: 8px;
-  }
-
-  .ingredients-section,
-  .steps-section {
-    margin-top: 16px;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .section-header {
-    padding: 12px 16px;
-  }
-
-  .section-header h3 {
-    font-size: 1.2em;
-  }
-
-  .total-time {
-    font-size: 0.8em;
-    padding: 4px 10px;
-  }
-
-  .ingredient-tag {
-    margin: 4px;
-    padding: 6px 12px;
-    font-size: 0.9em;
-  }
-
-  .step-item {
-    padding: 0 16px;
-  }
-
-  .step-content {
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 8px;
-  }
-
-  .step-content:hover {
-    transform: none;
-  }
-
-  .step-number {
-    font-size: 0.85em;
-    padding: 3px 10px;
-    border-radius: 10px;
-  }
-
-  .step-text {
-    font-size: 0.95em;
-    line-height: 1.5;
-    margin: 6px 0;
-  }
-
-  .step-tips {
-    font-size: 0.8em;
-    padding: 6px 10px;
-    margin-top: 8px;
-  }
-
-  .action-buttons {
-    margin: 24px 16px;
-  }
-
-  .pairing-btn {
-    width: 100%;
-    height: 40px;
-    font-size: 1em;
-    border-radius: 20px;
-  }
-
-  :deep(.pairings-dialog .el-dialog) {
-    width: 100% !important;
-    margin: 0 !important;
-    border-radius: 16px 16px 0 0;
-    position: fixed;
-    bottom: 0;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-
-  :deep(.pairings-dialog .el-dialog__header) {
-    padding: 16px;
-    margin: 0;
-    border-bottom: 1px solid #eee;
-    position: sticky;
-    top: 0;
-    background: #fff;
-    z-index: 1;
-  }
-
-  :deep(.pairings-dialog .el-dialog__title) {
-    font-size: 1.1em;
-    font-weight: 600;
-  }
-
-  :deep(.pairings-dialog .el-dialog__body) {
-    padding: 0;
-  }
-
-  .dish-card {
-    padding: 12px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .dish-image {
-    width: 64px;
-    height: 64px;
-    border-radius: 6px;
-  }
-
-  .dish-info h3 {
-    font-size: 1em;
-    margin: 0 0 8px;
-  }
-
-  .reason-cards {
-    display: flex;
-    gap: 8px;
-    margin: 12px 0;
-    padding: 0 4px;
-  }
-
-  .reason-card {
-    flex: 1;
-    padding: 12px 8px;
-    text-align: center;
-    background: #f8f9fa;
-    border-radius: 8px;
-  }
-
-  .reason-icon {
-    font-size: 18px;
-    color: #409EFF;
-    margin-bottom: 6px;
-  }
-
-  .reason-card h5 {
-    font-size: 0.85em;
-    margin: 0 0 4px;
-  }
-
-  .reason-card p {
-    font-size: 0.75em;
-    color: #666;
-    margin: 0;
-  }
-
-  .pairings-list {
-    margin-top: 20px;
-  }
-
-  .pairings-list h4 {
-    font-size: 1em;
-    margin: 0 0 12px;
-    padding: 0 4px;
-  }
-
-  .pairing-card {
-    margin-bottom: 12px;
-    padding: 0;
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  }
-
-  .pairing-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .pairing-image-wrapper {
-    width: 100%;
-    height: 160px;
-    border-radius: 8px 8px 0 0;
-    overflow: hidden;
-    background: #f8f9fa;
-  }
-
-  .pairing-thumb {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .pairing-info {
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .pairing-info h4 {
-    font-size: 1em;
-    color: #2c3e50;
-    font-weight: 600;
-    margin: 0;
-    line-height: 1.4;
-  }
-
-  .pairing-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .pairing-tags {
-    display: flex;
-    gap: 6px;
-  }
-
-  .pairing-tags .el-tag {
-    font-size: 11px !important;
-    padding: 0 8px !important;
-    height: 22px !important;
-    line-height: 22px !important;
-  }
-
-  .cooking-time {
-    font-size: 0.85em;
-    color: #666;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .cooking-time .el-icon {
-    font-size: 1.1em;
-  }
-
-  .reason-text {
-    font-size: 0.85em;
-    color: #666;
-    margin: 0;
-    line-height: 1.5;
-  }
-
-  .pairings-list .el-row {
-    margin: 0 !important;
-  }
-
-  .pairings-list .el-col {
-    padding: 0 !important;
-    width: 100% !important;
-  }
-}
-
-:deep(.pairings-dialog .el-dialog) {
-  border-radius: 12px;
-  overflow: hidden;
-  max-width: 800px;
-}
-
-:deep(.pairings-dialog .el-dialog__header) {
-  margin: 0;
-  padding: 16px 20px;
-  border-bottom: 1px solid #eee;
-  background: #f8f9fa;
-}
-
-:deep(.pairings-dialog .el-dialog__title) {
-  font-size: 1.2em;
-  font-weight: 600;
-  color: #2c3e50;
-}
-
-.pairings-content {
-  padding: 20px;
-}
-
-.dish-card {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px;
-  background: #f8f9fa;
-  border-radius: 10px;
-}
-
-.dish-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 6px;
-  object-fit: cover;
-}
-
-.dish-info h3 {
-  margin: 0 0 10px 0;
-  color: #2c3e50;
-  font-size: 1.2em;
-  font-weight: 600;
-}
-
-.dish-properties {
-  display: flex;
-  gap: 8px;
-}
-
-.pairing-explanation {
-  margin: 24px 0;
-  text-align: center;
-}
-
-.divider-icon {
-  font-size: 20px;
-  color: #409EFF;
-  background: #fff;
-  border-radius: 50%;
-  padding: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.explanation-content h4 {
-  font-size: 1.1em;
-  margin: 16px 0;
-  color: #2c3e50;
-}
-
-.reason-cards {
+.dish-meta {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
-  margin: 16px 0;
-}
-
-.reason-card {
-  flex: 1;
-  padding: 12px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
-}
-
-.reason-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.reason-icon {
-  font-size: 20px;
-  color: #409EFF;
+  align-items: center;
   margin-bottom: 8px;
 }
 
-.reason-card h5 {
-  font-size: 0.95em;
-  margin: 0 0 4px 0;
-  color: #2c3e50;
-}
-
-.reason-card p {
-  font-size: 0.85em;
-  color: #666;
-  margin: 0;
-}
-
-.pairings-list {
-  margin: 24px 0 0 0;
-}
-
-.pairings-list h4 {
-  font-size: 1.1em;
-  margin: 0 0 16px 0;
-  color: #2c3e50;
-  font-weight: 600;
-}
-
-.pairing-card {
-  margin-bottom: 16px;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: none;
-  background: #fff;
-  overflow: hidden;
-}
-
-.pairing-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-}
-
-.pairing-content {
-  position: relative;
-}
-
-.pairing-image-wrapper {
-  position: relative;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.pairing-thumb {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  transition: all 0.6s ease;
-}
-
-.pairing-card:hover .pairing-thumb {
-  transform: scale(1.05);
-}
-
-.pairing-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-.pairing-card:hover .pairing-overlay {
-  opacity: 1;
-}
-
-.pairing-overlay .el-button {
-  transform: translateY(20px);
-  transition: all 0.3s ease;
-}
-
-.pairing-card:hover .pairing-overlay .el-button {
-  transform: translateY(0);
-}
-
-.pairing-info {
-  padding: 16px;
-}
-
-.pairing-info h4 {
-  font-size: 1em;
-  margin: 0 0 12px 0;
-  color: #2c3e50;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.pairing-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.pairing-tags {
+.dish-tags {
   display: flex;
   gap: 6px;
 }
 
+.dish-tags .el-tag {
+  font-size: 10px !important;
+  padding: 0 6px;
+}
+
 .cooking-time {
-  font-size: 0.8em;
+  font-size: 12px;
   color: #666;
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
-.cooking-time .el-icon {
-  font-size: 1em;
-}
-
-.pairing-reason {
-  padding: 10px;
-  border-radius: 6px;
-  background: #f8f9fa;
-  margin-top: 12px;
-}
-
-.reason-text {
-  font-size: 0.8em;
-  color: #666;
+.pairing-desc {
   margin: 0;
+  font-size: 12px;
+  color: #666;
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-:deep(.pairings-dialog .el-dialog__footer) {
-  padding: 12px 20px;
-  border-top: 1px solid #eee;
-  background: #f8f9fa;
+/* 底部操作栏样式 */
+.mobile-dialog-footer {
+  padding: 16px;
+  background: #fff;
+  border-top: 1px solid #f0f0f0;
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.dialog-footer .el-button {
-  padding: 6px 16px;
-  font-size: 0.9em;
-  min-width: 80px;
-  border-radius: 4px;
+.mobile-dialog-footer .el-button {
+  margin: 0;
 }
 
-@media screen and (max-width: 768px) {
-  :deep(.pairings-dialog .el-dialog) {
-    width: 92% !important;
-    margin: 8px auto !important;
+/* 适配不同屏幕尺寸 */
+@media screen and (min-width: 768px) {
+  .mobile-dialog :deep(.el-dialog) {
+    width: 90% !important;
+    max-width: 600px;
+    margin: 15vh auto !important;
+    border-radius: 16px;
   }
 
-  :deep(.pairings-dialog .el-dialog__header) {
-    padding: 12px 16px;
+  .reason-grid {
+    gap: 16px;
   }
 
-  :deep(.pairings-dialog .el-dialog__title) {
-    font-size: 1.1em;
+  .dishes-grid {
+    gap: 16px;
   }
 
-  .pairings-content {
-    padding: 16px;
-  }
-
-  .dish-card {
-    padding: 12px;
+  .mobile-dialog-footer {
+    flex-direction: row;
+    justify-content: flex-end;
     gap: 12px;
   }
 
-  .dish-image {
-    width: 90px;
-    height: 90px;
-  }
-
-  .dish-info h3 {
-    font-size: 1.1em;
-    margin-bottom: 8px;
-  }
-
-  .reason-cards {
-    margin: 12px 0;
-    gap: 10px;
-  }
-
-  .reason-card {
-    padding: 10px;
-  }
-
-  .reason-card h5 {
-    font-size: 0.9em;
-  }
-
-  .reason-card p {
-    font-size: 0.8em;
-  }
-
-  .pairings-list {
-    margin-top: 20px;
-  }
-
-  .pairings-list h4 {
-    font-size: 1em;
-    margin: 0 0 12px;
-    padding: 0 4px;
-  }
-
-  .el-col {
-    width: 100% !important;
-    max-width: 100% !important;
-    flex: 0 0 100% !important;
-  }
-
-  .pairing-card {
-    margin-bottom: 12px;
-    padding: 0;
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  }
-
-  .pairing-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .pairing-image-wrapper {
-    width: 100%;
-    height: 160px;
-    border-radius: 8px 8px 0 0;
-    overflow: hidden;
-    background: #f8f9fa;
-  }
-
-  .pairing-thumb {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .pairing-info {
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .pairing-info h4 {
-    font-size: 1em;
-    color: #2c3e50;
-    font-weight: 600;
-    margin: 0;
-    line-height: 1.4;
-  }
-
-  .pairing-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .pairing-tags {
-    display: flex;
-    gap: 6px;
-  }
-
-  .pairing-tags .el-tag {
-    font-size: 11px !important;
-    padding: 0 8px !important;
-    height: 22px !important;
-    line-height: 22px !important;
-  }
-
-  .cooking-time {
-    font-size: 0.85em;
-    color: #666;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .cooking-time .el-icon {
-    font-size: 1.1em;
-  }
-
-  .reason-text {
-    font-size: 0.85em;
-    color: #666;
-    margin: 0;
-    line-height: 1.5;
-  }
-
-  .pairings-list .el-row {
-    margin: 0 !important;
-  }
-
-  .pairings-list .el-col {
-    padding: 0 !important;
-    width: 100% !important;
+  .mobile-dialog-footer .el-button {
+    width: auto;
   }
 }
 
