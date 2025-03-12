@@ -1,13 +1,16 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy
 
 on:
+  schedule:
+    - cron: "0 */8 * * *"  # 每8小时运行一次
   push:
-    branches:
-      - main
+    branches: [ "main" ]  # 保持原有的 main 分支
+  pull_request:
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -15,6 +18,8 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Setup PNPM 📦
         uses: pnpm/action-setup@v2
@@ -31,14 +36,18 @@ jobs:
         run: pnpm install
 
       - name: Build 🏗️
-        run: pnpm run build
+        run: |
+          pnpm run build
+          mkdir -p dist/assets/images
         env:
           NODE_ENV: production
           BASE_URL: '/eatit/'
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          folder: dist
-          branch: gh-pages
-          clean: true 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: '🚀 Deploy website - ${{ github.sha }}'
