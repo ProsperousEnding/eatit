@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>今天吃什么 - EatIt</title>
+    <script>
+      // 获取当前 URL 的路径部分
+      const segment = 1
+      const path = window.location.pathname.split('/').slice(segment).join('/')
+      const redirect = window.location.protocol + '//' + window.location.hostname +
+        (window.location.port ? ':' + window.location.port : '') +
+        '/eatit' +
+        '/?p=' + encodeURIComponent(path) +
+        (window.location.search ? '&' + window.location.search.slice(1) : '') +
+        (window.location.hash || '')
+      
+      window.location.replace(redirect)
+    </script>
+  </head>
+  <body>
+    正在重定向...
+  </body>
+</html> 
