@@ -24,14 +24,21 @@ const routes = [
 ]
 
 // 获取基础路径
-const base = import.meta.env.BASE_URL
+const base = import.meta.env.VITE_BASE_URL || '/eatit/'
 
 const router = createRouter({
   history: createWebHistory(base),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  }
 })
 
-// 添加路由守卫处理 URL 参数
+// 添加路由守卫处理 URL 参数和 404 重定向
 router.beforeEach((to, from, next) => {
   // 处理来自 404.html 的重定向
   const redirectPath = to.query.p
@@ -44,6 +51,13 @@ router.beforeEach((to, from, next) => {
     })
     return
   }
+
+  // 处理 404
+  if (!routes.some(route => route.path === to.path)) {
+    next({ path: '/' })
+    return
+  }
+
   next()
 })
 
