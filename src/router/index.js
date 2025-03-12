@@ -1,30 +1,38 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+
+// 预加载组件
+const Home = () => import('@/views/Home.vue')
+const Search = () => import('@/views/Search.vue')
+const RecipeDetail = () => import('@/views/RecipeDetail.vue')
+const CategoryList = () => import('@/views/CategoryList.vue')
+
+
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/views/Home.vue')
+    component: Home
   },
   {
     path: '/search',
     name: 'Search',
-    component: () => import('@/views/Search.vue')
+    component: Search
   },
   {
     path: '/recipe/:id',
     name: 'RecipeDetail',
-    component: () => import('@/views/RecipeDetail.vue')
+    component: RecipeDetail
   },
   {
     path: '/category',
     name: 'CategoryList',
-    component: () => import('@/views/CategoryList.vue')
+    component: CategoryList
   }
 ]
 
 // 获取基础路径
-const base = import.meta.env.VITE_BASE_URL || '/eatit/'
+const base = '/' + (import.meta.env.VITE_BASE_URL || 'eatit/').replace(/^\/+|\/+$/g, '') + '/'
 
 const router = createRouter({
   history: createWebHistory(base),
@@ -52,8 +60,22 @@ router.beforeEach((to, from, next) => {
     return
   }
 
-  // 处理 404
-  if (!routes.some(route => route.path === to.path)) {
+  // 检查路由是否存在（考虑动态路由）
+  const matchedRoute = routes.some(route => {
+    if (route.path === to.matched[0]?.path) {
+      return true
+    }
+    // 处理动态路由，如 /recipe/:id
+    if (route.path.includes(':')) {
+      const routePattern = new RegExp(
+        '^' + route.path.replace(/:[^/]+/g, '[^/]+') + '$'
+      )
+      return routePattern.test(to.path)
+    }
+    return route.path === to.path
+  })
+
+  if (!matchedRoute) {
     next({ path: '/' })
     return
   }

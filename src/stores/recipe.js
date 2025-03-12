@@ -249,10 +249,12 @@ export const useRecipeStore = defineStore('recipe', {
 
       // 查找匹配ID的菜品
       const recipe = allDishesArray.find(dish => dish.id === id)
+      
       if (!recipe) {
-        throw new Error('未找到该菜品')
+        throw new Error('菜品不存在')
       }
 
+      // 设置当前菜品
       this.currentRecipe = recipe
       return recipe
     }
