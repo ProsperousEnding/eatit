@@ -8,7 +8,7 @@ export const getImageUrl = (imagePath) => {
   
   // 如果已经是完整的URL，直接返回
   if (imagePath.startsWith('http')) {
-    return imagePath
+  return `/eatit${imagePath}`
   }
   
   // 添加基础路径

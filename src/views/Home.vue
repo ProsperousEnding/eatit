@@ -166,6 +166,10 @@ const getTodayRecommends = async () => {
 
 // 查看菜品详情
 const viewRecipeDetail = (id) => {
+  if (!id) {
+    ElMessage.error('菜品ID不存在')
+    return
+  }
   router.push(`/recipe/${id}`)
 }
 

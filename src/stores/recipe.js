@@ -18,9 +18,22 @@ export const useRecipeStore = defineStore('recipe', {
      * 获取首页随机推荐
      */
     async getHomePageRecipe() {
-      const recipe = await this.getRandomRecipe()
-      this.homePageRecipe = recipe
-      return this.homePageRecipe
+      try {
+        const allDishesArray = this.getAllDishesArray()
+        if (!allDishesArray || allDishesArray.length === 0) {
+          throw new Error('没有可用的菜品数据')
+        }
+        const randomIndex = Math.floor(Math.random() * allDishesArray.length)
+        const recipe = allDishesArray[randomIndex]
+        if (!recipe || !recipe.id) {
+          throw new Error('获取菜品数据失败')
+        }
+        this.homePageRecipe = recipe
+        return this.homePageRecipe
+      } catch (error) {
+        console.error('获取首页推荐失败:', error)
+        throw error
+      }
     },
 
     /**
