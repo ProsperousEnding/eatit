@@ -21,7 +21,7 @@
       >
         <div class="recipe-content">
           <el-image 
-            :src="recipe.image || '/default-food.jpg'"
+            :src="getImageUrl(recipe.image)"
             class="recipe-thumb"
           />
           <div class="recipe-info">
@@ -46,6 +46,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useRecipeStore } from '@/stores/recipe'
 import { storeToRefs } from 'pinia'
+import { getImageUrl } from '@/utils/image'
 
 const router = useRouter()
 const recipeStore = useRecipeStore()

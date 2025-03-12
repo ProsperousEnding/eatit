@@ -13,4 +13,4 @@ export const getImageUrl = (imagePath) => {
   
   // 添加基础路径
   return `/eatit${imagePath}`
-} 
+}

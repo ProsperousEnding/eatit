@@ -2,7 +2,7 @@
   <div class="recipe-detail" v-if="currentRecipe">
     <el-card class="main-info">
       <el-image 
-        :src="currentRecipe.image || '/default-food.jpg'"
+        :src="getImageUrl(currentRecipe.image)"
         fit="cover"
         class="recipe-image"
       />
@@ -100,7 +100,7 @@
         <div class="current-dish-section">
           <div class="current-dish-card">
             <el-image 
-              :src="currentRecipe.image || '/default-food.jpg'"
+              :src="getImageUrl(currentRecipe.image)"
               class="current-dish-image"
             />
             <div class="current-dish-info">
@@ -151,7 +151,7 @@
             >
               <div class="dish-image-wrapper">
                 <el-image 
-                  :src="pairing.image || '/default-food.jpg'"
+                  :src="getImageUrl(pairing.image)"
                   fit="cover"
                   class="dish-thumb"
                 />
@@ -193,6 +193,7 @@ import { useRecipeStore } from '@/stores/recipe'
 import { storeToRefs } from 'pinia'
 import { ArrowDown, Warning, Clock, Food, Sugar, Dish, Check } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
+import { getImageUrl } from '@/utils/image'
 
 const route = useRoute()
 const router = useRouter()
