@@ -37,7 +37,7 @@
         class="ingredient-tag"
       >
         <template v-if="ingredient.includes('克') || ingredient.includes('g') || ingredient.includes('ml') || ingredient.includes('个') || ingredient.includes('片')">
-          <span class="ingredient-quantity">{{ ingredient.match(/\d+(\.\d+)?[克gml个片]/)[0] }}</span>
+          <span class="ingredient-quantity">{{ ingredient.match(/\d+(\.\d+)?[克gml个片]/)?.at(0) || ingredient }}</span>
           {{ ingredient.replace(/\d+(\.\d+)?[克gml个片]/, '') }}
         </template>
         <template v-else>

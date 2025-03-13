@@ -246,13 +246,19 @@ export const useRecipeStore = defineStore('recipe', {
      */
     async getRecipeById(id) {
       try {
-
-        const recipe = this.recipes.find(r => r.id === id)
+        // 从所有菜品中查找
+        const allDishesArray = this.getAllDishesArray()
+        const recipe = allDishesArray.find(r => r.id === id)
+        
+        if (!recipe) {
+          throw new Error('未找到该菜品')
+        }
+        
         this.currentRecipe = recipe
         return recipe
       } catch (error) {
-        console.error('获取食谱详情失败:', error)
-        return null
+        console.error('获取菜品详情失败:', error)
+        throw error
       }
     }
   }
