@@ -54,9 +54,6 @@ router.beforeEach((to, from, next) => {
     // 如果是数组，取最后一个值
     const finalPath = Array.isArray(redirectPath) ? redirectPath[redirectPath.length - 1] : redirectPath
     
-    // 移除 URL 中的 p 参数
-    const { p, ...query } = to.query
-    
     // 确保路径格式正确
     const cleanPath = finalPath.startsWith('/') ? finalPath : `/${finalPath}`
     
@@ -75,10 +72,9 @@ router.beforeEach((to, from, next) => {
       return
     }
 
-    // 使用replace模式重定向，避免在历史记录中堆积
+    // 使用replace模式重定向，并且不保留任何查询参数
     next({
       path: cleanPath,
-      query,
       replace: true
     })
     return

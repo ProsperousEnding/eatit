@@ -1,188 +1,193 @@
 <template>
-  <div class="recipe-detail" v-if="currentRecipe">
-    <el-card class="main-info">
-      <el-image 
-        :src="getImageUrl(currentRecipe.image)"
-        fit="cover"
-        class="recipe-image"
-      />
-      
-      <h1>{{ currentRecipe.name }}</h1>
-      
-      <div class="nutrition-info" v-if="currentRecipe.nutrition">
-        <el-descriptions :column="3" border>
-          <el-descriptions-item v-if="currentRecipe.nutrition.calories" label="热量">
-            {{ currentRecipe.nutrition.calories }}
-          </el-descriptions-item>
-          <el-descriptions-item v-if="currentRecipe.nutrition.protein" label="蛋白质">
-            {{ currentRecipe.nutrition.protein }}
-          </el-descriptions-item>
-          <el-descriptions-item v-if="currentRecipe.nutrition.fat" label="脂肪">
-            {{ currentRecipe.nutrition.fat }}
-          </el-descriptions-item>
-          <el-descriptions-item v-if="currentRecipe.nutrition.carbs" label="碳水">
-            {{ currentRecipe.nutrition.carbs }}
-          </el-descriptions-item>
-        </el-descriptions>
-      </div>
-    </el-card>
-
-    <el-card class="ingredients-section">
-      <template #header>
-        <h3>食材清单</h3>
-      </template> 
-      <el-tag 
-        v-for="ingredient in currentRecipe.ingredients"
-        :key="ingredient"
-        class="ingredient-tag"
-      >
-        <template v-if="ingredient.includes('克') || ingredient.includes('g') || ingredient.includes('ml') || ingredient.includes('个') || ingredient.includes('片')">
-          <span class="ingredient-quantity">{{ ingredient.match(/\d+(\.\d+)?[克gml个片]/)?.at(0) || ingredient }}</span>
-          {{ ingredient.replace(/\d+(\.\d+)?[克gml个片]/, '') }}
-        </template>
-        <template v-else>
-          {{ ingredient }}
-        </template>
-      </el-tag>
-    </el-card>
-
-    <el-card class="steps-section">
-      <template #header>
-        <div class="section-header">
-          <h3>烹饪步骤</h3>
-          <span class="total-time">
-            <el-icon><Clock /></el-icon>
-            总耗时：<span class="time-value">{{ currentRecipe.cookingTime }}</span>
-          </span>
+  <div class="recipe-detail">
+    <template v-if="currentRecipe">
+      <el-card class="main-info">
+        <el-image 
+          :src="getImageUrl(currentRecipe.image)"
+          fit="cover"
+          class="recipe-image"
+        />
+        
+        <h1>{{ currentRecipe.name }}</h1>
+        
+        <div class="nutrition-info" v-if="currentRecipe.nutrition">
+          <el-descriptions :column="3" border>
+            <el-descriptions-item v-if="currentRecipe.nutrition.calories" label="热量">
+              {{ currentRecipe.nutrition.calories }}
+            </el-descriptions-item>
+            <el-descriptions-item v-if="currentRecipe.nutrition.protein" label="蛋白质">
+              {{ currentRecipe.nutrition.protein }}
+            </el-descriptions-item>
+            <el-descriptions-item v-if="currentRecipe.nutrition.fat" label="脂肪">
+              {{ currentRecipe.nutrition.fat }}
+            </el-descriptions-item>
+            <el-descriptions-item v-if="currentRecipe.nutrition.carbs" label="碳水">
+              {{ currentRecipe.nutrition.carbs }}
+            </el-descriptions-item>
+          </el-descriptions>
         </div>
-      </template>
-      <el-timeline>
-        <el-timeline-item
-          v-for="(step, index) in currentRecipe.steps"
-          :key="index"
-          :type="getTimelineItemType(index)"
-          :hollow="index === currentRecipe.steps.length - 1"
-          class="step-item"
+      </el-card>
+
+      <el-card class="ingredients-section">
+        <template #header>
+          <h3>食材清单</h3>
+        </template> 
+        <el-tag 
+          v-for="ingredient in currentRecipe.ingredients"
+          :key="ingredient"
+          class="ingredient-tag"
         >
-          <div class="step-content">
-            <div class="step-number">{{ index + 1 }}</div>
-            <div class="step-text" v-html="highlightStepValues(step)"></div>
-            <div class="step-tips" v-if="getStepTips(step)">
-              <el-icon><Warning /></el-icon>
-              {{ getStepTips(step) }}
-            </div>
+          <template v-if="ingredient.includes('克') || ingredient.includes('g') || ingredient.includes('ml') || ingredient.includes('个') || ingredient.includes('片')">
+            <span class="ingredient-quantity">{{ ingredient.match(/\d+(\.\d+)?[克gml个片]/)?.at(0) || ingredient }}</span>
+            {{ ingredient.replace(/\d+(\.\d+)?[克gml个片]/, '') }}
+          </template>
+          <template v-else>
+            {{ ingredient }}
+          </template>
+        </el-tag>
+      </el-card>
+
+      <el-card class="steps-section">
+        <template #header>
+          <div class="section-header">
+            <h3>烹饪步骤</h3>
+            <span class="total-time">
+              <el-icon><Clock /></el-icon>
+              总耗时：<span class="time-value">{{ currentRecipe.cookingTime }}</span>
+            </span>
           </div>
-        </el-timeline-item>
-      </el-timeline>
-    </el-card>
-
-    <div class="action-buttons">
-      <el-button 
-        type="primary" 
-        size="large" 
-        @click="showPairingsDialog"
-        class="pairing-btn"
-      >
-        查看最佳搭配
-      </el-button>
-    </div>
-
-    <!-- 菜品搭配对话框 -->
-    <el-dialog
-      v-model="pairingsDialogVisible"
-      :title="`${currentRecipe.name}的最佳搭配`"
-      width="90%"
-      class="pairings-dialog mobile-dialog"
-      :fullscreen="true"
-    >
-      <div class="mobile-pairings-content">
-        <!-- 当前菜品信息 -->
-        <div class="current-dish-section">
-          <div class="current-dish-card">
-            <el-image 
-              :src="getImageUrl(currentRecipe.image)"
-              class="current-dish-image"
-            />
-            <div class="current-dish-info">
-              <h3>{{ currentRecipe.name }}</h3>
-              <div class="current-dish-tags">
-                <el-tag size="small" effect="plain" type="danger">{{ currentRecipe.taste }}</el-tag>
-                <el-tag size="small" effect="plain" type="warning">{{ currentRecipe.cookingMethod }}</el-tag>
+        </template>
+        <el-timeline>
+          <el-timeline-item
+            v-for="(step, index) in currentRecipe.steps"
+            :key="index"
+            :type="getTimelineItemType(index)"
+            :hollow="index === currentRecipe.steps.length - 1"
+            class="step-item"
+          >
+            <div class="step-content">
+              <div class="step-number">{{ index + 1 }}</div>
+              <div class="step-text" v-html="highlightStepValues(step)"></div>
+              <div class="step-tips" v-if="getStepTips(step)">
+                <el-icon><Warning /></el-icon>
+                {{ getStepTips(step) }}
               </div>
             </div>
-          </div>
-        </div>
+          </el-timeline-item>
+        </el-timeline>
+      </el-card>
 
-        <!-- 搭配理由说明 -->
-        <div class="pairing-reason-section">
-          <div class="reason-title">
-            <el-divider>搭配理由</el-divider>
-          </div>
-          <div class="reason-grid">
-            <div class="reason-item">
-              <el-icon class="reason-icon"><Food /></el-icon>
-              <h5>营养均衡</h5>
-              <p>合理搭配荤素</p>
-            </div>
-            <div class="reason-item">
-              <el-icon class="reason-icon"><Sugar /></el-icon>
-              <h5>口感互补</h5>
-              <p>提升饮食体验</p>
-            </div>
-            <div class="reason-item">
-              <el-icon class="reason-icon"><Dish /></el-icon>
-              <h5>健康饮食</h5>
-              <p>注重荤素比例</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 推荐菜品列表 -->
-        <div class="recommended-dishes-section">
-          <div class="section-title">
-            <h4>推荐搭配</h4>
-          </div>
-          <div class="dishes-grid">
-            <div 
-              v-for="pairing in recommendedPairings" 
-              :key="pairing.id"
-              class="dish-item"
-              @click="goToDetail(pairing.id)"
-            >
-              <div class="dish-image-wrapper">
-                <el-image 
-                  :src="getImageUrl(pairing.image)"
-                  fit="cover"
-                  class="dish-thumb"
-                />
-              </div>
-              <div class="dish-content">
-                <h5>{{ pairing.name }}</h5>
-                <div class="dish-meta">
-                  <div class="dish-tags">
-                    <el-tag size="small" effect="plain">{{ pairing.category }}</el-tag>
-                    <el-tag size="small" effect="plain" type="info">{{ pairing.taste }}</el-tag>
-                  </div>
-                  <span class="cooking-time">
-                    <el-icon><Clock /></el-icon>
-                    {{ pairing.cookingTime }}
-                  </span>
-                </div>
-                <p class="pairing-desc">{{ pairing.pairingReason }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="action-buttons">
+        <el-button 
+          type="primary" 
+          size="large" 
+          @click="showPairingsDialog"
+          class="pairing-btn"
+        >
+          查看最佳搭配
+        </el-button>
       </div>
 
-      <!-- 底部操作栏 -->
-      <template #footer>
-        <div class="mobile-dialog-footer">
-          <el-button @click="pairingsDialogVisible = false" block>关闭</el-button>
-          <el-button type="primary" @click="refreshPairings" block>换一批搭配</el-button>
+      <!-- 菜品搭配对话框 -->
+      <el-dialog
+        v-model="pairingsDialogVisible"
+        :title="`${currentRecipe.name}的最佳搭配`"
+        width="90%"
+        class="pairings-dialog mobile-dialog"
+        :fullscreen="true"
+      >
+        <div class="mobile-pairings-content">
+          <!-- 当前菜品信息 -->
+          <div class="current-dish-section">
+            <div class="current-dish-card">
+              <el-image 
+                :src="getImageUrl(currentRecipe.image)"
+                class="current-dish-image"
+              />
+              <div class="current-dish-info">
+                <h3>{{ currentRecipe.name }}</h3>
+                <div class="current-dish-tags">
+                  <el-tag size="small" effect="plain" type="danger">{{ currentRecipe.taste }}</el-tag>
+                  <el-tag size="small" effect="plain" type="warning">{{ currentRecipe.cookingMethod }}</el-tag>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 搭配理由说明 -->
+          <div class="pairing-reason-section">
+            <div class="reason-title">
+              <el-divider>搭配理由</el-divider>
+            </div>
+            <div class="reason-grid">
+              <div class="reason-item">
+                <el-icon class="reason-icon"><Food /></el-icon>
+                <h5>营养均衡</h5>
+                <p>合理搭配荤素</p>
+              </div>
+              <div class="reason-item">
+                <el-icon class="reason-icon"><Sugar /></el-icon>
+                <h5>口感互补</h5>
+                <p>提升饮食体验</p>
+              </div>
+              <div class="reason-item">
+                <el-icon class="reason-icon"><Dish /></el-icon>
+                <h5>健康饮食</h5>
+                <p>注重荤素比例</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 推荐菜品列表 -->
+          <div class="recommended-dishes-section">
+            <div class="section-title">
+              <h4>推荐搭配</h4>
+            </div>
+            <div class="dishes-grid">
+              <div 
+                v-for="pairing in recommendedPairings" 
+                :key="pairing.id"
+                class="dish-item"
+                @click="goToDetail(pairing.id)"
+              >
+                <div class="dish-image-wrapper">
+                  <el-image 
+                    :src="getImageUrl(pairing.image)"
+                    fit="cover"
+                    class="dish-thumb"
+                  />
+                </div>
+                <div class="dish-content">
+                  <h5>{{ pairing.name }}</h5>
+                  <div class="dish-meta">
+                    <div class="dish-tags">
+                      <el-tag size="small" effect="plain">{{ pairing.category }}</el-tag>
+                      <el-tag size="small" effect="plain" type="info">{{ pairing.taste }}</el-tag>
+                    </div>
+                    <span class="cooking-time">
+                      <el-icon><Clock /></el-icon>
+                      {{ pairing.cookingTime }}
+                    </span>
+                  </div>
+                  <p class="pairing-desc">{{ pairing.pairingReason }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </template>
-    </el-dialog>
+
+        <!-- 底部操作栏 -->
+        <template #footer>
+          <div class="mobile-dialog-footer">
+            <el-button @click="pairingsDialogVisible = false" block>关闭</el-button>
+            <el-button type="primary" @click="refreshPairings" block>换一批搭配</el-button>
+          </div>
+        </template>
+      </el-dialog>
+    </template>
+    <template v-else>
+      <el-empty description="未找到菜品信息" />
+    </template>
   </div>
 </template>
 
@@ -251,7 +256,8 @@ const showPairingsDialog = async () => {
  */
 const goToDetail = (id) => {
   router.push({
-    path: `/recipe/${id}`
+    path: `/recipe/${id}`,
+    replace: true  // 使用 replace 模式避免历史记录堆积
   })
   pairingsDialogVisible.value = false
 }
