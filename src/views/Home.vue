@@ -68,6 +68,10 @@
       <div class="today-recommends">
         <div class="section-title">
           <h2>精选推荐</h2>
+          <el-button text @click="refreshRecommends">
+            <el-icon><Refresh /></el-icon>
+            换一批
+          </el-button>
         </div>
         <div class="recommend-grid">
           <div 
@@ -94,11 +98,6 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- 加载更多 -->
-      <div class="load-more" v-if="hasMore">
-        <el-button text @click="loadMore">加载更多</el-button>
       </div>
     </div>
   </div>
@@ -130,8 +129,6 @@ const searchKeyword = ref('')
 const showSuggestions = ref(false)
 const searchSuggestions = ref([])
 const activeFilters = ref([])
-const hasMore = ref(true)
-const page = ref(1)
 
 // 计算属性：按类型分组的建议
 const dishSuggestions = computed(() => 
@@ -268,15 +265,13 @@ const categories = [
   { id: 8, name: '饮品', icon: 'Coffee' }
 ]
 
-// 加载更多
-const loadMore = async () => {
+// 刷新推荐列表
+const refreshRecommends = async () => {
   try {
-    page.value++
-    await recipeStore.getMoreRecommends(page.value)
-    hasMore.value = todayRecommends.value.length < 30 // 假设最多显示30个推荐
+    recipeStore.resetHomePageRecommends() // 先重置推荐列表
+    await recipeStore.getHomePageRecommends() // 获取新的推荐列表
   } catch (error) {
-    ElMessage.error('加载更多失败，请稍后重试')
-    page.value--
+    ElMessage.error('获取推荐失败，请稍后重试')
   }
 }
 
@@ -436,11 +431,6 @@ onMounted(async () => {
   font-size: 10px;
   padding: 0 6px;
   height: 20px;
-}
-
-.load-more {
-  text-align: center;
-  padding: 16px;
 }
 
 .recipe-card {

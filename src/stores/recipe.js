@@ -54,6 +54,13 @@ export const useRecipeStore = defineStore('recipe', {
     },
 
     /**
+     * 重置首页今日推荐列表
+     */
+    resetHomePageRecommends() {
+      this.homePageRecommends = []
+    },
+
+    /**
      * 获取随机推荐的食谱
      * @returns {Object} 随机选择的菜品
      */
