@@ -207,33 +207,112 @@ export const useRecipeStore = defineStore('recipe', {
 
     /**
      * 根据关键词搜索食谱
-     * @param {string} keyword - 搜索关键词
+     * @param {Object} params - 搜索参数
+     * @param {string} params.keyword - 搜索关键词
+     * @param {string} [params.category] - 菜品类别
+     * @param {string} [params.taste] - 口味
+     * @param {string} [params.difficulty] - 难度
      */
-    async searchRecipes(keyword) {
-      if (!keyword) {
-        this.recipes = []
-        return
-      }
-
+    async searchRecipes(params) {
+      // 确保 params 是对象
+      const searchParams = typeof params === 'string' ? { keyword: params } : params
       const allDishesArray = this.getAllDishesArray()
+      let searchResults = []
 
-      // 搜索逻辑:
-      // 1. 匹配菜品名称
-      // 2. 匹配食材列表
-      // 3. 匹配烹饪方法
-      const searchResults = allDishesArray.filter(dish => {
-        const lowerKeyword = keyword.toLowerCase()
-        return (
-          // 匹配菜品名称
-          dish.name.toLowerCase().includes(lowerKeyword) ||
-          // 匹配食材列表
-          dish.ingredients.some(ingredient => 
-            ingredient.toLowerCase().includes(lowerKeyword)
-          ) ||
-          // 匹配烹饪方法
-          dish.cookingMethod.toLowerCase().includes(lowerKeyword)
-        )
-      })
+      // 如果有筛选条件但没有关键词，直接按筛选条件过滤
+      if (!searchParams.keyword && (searchParams.category || searchParams.taste || searchParams.difficulty)) {
+        searchResults = allDishesArray.filter(dish => {
+          let matches = true
+          if (searchParams.category) matches = matches && dish.category === searchParams.category
+          if (searchParams.taste) matches = matches && dish.taste === searchParams.taste
+          if (searchParams.difficulty) matches = matches && dish.difficulty === searchParams.difficulty
+          return matches
+        })
+      } else if (searchParams.keyword) {
+        // 有关键词时的搜索逻辑
+        const lowerKeyword = String(searchParams.keyword).toLowerCase().trim()
+        const keywords = lowerKeyword.split(/\s+/) // 支持多个关键词搜索
+
+        // 搜索结果和权重
+        searchResults = allDishesArray
+          .map(dish => {
+            let weight = 0
+            let matchedKeywords = new Set()
+
+            // 先检查是否符合筛选条件
+            if (searchParams.category && dish.category !== searchParams.category) return { dish, weight: 0, matchedKeywords: 0 }
+            if (searchParams.taste && dish.taste !== searchParams.taste) return { dish, weight: 0, matchedKeywords: 0 }
+            if (searchParams.difficulty && dish.difficulty !== searchParams.difficulty) return { dish, weight: 0, matchedKeywords: 0 }
+
+            keywords.forEach(kw => {
+              // 1. 匹配菜品名称 (权重最高)
+              if (dish.name.toLowerCase().includes(kw)) {
+                weight += 100
+                matchedKeywords.add(kw)
+              }
+
+              // 2. 匹配食材列表 (第二优先)
+              dish.ingredients.forEach(ingredient => {
+                if (ingredient.toLowerCase().includes(kw)) {
+                  weight += 50
+                  matchedKeywords.add(kw)
+                }
+              })
+
+              // 3. 匹配烹饪方法 (第三优先)
+              if (dish.cookingMethod.toLowerCase().includes(kw)) {
+                weight += 30
+                matchedKeywords.add(kw)
+              }
+
+              // 4. 匹配口味 (第四优先)
+              if (dish.taste.toLowerCase().includes(kw)) {
+                weight += 20
+                matchedKeywords.add(kw)
+              }
+
+              // 5. 匹配难度 (第五优先)
+              if (dish.difficulty.toLowerCase().includes(kw)) {
+                weight += 10
+                matchedKeywords.add(kw)
+              }
+
+              // 6. 匹配类别 (第六优先)
+              if (dish.category.toLowerCase().includes(kw)) {
+                weight += 10
+                matchedKeywords.add(kw)
+              }
+
+              // 7. 匹配步骤描述 (最低优先级)
+              if (dish.steps.some(step => step.toLowerCase().includes(kw))) {
+                weight += 5
+                matchedKeywords.add(kw)
+              }
+            })
+
+            // 如果所有关键词都匹配到了，给予额外加分
+            if (matchedKeywords.size === keywords.length) {
+              weight += 200
+            }
+
+            return {
+              dish,
+              weight,
+              matchedKeywords: matchedKeywords.size
+            }
+          })
+          // 过滤掉没有匹配的结果
+          .filter(result => result.weight > 0)
+          // 按权重和匹配关键词数量排序
+          .sort((a, b) => {
+            if (b.matchedKeywords !== a.matchedKeywords) {
+              return b.matchedKeywords - a.matchedKeywords
+            }
+            return b.weight - a.weight
+          })
+          // 只返回菜品对象
+          .map(result => result.dish)
+      }
 
       this.recipes = searchResults
       return searchResults
