@@ -53,9 +53,12 @@ router.beforeEach((to, from, next) => {
   if (redirectPath) {
     // 移除 URL 中的 p 参数并重定向到实际路径
     const { p, ...query } = to.query
+    // 确保redirectPath是一个有效的路径
+    const cleanPath = redirectPath.startsWith('/') ? redirectPath : `/${redirectPath}`
     next({
-      path: redirectPath,
-      query
+      path: cleanPath,
+      query,
+      replace: true // 使用replace模式避免在历史记录中堆积
     })
     return
   }

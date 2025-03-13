@@ -5,6 +5,6 @@
  */
 export const getImageUrl = (imageName) => {
   // 图片存放在public目录下，直接使用相对于public的路径
-  const base = import.meta.env.VITE_BASE_URL || '/'
-  return `${base}images/dishes/${imageName}`
+  const base = import.meta.env.VITE_BASE_URL || ''
+  return `${base}${imageName}`
 }
