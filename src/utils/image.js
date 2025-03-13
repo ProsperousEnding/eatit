@@ -4,7 +4,7 @@
  * @returns {string} 完整的图片URL
  */
 export const getImageUrl = (imageName) => {
-  // 这里可以根据实际项目需求修改图片路径
-  // 如果使用本地图片，可以使用 Vite 的资源导入功能
-  return new URL(`../assets/images/${imageName}`, import.meta.url).href
+  // 图片存放在public目录下，直接使用相对于public的路径
+  const base = import.meta.env.VITE_BASE_URL || '/'
+  return `${base}images/dishes/${imageName}`
 }

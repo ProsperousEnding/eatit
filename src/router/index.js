@@ -32,7 +32,7 @@ const routes = [
 ]
 
 // 获取基础路径
-const base = '/' + (import.meta.env.VITE_BASE_URL || 'eatit/').replace(/^\/+|\/+$/g, '') + '/'
+const base = import.meta.env.VITE_BASE_URL || '/'
 
 const router = createRouter({
   history: createWebHistory(base),
@@ -83,4 +83,4 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
-export default router 
+export default router
