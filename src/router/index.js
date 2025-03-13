@@ -51,14 +51,35 @@ router.beforeEach((to, from, next) => {
   // 处理来自 404.html 的重定向
   const redirectPath = to.query.p
   if (redirectPath) {
-    // 移除 URL 中的 p 参数并重定向到实际路径
+    // 如果是数组，取最后一个值
+    const finalPath = Array.isArray(redirectPath) ? redirectPath[redirectPath.length - 1] : redirectPath
+    
+    // 移除 URL 中的 p 参数
     const { p, ...query } = to.query
-    // 确保redirectPath是一个有效的路径
-    const cleanPath = redirectPath.startsWith('/') ? redirectPath : `/${redirectPath}`
+    
+    // 确保路径格式正确
+    const cleanPath = finalPath.startsWith('/') ? finalPath : `/${finalPath}`
+    
+    // 检查是否是有效的路由路径
+    const isValidPath = routes.some(route => {
+      if (route.path === cleanPath) return true
+      if (route.path.includes(':')) {
+        const routePattern = new RegExp('^' + route.path.replace(/:[^/]+/g, '[^/]+') + '$')
+        return routePattern.test(cleanPath)
+      }
+      return false
+    })
+
+    if (!isValidPath) {
+      next('/')
+      return
+    }
+
+    // 使用replace模式重定向，避免在历史记录中堆积
     next({
       path: cleanPath,
       query,
-      replace: true // 使用replace模式避免在历史记录中堆积
+      replace: true
     })
     return
   }
