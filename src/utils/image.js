@@ -1,16 +1,10 @@
 /**
- * 处理图片路径，添加基础路径
- * @param {string} imagePath - 原始图片路径
- * @returns {string} - 处理后的图片路径
+ * 获取图片URL
+ * @param {string} imageName - 图片名称
+ * @returns {string} 完整的图片URL
  */
-export const getImageUrl = (imagePath) => {
-  if (!imagePath) return '/eatit/images/default-food.jpg'
-  
-  // 如果已经是完整的URL，直接返回
-  if (imagePath.startsWith('http')) {
-  return `/eatit${imagePath}`
-  }
-  
-  // 添加基础路径
-  return `/eatit${imagePath}`
+export const getImageUrl = (imageName) => {
+  // 这里可以根据实际项目需求修改图片路径
+  // 如果使用本地图片，可以使用 Vite 的资源导入功能
+  return new URL(`../assets/images/${imageName}`, import.meta.url).href
 }
