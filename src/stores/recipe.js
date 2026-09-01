@@ -1,18 +1,112 @@
 import { defineStore } from 'pinia'
-import dishesData from '../data/dishes.json'
+import recipeIndexData from '../data/client/recipe-index.json'
+
+const recipeDetailModules = import.meta.glob('../data/client/recipes/*.json', { import: 'default' })
+const recipeDetailCache = new Map()
+let recipeSearchDataPromise
+
+const loadRecipeSearchData = () => {
+  recipeSearchDataPromise ||= import('../data/client/recipe-search.json').then(module => module.default)
+  return recipeSearchDataPromise
+}
+
+const shuffle = (items) => {
+  const result = [...items]
+
+  for (let index = result.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1))
+    const currentItem = result[index]
+    result[index] = result[randomIndex]
+    result[randomIndex] = currentItem
+  }
+
+  return result
+}
+
+const allDishesList = recipeIndexData.RECIPES
+const HOME_FEATURE_HISTORY_LIMIT = 6
+const HOME_RECOMMENDATION_HISTORY_LIMIT = 12
+const PAIRING_HISTORY_LIMIT = 6
+const PAIRING_CATEGORY_TARGETS = {
+  '荤菜': [['素菜'], ['汤粥', '主食']],
+  '水产': [['素菜'], ['汤粥', '主食']],
+  '素菜': [['荤菜', '水产'], ['汤粥', '主食']],
+  '主食': [['荤菜', '水产'], ['素菜', '汤粥']],
+  '汤粥': [['荤菜', '水产'], ['素菜', '主食']]
+}
+
+const normalizeSearchValue = (value) => String(value ?? '').trim().slice(0, 80)
+
+const appendRecentIds = (currentIds, newIds, limit) => [
+  ...currentIds.filter(id => !newIds.includes(id)),
+  ...newIds
+].slice(-limit)
+
+const pickHighestScored = (dishes, getScore) => shuffle(dishes)
+  .sort((first, second) => getScore(second) - getScore(first))[0]
+
+const getDiversityScore = (dish, selectedDishes) => {
+  const selectedTastes = new Set(selectedDishes.map(item => item.taste))
+  const selectedMethods = new Set(selectedDishes.map(item => item.cookingMethod))
+
+  return (selectedTastes.has(dish.taste) ? 0 : 2) +
+    (selectedMethods.has(dish.cookingMethod) ? 0 : 2)
+}
+
+const getPairingScore = (currentDish, pairing, selectedPairings, targetCategories) => {
+  const selectedCategories = new Set(selectedPairings.map(item => item.category))
+  const selectedTastes = new Set(selectedPairings.map(item => item.taste))
+  const selectedMethods = new Set(selectedPairings.map(item => item.cookingMethod))
+
+  return (targetCategories.includes(pairing.category) ? 8 : 0) +
+    (pairing.category !== currentDish.category ? 2 : 0) +
+    (pairing.cookingMethod !== currentDish.cookingMethod ? 2 : 0) +
+    (pairing.taste !== currentDish.taste ? 1 : 0) +
+    (selectedCategories.has(pairing.category) ? 0 : 5) +
+    (selectedMethods.has(pairing.cookingMethod) ? 0 : 2) +
+    (selectedTastes.has(pairing.taste) ? 0 : 1)
+}
+
+const getPairingReason = (currentDish, pairing) => {
+  const categoryReasons = {
+    '素菜': `补充一道素菜，与${currentDish.name}组成更丰富的一餐。`,
+    '荤菜': `补充一道荤菜，与${currentDish.name}搭配成餐。`,
+    '水产': `补充一道水产，与${currentDish.name}搭配成餐。`,
+    '主食': `补充一道主食，适合与${currentDish.name}一同上桌。`,
+    '汤粥': `搭配一道汤粥，让${currentDish.name}所在的一餐更完整。`
+  }
+  const categoryReason = pairing.category === currentDish.category
+    ? `${pairing.category}中的另一种选择，适合与${currentDish.name}搭配。`
+    : categoryReasons[pairing.category]
+
+  if (['麻辣', '香辣', '酸辣'].includes(currentDish.taste) && pairing.taste === '清淡') {
+    return `${categoryReason}清淡口味还能调节当前菜的浓郁味道。`
+  }
+
+  if (pairing.cookingMethod !== currentDish.cookingMethod) {
+    return `${categoryReason}采用${pairing.cookingMethod}，与当前菜的${currentDish.cookingMethod}做法不同。`
+  }
+
+  if (pairing.taste !== currentDish.taste) {
+    return `${categoryReason}${pairing.taste}口味与当前菜形成变化。`
+  }
+
+  return categoryReason
+}
 
 export const useRecipeStore = defineStore('recipe', {
   state: () => ({
     recipes: [],
     currentRecipe: null,
     recommendedPairings: [],
-    usedPairings: new Set(), // 记录已推荐过的搭配
-    allDishes: dishesData,
-    todayRecommends: [], // 今日推荐列表
+    allDishes: recipeIndexData,
     homePageRecipe: null, // 首页随机推荐的菜品
-    homePageRecommends: [] // 首页今日推荐列表
+    homePageRecommends: [], // 首页今日推荐列表
+    recentHomeFeatureIds: [],
+    recentHomeRecommendationIds: [],
+    recentPairingIdsByRecipe: {}
   }),
-  
+
   actions: {
     /**
      * 获取首页随机推荐
@@ -23,12 +117,25 @@ export const useRecipeStore = defineStore('recipe', {
         if (!allDishesArray || allDishesArray.length === 0) {
           throw new Error('没有可用的菜品数据')
         }
-        const randomIndex = Math.floor(Math.random() * allDishesArray.length)
-        const recipe = allDishesArray[randomIndex]
+        const excludedIds = new Set([
+          this.homePageRecipe?.id,
+          ...this.homePageRecommends.map(dish => dish.id),
+          ...this.recentHomeFeatureIds
+        ].filter(Boolean))
+        const availableDishes = allDishesArray.filter(dish => !excludedIds.has(dish.id))
+        const candidates = availableDishes.length > 0 ? availableDishes : allDishesArray
+        const categories = shuffle([...new Set(candidates.map(dish => dish.category))])
+        const selectedCategory = categories[0]
+        const recipe = shuffle(candidates.filter(dish => dish.category === selectedCategory))[0]
         if (!recipe || !recipe.id) {
           throw new Error('获取菜品数据失败')
         }
         this.homePageRecipe = recipe
+        this.recentHomeFeatureIds = appendRecentIds(
+          this.recentHomeFeatureIds,
+          [recipe.id],
+          HOME_FEATURE_HISTORY_LIMIT
+        )
         return this.homePageRecipe
       } catch (error) {
         console.error('获取首页推荐失败:', error)
@@ -39,25 +146,20 @@ export const useRecipeStore = defineStore('recipe', {
     /**
      * 获取首页今日推荐
      */
-    async getHomePageRecommends() {
-      if (this.homePageRecommends.length === 0) {
-        this.homePageRecommends = await this.getTodayRecommends()
+    async getHomePageRecommends(forceRefresh = false) {
+      if (this.homePageRecommends.length === 0 || forceRefresh) {
+        const excludedIds = [
+          this.homePageRecipe?.id,
+          ...this.recentHomeRecommendationIds
+        ].filter(Boolean)
+        this.homePageRecommends = await this.getTodayRecommends(excludedIds)
+        this.recentHomeRecommendationIds = appendRecentIds(
+          this.recentHomeRecommendationIds,
+          this.homePageRecommends.map(dish => dish.id),
+          HOME_RECOMMENDATION_HISTORY_LIMIT
+        )
       }
       return this.homePageRecommends
-    },
-
-    /**
-     * 重置首页推荐
-     */
-    resetHomePageRecipe() {
-      this.homePageRecipe = null
-    },
-
-    /**
-     * 重置首页今日推荐列表
-     */
-    resetHomePageRecommends() {
-      this.homePageRecommends = []
     },
 
     /**
@@ -65,10 +167,12 @@ export const useRecipeStore = defineStore('recipe', {
      * @returns {Object} 随机选择的菜品
      */
     async getRandomRecipe() {
-      // 将所有菜品整理成一个数组
       const allDishesArray = this.getAllDishesArray()
+      if (allDishesArray.length === 0) {
+        this.currentRecipe = null
+        throw new Error('没有可用的菜品数据')
+      }
 
-      // 随机选择一道菜
       const randomIndex = Math.floor(Math.random() * allDishesArray.length)
       this.currentRecipe = allDishesArray[randomIndex]
 
@@ -80,135 +184,115 @@ export const useRecipeStore = defineStore('recipe', {
      * @returns {Array} 所有菜品的数组
      */
     getAllDishesArray() {
-      const allDishes = []
-      
-      // 遍历所有分类
-      for (const category in this.allDishes) {
-        if (category === 'DISH_CHARACTERISTICS') continue
-        
-        // 如果是对象，需要进一步遍历子分类
-        if (typeof this.allDishes[category] === 'object') {
-          for (const subCategory in this.allDishes[category]) {
-            if (Array.isArray(this.allDishes[category][subCategory])) {
-              allDishes.push(...this.allDishes[category][subCategory])
-            }
-          }
-        }
-        // 如果是数组，直接添加
-        else if (Array.isArray(this.allDishes[category])) {
-          allDishes.push(...this.allDishes[category])
-        }
-      }
-      
-      return allDishes
+      return allDishesList
     },
 
     /**
      * 获取今日推荐菜品列表
      * @returns {Array} 推荐的菜品列表
      */
-    async getTodayRecommends() {
+    async getTodayRecommends(excludedIds = []) {
       const allDishesArray = this.getAllDishesArray()
+      const excludedIdSet = new Set(excludedIds)
+      const availableDishes = allDishesArray.filter(dish => !excludedIdSet.has(dish.id))
+      const candidateDishes = availableDishes.length > 0 ? availableDishes : allDishesArray
 
-      // 清空今日推荐列表
-      this.todayRecommends = []
+      const recommendCount = Math.min(6, candidateDishes.length)
+      const recommendations = []
+      const groupedDishes = shuffle(candidateDishes).reduce((groups, dish) => {
+        if (!groups[dish.category]) groups[dish.category] = []
+        groups[dish.category].push(dish)
+        return groups
+      }, {})
+      const dishesByCategory = Object.values(groupedDishes)
+        .map(categoryDishes => shuffle(categoryDishes))
 
-      // 随机选择6道不重复的菜
-      const selectedDishes = new Set()
-      const recommendCount = 6
+      while (recommendations.length < recommendCount && dishesByCategory.length > 0) {
+        for (const categoryDishes of shuffle(dishesByCategory)) {
+          const dish = pickHighestScored(
+            categoryDishes,
+            candidate => getDiversityScore(candidate, recommendations)
+          )
+          if (dish) {
+            recommendations.push(dish)
+            categoryDishes.splice(categoryDishes.findIndex(item => item.id === dish.id), 1)
+          }
+          if (recommendations.length === recommendCount) break
+        }
 
-      while (selectedDishes.size < recommendCount && selectedDishes.size < allDishesArray.length) {
-        const randomIndex = Math.floor(Math.random() * allDishesArray.length)
-        const dish = allDishesArray[randomIndex]
-        if (!selectedDishes.has(dish.id)) {
-          selectedDishes.add(dish.id)
-          this.todayRecommends.push(dish)
+        for (let index = dishesByCategory.length - 1; index >= 0; index -= 1) {
+          if (dishesByCategory[index].length === 0) dishesByCategory.splice(index, 1)
         }
       }
 
-      // 确保推荐的菜品类型多样
-      this.todayRecommends.sort((a, b) => {
-        // 按照类别排序，使得不同类别的菜品分散显示
-        const categoryOrder = {
-          [this.allDishes.DISH_CHARACTERISTICS.CATEGORIES.STAPLE]: 1,
-          [this.allDishes.DISH_CHARACTERISTICS.CATEGORIES.MEAT]: 2,
-          [this.allDishes.DISH_CHARACTERISTICS.CATEGORIES.SEAFOOD]: 3,
-          [this.allDishes.DISH_CHARACTERISTICS.CATEGORIES.VEGETABLE]: 4,
-          [this.allDishes.DISH_CHARACTERISTICS.CATEGORIES.SOUP]: 5,
-          'DESSERT': 6
-        }
-        return categoryOrder[a.category] - categoryOrder[b.category]
-      })
-
-      return this.todayRecommends
+      return recommendations
     },
 
     /**
      * 根据当前菜品特点，推荐搭配的菜品
      * @param {number} recipeId - 当前菜品ID
      */
-    async getRecommendedPairings(recipeId) {
-      const currentDish = this.currentRecipe
-      if (!currentDish) return
-
-      const pairings = []
-      this.usedPairings.clear() // 清空已使用记录
-
-      // 根据口味和烹饪方式推荐搭配
-      if (currentDish.taste === this.allDishes.DISH_CHARACTERISTICS.TASTES.SPICY || 
-          currentDish.taste === this.allDishes.DISH_CHARACTERISTICS.TASTES.SALTY) {
-        // 如果是重口味菜品，推荐清淡的搭配
-        const lightDishes = this.getAllDishesArray().filter(
-          dish => dish.category === this.allDishes.DISH_CHARACTERISTICS.CATEGORIES.VEGETABLE &&
-                 dish.taste === this.allDishes.DISH_CHARACTERISTICS.TASTES.LIGHT
-        )
-        
-        if (lightDishes.length > 0) {
-          const randomIndex = Math.floor(Math.random() * lightDishes.length)
-          pairings.push(lightDishes[randomIndex])
-        }
+    async getRecommendedPairings(recipeId, excludedIds = []) {
+      const allDishes = this.getAllDishesArray()
+      const currentDish = allDishes.find(dish => dish.id === recipeId)
+      if (!currentDish) {
+        this.recommendedPairings = []
+        return this.recommendedPairings
       }
 
-      // 根据菜品类别推荐搭配
-      if (currentDish.category === this.allDishes.DISH_CHARACTERISTICS.CATEGORIES.MEAT) {
-        // 如果是荤菜，推荐素菜
-        const vegetableDishes = this.getAllDishesArray().filter(
-          dish => dish.category === this.allDishes.DISH_CHARACTERISTICS.CATEGORIES.VEGETABLE
+      const pairings = []
+      const recentIds = this.recentPairingIdsByRecipe[recipeId] || []
+      const excludedIdSet = new Set([...excludedIds, ...recentIds])
+      const addPairing = (dish) => {
+        if (!dish || dish.id === currentDish.id || excludedIdSet.has(dish.id) || pairings.some(item => item.id === dish.id)) return
+        pairings.push({
+          ...dish,
+          pairingReason: getPairingReason(currentDish, dish)
+        })
+      }
+
+      const availableCandidates = allDishes.filter(dish =>
+        dish.id !== currentDish.id && !excludedIdSet.has(dish.id)
+      )
+      const categoryTargets = PAIRING_CATEGORY_TARGETS[currentDish.category] || [[], []]
+
+      for (const targetCategories of categoryTargets) {
+        const remainingCandidates = availableCandidates.filter(
+          dish => !pairings.some(pairing => pairing.id === dish.id)
         )
-        
-        if (vegetableDishes.length > 0) {
-          const randomIndex = Math.floor(Math.random() * vegetableDishes.length)
-          const dish = vegetableDishes[randomIndex]
-          if (!pairings.find(p => p.id === dish.id)) {
-            pairings.push(dish)
-          }
-        }
-      } else if (currentDish.category === this.allDishes.DISH_CHARACTERISTICS.CATEGORIES.VEGETABLE) {
-        // 如果是素菜，可以推荐荤菜
-        const meatDishes = this.getAllDishesArray().filter(
-          dish => dish.category === this.allDishes.DISH_CHARACTERISTICS.CATEGORIES.MEAT
+        const targetCandidates = remainingCandidates.filter(dish => targetCategories.includes(dish.category))
+        const candidates = targetCandidates.length > 0 ? targetCandidates : remainingCandidates
+        const pairing = pickHighestScored(
+          candidates,
+          dish => getPairingScore(currentDish, dish, pairings, targetCategories)
         )
-        
-        if (meatDishes.length > 0) {
-          const randomIndex = Math.floor(Math.random() * meatDishes.length)
-          pairings.push(meatDishes[randomIndex])
-        }
+        addPairing(pairing)
       }
 
       // 确保至少有两个推荐
       if (pairings.length < 2) {
-        const allDishes = this.getAllDishesArray().filter(
-          dish => dish.id !== currentDish.id && !pairings.find(p => p.id === dish.id)
+        const fallbackDishes = allDishes.filter(
+          dish => dish.id !== currentDish.id &&
+            !excludedIdSet.has(dish.id) &&
+            !pairings.find(p => p.id === dish.id)
         )
 
-        while (pairings.length < 2 && allDishes.length > 0) {
-          const randomIndex = Math.floor(Math.random() * allDishes.length)
-          pairings.push(allDishes[randomIndex])
-          allDishes.splice(randomIndex, 1)
+        while (pairings.length < 2 && fallbackDishes.length > 0) {
+          const randomIndex = Math.floor(Math.random() * fallbackDishes.length)
+          addPairing(fallbackDishes[randomIndex])
+          fallbackDishes.splice(randomIndex, 1)
         }
       }
 
       this.recommendedPairings = pairings
+      this.recentPairingIdsByRecipe = {
+        ...this.recentPairingIdsByRecipe,
+        [recipeId]: appendRecentIds(
+          recentIds,
+          pairings.map(pairing => pairing.id),
+          PAIRING_HISTORY_LIMIT
+        )
+      }
       return this.recommendedPairings
     },
 
@@ -221,8 +305,13 @@ export const useRecipeStore = defineStore('recipe', {
      * @param {string} [params.difficulty] - 难度
      */
     async searchRecipes(params) {
-      // 确保 params 是对象
-      const searchParams = typeof params === 'string' ? { keyword: params } : params
+      const rawParams = typeof params === 'string' ? { keyword: params } : (params || {})
+      const searchParams = {
+        keyword: normalizeSearchValue(rawParams.keyword).toLowerCase(),
+        category: normalizeSearchValue(rawParams.category),
+        taste: normalizeSearchValue(rawParams.taste),
+        difficulty: normalizeSearchValue(rawParams.difficulty)
+      }
       const allDishesArray = this.getAllDishesArray()
       let searchResults = []
 
@@ -236,15 +325,15 @@ export const useRecipeStore = defineStore('recipe', {
           return matches
         })
       } else if (searchParams.keyword) {
+        const recipeSearchData = await loadRecipeSearchData()
         // 有关键词时的搜索逻辑
-        const lowerKeyword = String(searchParams.keyword).toLowerCase().trim()
-        const keywords = lowerKeyword.split(/\s+/) // 支持多个关键词搜索
+        const keywords = searchParams.keyword.split(/\s+/) // 支持多个关键词搜索
 
         // 搜索结果和权重
         searchResults = allDishesArray
           .map(dish => {
             let weight = 0
-            let matchedKeywords = new Set()
+            const matchedKeywords = new Set()
 
             // 先检查是否符合筛选条件
             if (searchParams.category && dish.category !== searchParams.category) return { dish, weight: 0, matchedKeywords: 0 }
@@ -259,12 +348,10 @@ export const useRecipeStore = defineStore('recipe', {
               }
 
               // 2. 匹配食材列表 (第二优先)
-              dish.ingredients.forEach(ingredient => {
-                if (ingredient.toLowerCase().includes(kw)) {
-                  weight += 50
-                  matchedKeywords.add(kw)
-                }
-              })
+              if (dish.ingredients.some(ingredient => ingredient.toLowerCase().includes(kw))) {
+                weight += 50
+                matchedKeywords.add(kw)
+              }
 
               // 3. 匹配烹饪方法 (第三优先)
               if (dish.cookingMethod.toLowerCase().includes(kw)) {
@@ -291,7 +378,7 @@ export const useRecipeStore = defineStore('recipe', {
               }
 
               // 7. 匹配步骤描述 (最低优先级)
-              if (dish.steps.some(step => step.toLowerCase().includes(kw))) {
+              if ((recipeSearchData[dish.id] || '').toLowerCase().includes(kw)) {
                 weight += 5
                 matchedKeywords.add(kw)
               }
@@ -332,20 +419,22 @@ export const useRecipeStore = defineStore('recipe', {
      */
     async getRecipeById(id) {
       try {
-        // 从所有菜品中查找
-        const allDishesArray = this.getAllDishesArray()
-        const recipe = allDishesArray.find(r => r.id === id)
-        
-        if (!recipe) {
-          throw new Error('未找到该菜品')
+        const detailPath = `../data/client/recipes/${id}.json`
+        const loadRecipe = recipeDetailModules[detailPath]
+        if (!loadRecipe) {
+          const error = new Error('未找到该菜品')
+          error.code = 'RECIPE_NOT_FOUND'
+          throw error
         }
-        
-        this.currentRecipe = recipe
+
+        const recipe = recipeDetailCache.get(id) || await loadRecipe()
+        recipeDetailCache.set(id, recipe)
+
         return recipe
       } catch (error) {
-        console.error('获取菜品详情失败:', error)
+        if (error.code !== 'RECIPE_NOT_FOUND') console.error('获取菜品详情失败:', error)
         throw error
       }
     }
   }
-}) 
+})

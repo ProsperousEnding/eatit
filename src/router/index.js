@@ -1,41 +1,49 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-
 // 预加载组件
 const Home = () => import('@/views/Home.vue')
 const Search = () => import('@/views/Search.vue')
 const RecipeDetail = () => import('@/views/RecipeDetail.vue')
 const CategoryList = () => import('@/views/CategoryList.vue')
+const NotFound = () => import('@/views/NotFound.vue')
 
+const defaultDescription = 'EatIt 提供随机菜品推荐、分类浏览、食材搜索和详细烹饪步骤。'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: { title: '今天吃什么 - EatIt', description: defaultDescription }
   },
   {
     path: '/search',
     name: 'Search',
-    component: Search
+    component: Search,
+    meta: { title: '搜索菜谱 - EatIt', description: '按菜名、食材、口味和难度搜索适合的菜谱。' }
   },
   {
     path: '/recipe/:id',
     name: 'RecipeDetail',
-    component: RecipeDetail
+    component: RecipeDetail,
+    meta: { title: '菜谱详情 - EatIt', description: '查看食材清单、烹饪步骤、营养信息和搭配建议。' }
   },
   {
     path: '/category',
     name: 'CategoryList',
-    component: CategoryList
+    component: CategoryList,
+    meta: { title: '分类菜谱 - EatIt', description: '按主食、素菜、荤菜、水产和汤粥浏览家常菜谱。' }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFound,
+    meta: { title: '页面不存在 - EatIt', description: defaultDescription }
   }
 ]
 
-// 获取基础路径
-const base = import.meta.env.VITE_BASE_URL || '/'
-
 const router = createRouter({
-  history: createWebHistory(base),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
@@ -46,61 +54,34 @@ const router = createRouter({
   }
 })
 
-// 添加路由守卫处理 URL 参数和 404 重定向
-router.beforeEach((to, from, next) => {
-  // 处理来自 404.html 的重定向
+// 处理 GitHub Pages 404.html 回传的真实路由。
+router.beforeEach(to => {
   const redirectPath = to.query.p
-  if (redirectPath) {
-    // 如果是数组，取最后一个值
-    const finalPath = Array.isArray(redirectPath) ? redirectPath[redirectPath.length - 1] : redirectPath
-    
-    // 确保路径格式正确
-    const cleanPath = finalPath.startsWith('/') ? finalPath : `/${finalPath}`
-    
-    // 检查是否是有效的路由路径
-    const isValidPath = routes.some(route => {
-      if (route.path === cleanPath) return true
-      if (route.path.includes(':')) {
-        const routePattern = new RegExp('^' + route.path.replace(/:[^/]+/g, '[^/]+') + '$')
-        return routePattern.test(cleanPath)
-      }
-      return false
-    })
+  if (!redirectPath) return true
 
-    if (!isValidPath) {
-      next('/')
-      return
-    }
+  const finalPath = Array.isArray(redirectPath) ? redirectPath.at(-1) : redirectPath
+  const cleanPath = `/${String(finalPath || '').replace(/^\/+/, '')}`
+  const query = { ...to.query }
+  delete query.p
 
-    // 使用replace模式重定向，并且不保留任何查询参数
-    next({
-      path: cleanPath,
-      replace: true
-    })
-    return
+  return {
+    path: cleanPath,
+    query,
+    hash: to.hash,
+    replace: true
   }
+})
 
-  // 检查路由是否存在（考虑动态路由）
-  const matchedRoute = routes.some(route => {
-    if (route.path === to.matched[0]?.path) {
-      return true
-    }
-    // 处理动态路由，如 /recipe/:id
-    if (route.path.includes(':')) {
-      const routePattern = new RegExp(
-        '^' + route.path.replace(/:[^/]+/g, '[^/]+') + '$'
-      )
-      return routePattern.test(to.path)
-    }
-    return route.path === to.path
-  })
-
-  if (!matchedRoute) {
-    next({ path: '/' })
-    return
-  }
-
-  next()
+router.afterEach(to => {
+  const title = to.meta.title || '今天吃什么 - EatIt'
+  const content = to.meta.description || defaultDescription
+  const defaultImage = new URL(`${import.meta.env.BASE_URL}favicon.png`, window.location.origin).href
+  document.title = title
+  const description = document.querySelector('meta[name="description"]')
+  if (description) description.setAttribute('content', content)
+  document.querySelector('meta[property="og:title"]')?.setAttribute('content', title)
+  document.querySelector('meta[property="og:description"]')?.setAttribute('content', content)
+  document.querySelector('meta[property="og:image"]')?.setAttribute('content', defaultImage)
 })
 
 export default router

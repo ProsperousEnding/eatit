@@ -1,53 +1,80 @@
 name: Build and Deploy
 
 on:
-  schedule:
-    - cron: "0 */8 * * *"  # 每8小时运行一次
   push:
-    branches: [ "main" ]  # 保持原有的 main 分支
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build-and-deploy:
+  quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.32.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run checks
+        run: pnpm run check
+
+      - name: Install browsers
+        run: pnpm exec playwright install --with-deps chromium firefox webkit
+
+      - name: Build GitHub Pages site
+        run: pnpm run build:pages
+
+      - name: Run browser tests
+        run: pnpm run test:e2e
+
+      - name: Upload site artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-dist
+          path: dist
+          if-no-files-found: error
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: quality
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    
+
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v4
+      - name: Download site artifact
+        uses: actions/download-artifact@v4
         with:
-          persist-credentials: false
+          name: site-dist
+          path: dist
 
-      - name: Setup PNPM 📦
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          
-      - name: Setup Node.js ⚙️
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'pnpm'
-
-      - name: Install Dependencies 🔧
-        run: pnpm install
-
-      - name: Build 🏗️
-        run: |
-          pnpm run build
-          mkdir -p dist/assets/images
-        env:
-          NODE_ENV: production
-          BASE_URL: '/eatit/'
-
-      - name: Deploy 🚀
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: '🚀 Deploy website - ${{ github.sha }}'
+          commit_message: 'Deploy website - ${{ github.sha }}'

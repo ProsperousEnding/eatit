@@ -36,6 +36,8 @@ Thumbs.db
 
 # 测试覆盖率目录
 /coverage
+/test-results
+/playwright-report
 
 # 缓存文件
 .cache

@@ -1,0 +1,1526 @@
+{
+  "/images/dishes/htc-2001.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2001-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2001-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2001-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2002.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2002-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2002-540.webp",
+      "width": 540
+    }
+  ],
+  "/images/dishes/htc-2003.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2003-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2003-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2003-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2004.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2004-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2004-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2004-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2006.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2006-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2006-576.webp",
+      "width": 576
+    }
+  ],
+  "/images/dishes/htc-2010.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2010-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2010-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2010-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2011.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2011-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2011-432.webp",
+      "width": 432
+    }
+  ],
+  "/images/dishes/htc-2013.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2013-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2013-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2013-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2015.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2015-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2015-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2015-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2016.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2016-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2016-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2016-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2020.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2020-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2020-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2020-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2021.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2021-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2021-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2021-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2022.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2022-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2022-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2022-742.webp",
+      "width": 742
+    }
+  ],
+  "/images/dishes/htc-2024.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2024-248.webp",
+      "width": 248
+    }
+  ],
+  "/images/dishes/htc-2026.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2026-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2026-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2026-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2027.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2027-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2027-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2027-816.webp",
+      "width": 816
+    }
+  ],
+  "/images/dishes/htc-2028.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2028-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2028-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2028-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2055.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2055-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2055-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2055-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2059.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2059-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2059-558.webp",
+      "width": 558
+    }
+  ],
+  "/images/dishes/htc-2062.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2062-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2062-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2062-960.webp",
+      "width": 960
+    }
+  ],
+  "/images/dishes/htc-2063.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2063-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2063-635.webp",
+      "width": 635
+    }
+  ],
+  "/images/dishes/htc-2067.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2067-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2067-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2067-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2068.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2068-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2068-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2068-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2070.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2070-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2070-635.webp",
+      "width": 635
+    }
+  ],
+  "/images/dishes/htc-2071.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2071-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2071-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2071-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2073.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2073-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2073-376.webp",
+      "width": 376
+    }
+  ],
+  "/images/dishes/htc-2074.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2074-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2074-691.webp",
+      "width": 691
+    }
+  ],
+  "/images/dishes/htc-2076.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2076-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2076-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2076-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2078.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2078-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2078-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2078-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2079.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2079-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2079-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2079-1008.webp",
+      "width": 1008
+    }
+  ],
+  "/images/dishes/htc-2084.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2084-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2084-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2084-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2085.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2085-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2085-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2085-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2087.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2087-270.webp",
+      "width": 270
+    }
+  ],
+  "/images/dishes/htc-2089.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2089-351.webp",
+      "width": 351
+    }
+  ],
+  "/images/dishes/htc-2091.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2091-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2091-454.webp",
+      "width": 454
+    }
+  ],
+  "/images/dishes/htc-2092.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2092-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2092-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2092-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2093.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2093-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2093-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2093-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2095.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2095-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2095-696.webp",
+      "width": 696
+    }
+  ],
+  "/images/dishes/htc-2096.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2096-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2096-461.webp",
+      "width": 461
+    }
+  ],
+  "/images/dishes/htc-2100.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2100-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2100-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2100-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2102.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2102-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2102-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2102-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2103.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2103-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2103-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2103-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2105.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2105-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2105-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2105-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2106.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2106-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2106-605.webp",
+      "width": 605
+    }
+  ],
+  "/images/dishes/htc-2110.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2110-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2110-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2110-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2112.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2112-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2112-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2112-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2116.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2116-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2116-494.webp",
+      "width": 494
+    }
+  ],
+  "/images/dishes/htc-2117.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2117-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2117-530.webp",
+      "width": 530
+    }
+  ],
+  "/images/dishes/htc-2118.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2118-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2118-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2118-756.webp",
+      "width": 756
+    }
+  ],
+  "/images/dishes/htc-2120.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2120-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2120-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2120-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2125.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2125-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2125-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2125-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2126.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2126-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2126-600.webp",
+      "width": 600
+    }
+  ],
+  "/images/dishes/htc-2131.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2131-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2131-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2131-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2132.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2132-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2132-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2132-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2135.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2135-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2135-397.webp",
+      "width": 397
+    }
+  ],
+  "/images/dishes/htc-2137.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2137-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2137-490.webp",
+      "width": 490
+    }
+  ],
+  "/images/dishes/htc-2139.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2139-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2139-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2139-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2141.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2141-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2141-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2141-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2142.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2142-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2142-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2142-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2143.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2143-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2143-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2143-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2144.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2144-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2144-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2144-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2145.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2145-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2145-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2145-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2146.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2146-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2146-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2146-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2150.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2150-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2150-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2150-925.webp",
+      "width": 925
+    }
+  ],
+  "/images/dishes/htc-2151.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2151-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2151-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2151-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2152.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2152-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2152-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2152-1008.webp",
+      "width": 1008
+    }
+  ],
+  "/images/dishes/htc-2155.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2155-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2155-600.webp",
+      "width": 600
+    }
+  ],
+  "/images/dishes/htc-2158.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2158-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2158-415.webp",
+      "width": 415
+    }
+  ],
+  "/images/dishes/htc-2160.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2160-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2160-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2160-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2162.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2162-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2162-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2162-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2163.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2163-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2163-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2163-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2164.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2164-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2164-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2164-972.webp",
+      "width": 972
+    }
+  ],
+  "/images/dishes/htc-2166.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2166-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2166-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2166-794.webp",
+      "width": 794
+    }
+  ],
+  "/images/dishes/htc-2168.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2168-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2168-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2168-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2171.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2171-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2171-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2171-865.webp",
+      "width": 865
+    }
+  ],
+  "/images/dishes/htc-2182.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2182-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2182-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2182-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2183.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2183-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2183-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2183-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2184.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2184-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2184-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2184-756.webp",
+      "width": 756
+    }
+  ],
+  "/images/dishes/htc-2185.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2185-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2185-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2185-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2187.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2187-211.webp",
+      "width": 211
+    }
+  ],
+  "/images/dishes/htc-2189.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2189-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2189-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2189-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2199.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2199-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2199-461.webp",
+      "width": 461
+    }
+  ],
+  "/images/dishes/htc-2201.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2201-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2201-602.webp",
+      "width": 602
+    }
+  ],
+  "/images/dishes/htc-2203.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2203-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2203-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2203-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2205.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2205-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2205-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2205-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2211.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2211-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2211-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2211-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2212.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2212-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2212-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2212-807.webp",
+      "width": 807
+    }
+  ],
+  "/images/dishes/htc-2214.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2214-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2214-600.webp",
+      "width": 600
+    }
+  ],
+  "/images/dishes/htc-2219.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2219-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2219-480.webp",
+      "width": 480
+    }
+  ],
+  "/images/dishes/htc-2225.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2225-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2225-400.webp",
+      "width": 400
+    }
+  ],
+  "/images/dishes/htc-2245.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2245-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2245-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2245-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2246.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2246-320.webp",
+      "width": 320
+    }
+  ],
+  "/images/dishes/htc-2247.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2247-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2247-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2247-1008.webp",
+      "width": 1008
+    }
+  ],
+  "/images/dishes/htc-2248.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2248-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2248-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2248-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2249.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2249-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2249-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2249-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2254.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2254-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2254-414.webp",
+      "width": 414
+    }
+  ],
+  "/images/dishes/htc-2255.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2255-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2255-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2255-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2256.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2256-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2256-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2256-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2258.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2258-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2258-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2258-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2260.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2260-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2260-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2260-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2261.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2261-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2261-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2261-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2262.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2262-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2262-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2262-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2263.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2263-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2263-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2263-1008.webp",
+      "width": 1008
+    }
+  ],
+  "/images/dishes/htc-2269.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2269-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2269-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2269-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2273.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2273-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2273-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2273-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2274.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2274-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2274-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2274-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2279.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2279-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2279-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2279-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2280.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2280-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2280-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2280-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2284.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2284-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2284-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2284-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2285.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2285-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2285-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2285-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2289.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2289-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2289-647.webp",
+      "width": 647
+    }
+  ],
+  "/images/dishes/htc-2290.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2290-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2290-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2290-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2295.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2295-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2295-704.webp",
+      "width": 704
+    }
+  ],
+  "/images/dishes/htc-2296.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2296-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2296-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2296-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2298.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2298-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2298-650.webp",
+      "width": 650
+    }
+  ],
+  "/images/dishes/htc-2299.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2299-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2299-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2299-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2301.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2301-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2301-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2301-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2302.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2302-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2302-400.webp",
+      "width": 400
+    }
+  ],
+  "/images/dishes/htc-2303.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2303-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2303-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2303-1024.webp",
+      "width": 1024
+    }
+  ],
+  "/images/dishes/htc-2304.jpg": [
+    {
+      "src": "/images/dishes/responsive/htc-2304-360.webp",
+      "width": 360
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2304-720.webp",
+      "width": 720
+    },
+    {
+      "src": "/images/dishes/responsive/htc-2304-1024.webp",
+      "width": 1024
+    }
+  ]
+}

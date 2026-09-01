@@ -3,22 +3,45 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "packageManager": "pnpm@10.32.1",
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "build:pages": "vite build --base /eatit/",
+    "preview": "vite preview",
+    "preview:pages": "vite preview --base /eatit/ --host 127.0.0.1 --port 8891",
+    "images:optimize": "node scripts/images.mjs",
+    "images:check": "node scripts/images.mjs --check",
+    "recipes:client": "node scripts/recipe-data.mjs",
+    "recipes:check": "node scripts/recipe-data.mjs --check",
+    "recipes:import:howtocook": "node scripts/import-howtocook.mjs",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "check": "pnpm run lint && pnpm run recipes:check && pnpm run images:check && pnpm run test && pnpm run build"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^2.3.1",
-    "axios": "^1.4.0",
-    "element-plus": "^2.3.9",
-    "pinia": "^2.1.6",
-    "vue": "^3.3.4",
-    "vue-router": "^4.2.4"
+    "@element-plus/icons-vue": "2.3.2",
+    "element-plus": "2.14.5",
+    "pinia": "2.3.1",
+    "vue": "3.5.42",
+    "vue-router": "4.6.4"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.3",
-    "terser": "^5.39.0",
-    "vite": "^4.4.9"
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.62.1",
+    "@vitejs/plugin-vue": "6.0.8",
+    "@vue/test-utils": "2.5.0",
+    "eslint": "10.9.1",
+    "eslint-plugin-vue": "10.10.0",
+    "globals": "17.11.0",
+    "happy-dom": "20.11.12",
+    "sharp": "0.35.4",
+    "terser": "5.51.2",
+    "vite": "8.2.2",
+    "vitest": "4.1.11"
   }
 }

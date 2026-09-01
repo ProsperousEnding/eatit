@@ -2,21 +2,24 @@
   <div class="category-list">
     <div class="category-header">
       <h1>{{ categoryName }}</h1>
-      <p>为您精选{{ categoryName }}菜品</p>
+      <p v-if="activeCategory">为您精选{{ categoryName }}菜品</p>
     </div>
 
-    <div class="recipes-grid" v-if="categoryRecipes.length">
-      <el-card 
-        v-for="recipe in categoryRecipes" 
+    <div class="recipes-grid" v-if="activeCategory && categoryRecipes.length">
+      <router-link
+        v-for="recipe in categoryRecipes"
         :key="recipe.id"
-        class="recipe-card"
-        @click="viewRecipeDetail(recipe.id)"
+        class="recipe-card-link"
+        :to="`/recipe/${recipe.id}`"
       >
-        <div class="recipe-image">
-          <el-image 
-            :src="getImageUrl(recipe.image)"
-            fit="cover"
+        <el-card class="recipe-card">
+          <div class="recipe-image">
+          <ResponsiveDishImage
+            :src="recipe.image"
+            :alt="recipe.name"
+            fit="contain"
             class="recipe-thumb"
+            sizes="(max-width: 640px) calc(100vw - 40px), 360px"
           />
           <div class="recipe-overlay">
             <span class="cooking-time">
@@ -24,91 +27,49 @@
               {{ recipe.cookingTime }}
             </span>
           </div>
-        </div>
-        <div class="recipe-info">
-          <h3>{{ recipe.name }}</h3>
+          </div>
+          <div class="recipe-info">
+          <h2>{{ recipe.name }}</h2>
           <div class="recipe-tags">
             <el-tag size="small" type="success">{{ recipe.cookingMethod }}</el-tag>
             <el-tag size="small" type="warning">{{ recipe.difficulty }}</el-tag>
           </div>
-        </div>
-      </el-card>
+          </div>
+        </el-card>
+      </router-link>
     </div>
 
-    <el-empty 
+    <el-empty
       v-else
-      description="暂无相关菜品"
+      :description="activeCategory ? '暂无相关菜品' : '分类不存在'"
     />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { computed } from 'vue'
+import '@/styles/element-plus-category.css'
+import { useRoute } from 'vue-router'
 import { useRecipeStore } from '@/stores/recipe'
-import { storeToRefs } from 'pinia'
 import { Clock } from '@element-plus/icons-vue'
-import { getImageUrl } from '@/utils/image'
+import ResponsiveDishImage from '@/components/ResponsiveDishImage.vue'
+import { ElCard, ElEmpty, ElIcon, ElTag } from 'element-plus'
+import { RECIPE_CATEGORIES_BY_ID } from '@/config/categories'
 
 const route = useRoute()
-const router = useRouter()
 const recipeStore = useRecipeStore()
 
-// 获取路由参数
-const categoryId = computed(() => parseInt(route.query.id))
-const categoryName = computed(() => route.query.name || '全部')
+const categoryId = computed(() => Number(route.query.id))
+const activeCategory = computed(() => RECIPE_CATEGORIES_BY_ID[categoryId.value])
+const categoryName = computed(() => activeCategory.value?.name || '分类不存在')
 
-// 分类菜品列表
-const categoryRecipes = ref([])
-
-// 获取分类菜品
-const getCategoryRecipes = async () => {
+const categoryRecipes = computed(() => {
   const allDishes = recipeStore.getAllDishesArray()
-  
-  // 根据分类ID筛选菜品
-  switch(categoryId.value) {
-    case 1: // 早餐
-      categoryRecipes.value = allDishes.filter(dish => dish.category === '早餐')
-      break
-    case 2: // 午餐
-      categoryRecipes.value = allDishes.filter(dish => 
-        ['荤菜', '素菜', '主食'].includes(dish.category)
-      )
-      break
-    case 3: // 晚餐
-      categoryRecipes.value = allDishes.filter(dish => 
-        ['荤菜', '素菜', '主食'].includes(dish.category)
-      )
-      break
-    case 4: // 小食
-      categoryRecipes.value = allDishes.filter(dish => dish.category === '小吃')
-      break
-    case 5: // 汤品
-      categoryRecipes.value = allDishes.filter(dish => dish.category === '汤类')
-      break
-    case 6: // 肉类
-      categoryRecipes.value = allDishes.filter(dish => dish.category === '荤菜')
-      break
-    case 7: // 素食
-      categoryRecipes.value = allDishes.filter(dish => dish.category === '素菜')
-      break
-    case 8: // 饮品
-      categoryRecipes.value = allDishes.filter(dish => dish.category === '饮品')
-      break
-    default:
-      categoryRecipes.value = allDishes
-  }
-}
 
-// 查看菜品详情
-const viewRecipeDetail = (id) => {
-  router.push(`/recipe/${id}`)
-}
-
-// 页面加载时获取数据
-onMounted(() => {
-  getCategoryRecipes()
+  if (!activeCategory.value) return []
+  return allDishes.filter(dish => activeCategory.value.sourceCategories.includes(dish.category))
 })
+
 </script>
 
 <style scoped>
@@ -130,13 +91,13 @@ onMounted(() => {
 }
 
 .category-header p {
-  color: #909399;
+  color: #595959;
   font-size: 1.1em;
 }
 
 .recipes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 20px;
   padding: 20px 0;
 }
@@ -146,13 +107,28 @@ onMounted(() => {
   transition: transform 0.3s ease;
 }
 
+.recipe-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
 .recipe-card:hover {
   transform: translateY(-5px);
 }
 
+.recipe-card-link:focus-visible {
+  outline: 3px solid #409eff;
+  outline-offset: 3px;
+}
+
+.recipe-card :deep(.el-card__body) {
+  padding: 0;
+}
+
 .recipe-image {
   position: relative;
-  height: 200px;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
 }
 
@@ -183,7 +159,7 @@ onMounted(() => {
   padding: 15px;
 }
 
-.recipe-info h3 {
+.recipe-info h2 {
   margin: 0 0 10px;
   font-size: 1.2em;
   color: #303133;
@@ -193,4 +169,19 @@ onMounted(() => {
   display: flex;
   gap: 8px;
 }
-</style> 
+
+@media screen and (max-width: 640px) {
+  .category-list {
+    padding: 16px 12px;
+  }
+
+  .category-header {
+    margin-bottom: 16px;
+  }
+
+  .recipes-grid {
+    gap: 16px;
+    padding-top: 8px;
+  }
+}
+</style>

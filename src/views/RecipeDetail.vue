@@ -1,204 +1,307 @@
 <template>
   <div class="recipe-detail">
-    <template v-if="currentRecipe">
-      <el-card class="main-info">
-        <el-image 
-          :src="getImageUrl(currentRecipe.image)"
-          fit="cover"
-          class="recipe-image"
-        />
-        
-        <h1>{{ currentRecipe.name }}</h1>
-        
-        <div class="nutrition-info" v-if="currentRecipe.nutrition">
-          <el-descriptions :column="3" border>
-            <el-descriptions-item v-if="currentRecipe.nutrition.calories" label="热量">
-              {{ currentRecipe.nutrition.calories }}
-            </el-descriptions-item>
-            <el-descriptions-item v-if="currentRecipe.nutrition.protein" label="蛋白质">
-              {{ currentRecipe.nutrition.protein }}
-            </el-descriptions-item>
-            <el-descriptions-item v-if="currentRecipe.nutrition.fat" label="脂肪">
-              {{ currentRecipe.nutrition.fat }}
-            </el-descriptions-item>
-            <el-descriptions-item v-if="currentRecipe.nutrition.carbs" label="碳水">
-              {{ currentRecipe.nutrition.carbs }}
-            </el-descriptions-item>
-          </el-descriptions>
-        </div>
-      </el-card>
+    <div class="recipe-detail-content">
+      <template v-if="currentRecipe">
+        <el-card class="main-info">
+          <ResponsiveDishImage
+            :src="currentRecipe.image"
+            :alt="currentRecipe.name"
+            fit="contain"
+            class="recipe-image"
+            sizes="(max-width: 640px) calc(100vw - 64px), (max-width: 899px) calc(100vw - 80px), 760px"
+            loading="eager"
+            fetch-priority="high"
+          />
 
-      <el-card class="ingredients-section">
-        <template #header>
-          <h3>食材清单</h3>
-        </template> 
-        <el-tag 
-          v-for="ingredient in currentRecipe.ingredients"
-          :key="ingredient"
-          class="ingredient-tag"
-        >
-          <template v-if="ingredient.includes('克') || ingredient.includes('g') || ingredient.includes('ml') || ingredient.includes('个') || ingredient.includes('片')">
-            <span class="ingredient-quantity">{{ ingredient.match(/\d+(\.\d+)?[克gml个片]/)?.at(0) || ingredient }}</span>
-            {{ ingredient.replace(/\d+(\.\d+)?[克gml个片]/, '') }}
+          <div class="recipe-summary-panel">
+            <h1>{{ currentRecipe.name }}</h1>
+            <div class="recipe-meta" aria-label="菜品信息">
+              <el-tag size="small" effect="plain">{{ currentRecipe.category }}</el-tag>
+              <el-tag size="small" effect="plain" type="danger">{{ currentRecipe.taste }}</el-tag>
+              <el-tag size="small" effect="plain" type="success">{{ currentRecipe.cookingMethod }}</el-tag>
+              <el-tag size="small" effect="plain" type="warning">{{ currentRecipe.difficulty }}</el-tag>
+              <el-tag v-if="currentRecipe.methodVariant" size="small" effect="plain" type="info">
+                {{ currentRecipe.methodVariant }}
+              </el-tag>
+              <span class="summary-time">
+                <el-icon><Clock /></el-icon>
+                {{ currentRecipe.cookingTime }}
+              </span>
+              <span v-if="currentRecipe.advanceTime" class="advance-time">
+                另需准备/等待：{{ currentRecipe.advanceTime }}
+              </span>
+            </div>
+
+            <div class="nutrition-info" v-if="nutritionItems.length">
+              <h2>参考营养</h2>
+              <el-descriptions :column="1" border>
+                <el-descriptions-item
+                  v-for="item in nutritionItems"
+                  :key="item.key"
+                  :label="item.label"
+                >
+                  {{ item.value }}
+                </el-descriptions-item>
+              </el-descriptions>
+            </div>
+
+            <div class="recipe-source" v-if="currentRecipe.source">
+              <h2>菜谱来源</h2>
+              <p class="source-line">
+                <a :href="currentRecipe.source.url" target="_blank" rel="noreferrer">
+                  {{ currentRecipe.source.name || currentRecipe.source.repository }}
+                </a>
+                <template v-if="currentRecipe.source.imageSource">
+                  · 配图：
+                  <a :href="currentRecipe.source.imageSource.url" target="_blank" rel="noreferrer">
+                    {{ currentRecipe.source.imageSource.author }}
+                  </a>
+                  （<a :href="currentRecipe.source.imageSource.licenseUrl" target="_blank" rel="noreferrer">
+                    {{ currentRecipe.source.imageSource.license }}
+                  </a>）
+                </template>
+              </p>
+            </div>
+
+            <section v-if="currentRecipe.videoTutorials" class="video-tutorials" aria-labelledby="video-tutorial-title">
+              <h2 id="video-tutorial-title">视频教学</h2>
+              <div class="video-platform-links">
+                <a
+                  v-for="platform in currentRecipe.videoTutorials.platforms"
+                  :key="platform.key"
+                  :href="platform.searchUrl"
+                  :class="['video-platform-link', `video-platform-${platform.key}`]"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <el-icon><VideoPlay /></el-icon>
+                  <span>{{ platform.name }}</span>
+                </a>
+              </div>
+            </section>
+          </div>
+        </el-card>
+
+        <el-card class="ingredients-section preparation-section">
+          <template #header>
+            <div class="preparation-header">
+              <h2>食材准备</h2>
+              <span>{{ stepGroups.preparationSteps.length }} 项</span>
+            </div>
           </template>
-          <template v-else>
-            {{ ingredient }}
-          </template>
-        </el-tag>
-      </el-card>
-
-      <el-card class="steps-section">
-        <template #header>
-          <div class="section-header">
-            <h3>烹饪步骤</h3>
-            <span class="total-time">
-              <el-icon><Clock /></el-icon>
-              总耗时：<span class="time-value">{{ currentRecipe.cookingTime }}</span>
-            </span>
-          </div>
-        </template>
-        <el-timeline>
-          <el-timeline-item
-            v-for="(step, index) in currentRecipe.steps"
-            :key="index"
-            :type="getTimelineItemType(index)"
-            :hollow="index === currentRecipe.steps.length - 1"
-            class="step-item"
-          >
-            <div class="step-content">
-              <div class="step-number">{{ index + 1 }}</div>
-              <div class="step-text" v-html="highlightStepValues(step)"></div>
-              <div class="step-tips" v-if="getStepTips(step)">
-                <el-icon><Warning /></el-icon>
-                {{ getStepTips(step) }}
-              </div>
-            </div>
-          </el-timeline-item>
-        </el-timeline>
-      </el-card>
-
-      <div class="action-buttons">
-        <el-button 
-          type="primary" 
-          size="large" 
-          @click="showPairingsDialog"
-          class="pairing-btn"
-        >
-          查看最佳搭配
-        </el-button>
-      </div>
-
-      <!-- 菜品搭配对话框 -->
-      <el-dialog
-        v-model="pairingsDialogVisible"
-        :title="`${currentRecipe.name}的最佳搭配`"
-        width="90%"
-        class="pairings-dialog mobile-dialog"
-        :fullscreen="true"
-      >
-        <div class="mobile-pairings-content">
-          <!-- 当前菜品信息 -->
-          <div class="current-dish-section">
-            <div class="current-dish-card">
-              <el-image 
-                :src="getImageUrl(currentRecipe.image)"
-                class="current-dish-image"
-              />
-              <div class="current-dish-info">
-                <h3>{{ currentRecipe.name }}</h3>
-                <div class="current-dish-tags">
-                  <el-tag size="small" effect="plain" type="danger">{{ currentRecipe.taste }}</el-tag>
-                  <el-tag size="small" effect="plain" type="warning">{{ currentRecipe.cookingMethod }}</el-tag>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 搭配理由说明 -->
-          <div class="pairing-reason-section">
-            <div class="reason-title">
-              <el-divider>搭配理由</el-divider>
-            </div>
-            <div class="reason-grid">
-              <div class="reason-item">
-                <el-icon class="reason-icon"><Food /></el-icon>
-                <h5>营养均衡</h5>
-                <p>合理搭配荤素</p>
-              </div>
-              <div class="reason-item">
-                <el-icon class="reason-icon"><Sugar /></el-icon>
-                <h5>口感互补</h5>
-                <p>提升饮食体验</p>
-              </div>
-              <div class="reason-item">
-                <el-icon class="reason-icon"><Dish /></el-icon>
-                <h5>健康饮食</h5>
-                <p>注重荤素比例</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- 推荐菜品列表 -->
-          <div class="recommended-dishes-section">
-            <div class="section-title">
-              <h4>推荐搭配</h4>
-            </div>
-            <div class="dishes-grid">
-              <div 
-                v-for="pairing in recommendedPairings" 
-                :key="pairing.id"
-                class="dish-item"
-                @click="goToDetail(pairing.id)"
+          <div class="ingredient-overview">
+            <h3>所需食材</h3>
+            <div class="ingredient-tags">
+              <el-tag
+                v-for="ingredient in currentRecipe.ingredients"
+                :key="ingredient"
+                class="ingredient-tag"
               >
-                <div class="dish-image-wrapper">
-                  <el-image 
-                    :src="getImageUrl(pairing.image)"
-                    fit="cover"
-                    class="dish-thumb"
-                  />
+                {{ ingredient }}
+              </el-tag>
+            </div>
+          </div>
+          <div v-if="currentRecipe.tools?.length" class="tool-overview">
+            <h3>所需工具</h3>
+            <div class="ingredient-tags">
+              <el-tag
+                v-for="tool in currentRecipe.tools"
+                :key="tool"
+                class="tool-tag"
+                effect="plain"
+                type="info"
+              >
+                {{ tool }}
+              </el-tag>
+            </div>
+          </div>
+          <ol class="preparation-list">
+            <li
+              v-for="(step, index) in stepGroups.preparationSteps"
+              :key="`preparation-${index}`"
+              class="preparation-item"
+            >
+              <span class="preparation-number">{{ index + 1 }}</span>
+              <div class="preparation-text" v-html="highlightStepValues(step)"></div>
+            </li>
+          </ol>
+        </el-card>
+
+        <el-card class="steps-section">
+          <template #header>
+            <div class="section-header">
+              <h2>烹饪步骤</h2>
+              <span class="total-time">
+                <el-icon><Clock /></el-icon>
+                参考耗时：<span class="time-value">{{ currentRecipe.cookingTime }}</span>
+              </span>
+            </div>
+          </template>
+          <ol class="steps-list">
+            <li
+              v-for="(step, index) in stepGroups.cookingSteps"
+              :key="`cooking-${index}`"
+              class="step-item"
+            >
+              <div class="step-content">
+                <div class="step-number">{{ index + 1 }}</div>
+                <div class="step-text" v-html="highlightStepValues(step)"></div>
+                <div class="step-tips" v-if="getStepTips(step)">
+                  <el-icon><Warning /></el-icon>
+                  {{ getStepTips(step) }}
                 </div>
-                <div class="dish-content">
-                  <h5>{{ pairing.name }}</h5>
-                  <div class="dish-meta">
-                    <div class="dish-tags">
-                      <el-tag size="small" effect="plain">{{ pairing.category }}</el-tag>
-                      <el-tag size="small" effect="plain" type="info">{{ pairing.taste }}</el-tag>
-                    </div>
-                    <span class="cooking-time">
-                      <el-icon><Clock /></el-icon>
-                      {{ pairing.cookingTime }}
-                    </span>
+              </div>
+            </li>
+          </ol>
+        </el-card>
+
+        <div class="action-buttons">
+          <el-button
+            type="primary"
+            size="large"
+            @click="showPairingsDialog"
+            class="pairing-btn"
+          >
+            查看搭配推荐
+          </el-button>
+        </div>
+
+        <!-- 菜品搭配对话框 -->
+        <el-dialog
+          v-model="pairingsDialogVisible"
+          :title="`${currentRecipe.name}的搭配推荐`"
+          width="90%"
+          class="pairings-dialog mobile-dialog"
+          :fullscreen="isMobile"
+        >
+          <div class="mobile-pairings-content">
+            <!-- 当前菜品信息 -->
+            <div class="current-dish-section">
+              <div class="current-dish-card">
+                <ResponsiveDishImage
+                  :src="currentRecipe.image"
+                  :alt="currentRecipe.name"
+                  class="current-dish-image"
+                  sizes="80px"
+                />
+                <div class="current-dish-info">
+                  <h2>{{ currentRecipe.name }}</h2>
+                  <div class="current-dish-tags">
+                    <el-tag size="small" effect="plain" type="danger">{{ currentRecipe.taste }}</el-tag>
+                    <el-tag size="small" effect="plain" type="warning">{{ currentRecipe.cookingMethod }}</el-tag>
                   </div>
-                  <p class="pairing-desc">{{ pairing.pairingReason }}</p>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- 底部操作栏 -->
-        <template #footer>
-          <div class="mobile-dialog-footer">
-            <el-button @click="pairingsDialogVisible = false" block>关闭</el-button>
-            <el-button type="primary" @click="refreshPairings" block>换一批搭配</el-button>
+            <!-- 搭配理由说明 -->
+            <div class="pairing-reason-section">
+              <div class="reason-title">
+                <el-divider>搭配理由</el-divider>
+              </div>
+              <div class="reason-grid">
+                <div class="reason-item">
+                  <el-icon class="reason-icon"><Food /></el-icon>
+                  <h3>分类互补</h3>
+                  <p>按菜品角色组合</p>
+                </div>
+                <div class="reason-item">
+                  <el-icon class="reason-icon"><Sugar /></el-icon>
+                  <h3>做法变化</h3>
+                  <p>优先选择不同做法</p>
+                </div>
+                <div class="reason-item">
+                  <el-icon class="reason-icon"><Dish /></el-icon>
+                  <h3>口味协调</h3>
+                  <p>兼顾口味差异</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 推荐菜品列表 -->
+            <div class="recommended-dishes-section">
+              <div class="section-title">
+                <h2>推荐搭配</h2>
+              </div>
+              <div class="dishes-grid">
+                <router-link
+                  v-for="pairing in recommendedPairings"
+                  :key="pairing.id"
+                  class="dish-item"
+                  :to="`/recipe/${pairing.id}`"
+                  @click="pairingsDialogVisible = false"
+                >
+                  <div class="dish-image-wrapper">
+                    <ResponsiveDishImage
+                      :src="pairing.image"
+                      :alt="pairing.name"
+                      fit="contain"
+                      class="dish-thumb"
+                      sizes="(max-width: 640px) calc(100vw - 56px), (max-width: 899px) 568px, 140px"
+                      loading="eager"
+                    />
+                  </div>
+                  <div class="dish-content">
+                    <h3>{{ pairing.name }}</h3>
+                    <div class="dish-meta">
+                      <div class="dish-tags">
+                        <el-tag size="small" effect="plain">{{ pairing.category }}</el-tag>
+                        <el-tag size="small" effect="plain" type="info">{{ pairing.taste }}</el-tag>
+                      </div>
+                      <span class="cooking-time">
+                        <el-icon><Clock /></el-icon>
+                        {{ pairing.cookingTime }}
+                      </span>
+                    </div>
+                    <p class="pairing-desc">{{ pairing.pairingReason }}</p>
+                  </div>
+                </router-link>
+              </div>
+            </div>
           </div>
-        </template>
-      </el-dialog>
-    </template>
-    <template v-else>
-      <el-empty description="未找到菜品信息" />
-    </template>
+
+          <!-- 底部操作栏 -->
+          <template #footer>
+            <div class="mobile-dialog-footer">
+              <el-button @click="pairingsDialogVisible = false" block>关闭</el-button>
+              <el-button type="primary" @click="refreshPairings" block>换一批搭配</el-button>
+            </div>
+          </template>
+        </el-dialog>
+      </template>
+      <div v-else-if="isLoading" class="detail-loading" role="status" aria-live="polite">
+        正在加载菜谱...
+      </div>
+      <template v-else>
+        <el-empty description="未找到菜品信息" />
+      </template>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, watch, onUnmounted } from 'vue'
+import { computed, ref, onMounted, watch, onUnmounted } from 'vue'
+import '@/styles/element-plus-detail.css'
 import { useRoute, useRouter } from 'vue-router'
 import { useRecipeStore } from '@/stores/recipe'
 import { storeToRefs } from 'pinia'
-import { ArrowDown, Warning, Clock, Food, Sugar, Dish, Check } from '@element-plus/icons-vue'
-import { ElMessage } from 'element-plus'
-import { getImageUrl } from '@/utils/image'
+import { Warning, Clock, Food, Sugar, Dish, VideoPlay } from '@element-plus/icons-vue'
+import {
+  ElButton,
+  ElCard,
+  ElDescriptions,
+  ElDescriptionsItem,
+  ElDialog,
+  ElDivider,
+  ElEmpty,
+  ElIcon,
+  ElMessage,
+  ElTag
+} from 'element-plus'
+import { getRecipeStepGroups } from '@/utils/recipe'
+import { getStepTips, highlightStepValues } from '@/utils/recipe-step'
+import { useRecipeMetadata } from '@/composables/useRecipeMetadata'
+import ResponsiveDishImage from '@/components/ResponsiveDishImage.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -207,29 +310,58 @@ const { currentRecipe, recommendedPairings } = storeToRefs(recipeStore)
 
 // 对话框显示状态
 const pairingsDialogVisible = ref(false)
+const isMobile = ref(window.innerWidth < 768)
+const isLoading = ref(true)
+let detailRequestId = 0
+const nutritionLabels = {
+  calories: '热量',
+  protein: '蛋白质',
+  fat: '脂肪',
+  carbs: '碳水',
+  fiber: '膳食纤维',
+  vitamins: '维生素'
+}
 
-// 营养小贴士
-const nutritionTips = ref([
-  {
-    title: '营养搭配小贴士',
-    content: '荤素搭配不仅可以让饮食更加美味，还能确保营养均衡。主菜提供优质蛋白质，蔬菜补充维生素和膳食纤维。'
-  },
-  {
-    title: '健康饮食建议',
-    content: '建议一餐中荤菜和素菜的比例为3:7，这样既能享受美味，又不会摄入过多油脂。'
-  }
-])
+const nutritionItems = computed(() => Object.entries(nutritionLabels).flatMap(([key, label]) => {
+  const value = currentRecipe.value?.nutrition?.[key]
+  return value ? [{ key, label, value }] : []
+}))
+const stepGroups = computed(() => getRecipeStepGroups(currentRecipe.value))
+const { removeRecipeMetadata, updateRecipeMetadata } = useRecipeMetadata()
 
 /**
  * 获取食谱详情
  */
 const getRecipeDetail = async (id) => {
+  const requestId = ++detailRequestId
+  const recipeId = Number(id)
+  isLoading.value = true
+
   try {
-    if (!id) return
-    await recipeStore.getRecipeById(parseInt(id))
-    await recipeStore.getRecommendedPairings(parseInt(id))
+    if (!Number.isInteger(recipeId) || recipeId <= 0) {
+      await router.replace({ name: 'NotFound', params: { pathMatch: ['recipe', String(id)] } })
+      return
+    }
+
+    currentRecipe.value = null
+    recommendedPairings.value = []
+    const recipe = await recipeStore.getRecipeById(recipeId)
+    if (requestId !== detailRequestId) return
+    currentRecipe.value = recipe
+    updateRecipeMetadata(recipe)
+    await recipeStore.getRecommendedPairings(recipeId)
   } catch (error) {
+    if (requestId !== detailRequestId) return
+    removeRecipeMetadata()
+    currentRecipe.value = null
+    recommendedPairings.value = []
+    if (error.code === 'RECIPE_NOT_FOUND') {
+      await router.replace({ name: 'NotFound', params: { pathMatch: ['recipe', String(id)] } })
+      return
+    }
     ElMessage.error(error.message || '获取菜品详情失败')
+  } finally {
+    if (requestId === detailRequestId) isLoading.value = false
   }
 }
 
@@ -237,29 +369,16 @@ const getRecipeDetail = async (id) => {
 watch(
   () => route.params.id,
   async (newId) => {
-    if (newId) {
-      await getRecipeDetail(newId)
-    }
-  }
+    await getRecipeDetail(newId)
+  },
+  { immediate: true }
 )
 
 /**
  * 显示搭配对话框
  */
-const showPairingsDialog = async () => {
+const showPairingsDialog = () => {
   pairingsDialogVisible.value = true
-}
-
-/**
- * 跳转到其他食谱详情
- * @param {number} id - 食谱ID
- */
-const goToDetail = (id) => {
-  router.push({
-    path: `/recipe/${id}`,
-    replace: true  // 使用 replace 模式避免历史记录堆积
-  })
-  pairingsDialogVisible.value = false
 }
 
 /**
@@ -267,75 +386,51 @@ const goToDetail = (id) => {
  */
 const refreshPairings = async () => {
   try {
-    const id = route.params.id
-    if (!id) return
-    await recipeStore.getRecommendedPairings(parseInt(id))
-  } catch (error) {
+    const id = Number(route.params.id)
+    if (!Number.isInteger(id)) return
+    const excludedIds = recommendedPairings.value.map(pairing => pairing.id)
+    await recipeStore.getRecommendedPairings(id, excludedIds)
+  } catch {
     ElMessage.error('获取搭配推荐失败')
   }
 }
 
-onMounted(async () => {
-  const id = route.params.id
-  if (id) {
-    await getRecipeDetail(id)
-  }
+const updateViewport = () => {
+  isMobile.value = window.innerWidth < 768
+}
+
+onMounted(() => {
+  window.addEventListener('resize', updateViewport)
 })
 
 // 在组件销毁时清理状态
 onUnmounted(() => {
+  window.removeEventListener('resize', updateViewport)
+  removeRecipeMetadata()
   recipeStore.currentRecipe = null
   recipeStore.recommendedPairings = []
 })
 
-// 获取步骤类型
-const getTimelineItemType = (index) => {
-  return index === 0 ? 'primary' : index === currentRecipe.value.steps.length - 1 ? 'success' : 'normal'
-}
-
-// 获取步骤提示
-const getStepTips = (step) => {
-  // 实现获取步骤提示的逻辑
-  return null
-}
-
-/**
- * 处理步骤文本中的数值高亮
- * @param {string} text - 步骤文本
- * @returns {string} - 处理后的HTML文本
- */
-const highlightStepValues = (text) => {
-  // 匹配时间相关数值
-  text = text.replace(/(\d+(?:\.\d+)?)\s*(分钟|秒钟|小时|分|秒|h|min|s)/g, '<span class="highlight-time">$1$2</span>')
-  
-  // 匹配长度相关数值
-  text = text.replace(/(\d+(?:\.\d+)?)\s*(厘米|毫米|cm|mm|米|m)/g, '<span class="highlight-length">$1$2</span>')
-  
-  // 匹配温度相关数值
-  text = text.replace(/(\d+)\s*(度|℃|°C|°F)/g, '<span class="highlight-temp">$1$2</span>')
-  
-  // 匹配重量相关数值
-  text = text.replace(/(\d+(?:\.\d+)?)\s*(克|千克|g|kg|公斤|斤|两)/g, '<span class="highlight-weight">$1$2</span>')
-  
-  // 匹配体积相关数值
-  text = text.replace(/(\d+(?:\.\d+)?)\s*(ml|毫升|升|L|l|dl|分升)/g, '<span class="highlight-volume">$1$2</span>')
-  
-  // 匹配常用计量单位
-  text = text.replace(/(\d+(?:\.\d+)?)\s*(茶匙|勺|汤匙|碗|杯|盘|把|撮|勺子|匙|大勺|小勺|cup|tbsp|tsp)/g, '<span class="highlight-measure">$1$2</span>')
-  
-  // 匹配数量单位
-  text = text.replace(/(\d+(?:\.\d+)?)\s*(个|只|块|片|颗|粒|根|条|串|包|瓣|节|头|朵|丝|段|张|捆|把|束)/g, '<span class="highlight-quantity">$1$2</span>')
-  
-  return text
-}
 </script>
 
 <style scoped>
 .recipe-detail {
-  max-width: 900px;
+  width: 100%;
+  min-height: 100%;
+  background: #f8f9fa;
+}
+
+.recipe-detail-content {
+  max-width: 1200px;
   margin: 0 auto;
   padding: 30px 20px;
-  background: #f8f9fa;
+}
+
+.detail-loading {
+  min-height: 50vh;
+  display: grid;
+  place-items: center;
+  color: #606266;
 }
 
 .main-info {
@@ -363,11 +458,121 @@ const highlightStepValues = (text) => {
   font-weight: 600;
 }
 
+.recipe-meta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.summary-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #606266;
+  font-size: 13px;
+}
+
+.advance-time {
+  flex-basis: 100%;
+  color: #7a4f12;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .nutrition-info {
   margin: 25px 0;
   padding: 20px;
   background: #f8f9fa;
   border-radius: 12px;
+}
+
+.nutrition-info h2 {
+  margin: 0 0 12px;
+  color: #303133;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.recipe-source {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #e4e7ed;
+  color: #606266;
+}
+
+.recipe-source h2 {
+  margin: 0 0 8px;
+  color: #303133;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.recipe-source p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.recipe-source .source-line {
+  color: #606266;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.recipe-source a {
+  color: #1261a0;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.video-tutorials {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #e4e7ed;
+}
+
+.video-tutorials h2 {
+  margin: 0 0 10px;
+  color: #303133;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.video-platform-links {
+  display: flex;
+  gap: 8px;
+}
+
+.video-platform-link {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 38px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid #d9e7f2;
+  border-radius: 6px;
+  color: #1261a0;
+  background: #f7fbff;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.video-platform-link:hover,
+.video-platform-link:focus-visible {
+  border-color: #409eff;
+  background: #ecf5ff;
+}
+
+.video-platform-link .el-icon {
+  flex: 0 0 auto;
+  font-size: 16px;
 }
 
 .ingredients-section,
@@ -388,7 +593,7 @@ const highlightStepValues = (text) => {
   border-bottom: 1px solid #eee;
 }
 
-.section-header h3 {
+.section-header h2 {
   margin: 0;
   color: #2c3e50;
   font-size: 1.6em;
@@ -407,7 +612,7 @@ const highlightStepValues = (text) => {
 }
 
 .total-time .time-value {
-  color: #F56C6C;
+  color: #a63232;
   font-weight: 600;
 }
 
@@ -417,14 +622,107 @@ const highlightStepValues = (text) => {
 }
 
 .ingredient-tag {
-  margin: 8px;
   padding: 8px 16px;
   font-size: 1em;
   border-radius: 20px;
   background: linear-gradient(135deg, #67C23A 0%, #95D475 100%);
   color: #fff;
   border: none;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.preparation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.preparation-header h2,
+.ingredient-overview h3,
+.tool-overview h3 {
+  margin: 0;
+}
+
+.preparation-header h2 {
+  color: #2c3e50;
+  font-size: 1.35em;
+}
+
+.preparation-header span {
+  color: #606266;
+  font-size: 13px;
+}
+
+.ingredient-overview {
+  padding-bottom: 18px;
+  border-bottom: 1px solid #ebeef5;
+}
+
+.tool-overview {
+  padding: 16px 0 18px;
+  border-bottom: 1px solid #ebeef5;
+}
+
+.ingredient-overview h3,
+.tool-overview h3 {
+  margin-bottom: 12px;
+  color: #606266;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tool-tag {
+  max-width: 100%;
+  height: auto;
+  min-height: 28px;
+  white-space: normal;
+  line-height: 1.4;
+}
+
+.ingredient-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.preparation-list {
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+}
+
+.preparation-item {
+  min-width: 0;
+  padding: 14px 16px;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+  border: 1px solid #e1f0dc;
+  border-radius: 8px;
+  background: #f7fbf5;
+}
+
+.preparation-number {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #529b2e;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.preparation-text {
+  min-width: 0;
+  color: #2c3e50;
+  line-height: 1.7;
 }
 
 .ingredient-tag:hover {
@@ -433,9 +731,15 @@ const highlightStepValues = (text) => {
 }
 
 .ingredient-quantity {
-  color: #409EFF;
+  color: #fff;
   font-weight: 600;
   margin-right: 4px;
+}
+
+.steps-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .step-item {
@@ -447,7 +751,7 @@ const highlightStepValues = (text) => {
   padding: 16px 20px;
   border-radius: 12px;
   margin: 10px 0;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .step-content:hover {
@@ -473,17 +777,12 @@ const highlightStepValues = (text) => {
   margin: 8px 0;
 }
 
-.step-text .time-highlight {
-  color: #F56C6C;
-  font-weight: 600;
-}
-
 .step-tips {
   display: flex;
   align-items: center;
   gap: 6px;
   margin-top: 10px;
-  color: #e6a23c;
+  color: #785000;
   font-size: 0.9em;
   padding: 8px 12px;
   background: rgba(230, 162, 60, 0.1);
@@ -503,7 +802,7 @@ const highlightStepValues = (text) => {
   background: linear-gradient(135deg, #409EFF, #66b1ff);
   border: none;
   color: #fff;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .pairing-btn:hover {
@@ -511,7 +810,7 @@ const highlightStepValues = (text) => {
   box-shadow: 0 4px 12px rgba(64, 158, 255, 0.3);
 }
 
-.mobile-dialog :deep(.el-dialog) {
+:global(.mobile-dialog.el-dialog) {
   margin: 0 !important;
   border-radius: 0;
   max-height: 100vh;
@@ -519,7 +818,7 @@ const highlightStepValues = (text) => {
   flex-direction: column;
 }
 
-.mobile-dialog :deep(.el-dialog__header) {
+:global(.mobile-dialog .el-dialog__header) {
   padding: 16px;
   margin: 0;
   border-bottom: 1px solid #f0f0f0;
@@ -529,7 +828,7 @@ const highlightStepValues = (text) => {
   z-index: 10;
 }
 
-.mobile-dialog :deep(.el-dialog__body) {
+:global(.mobile-dialog .el-dialog__body) {
   padding: 0;
   flex: 1;
   overflow-y: auto;
@@ -566,7 +865,7 @@ const highlightStepValues = (text) => {
   flex: 1;
 }
 
-.current-dish-info h3 {
+.current-dish-info h2 {
   margin: 0 0 8px;
   font-size: 16px;
   color: #333;
@@ -609,7 +908,7 @@ const highlightStepValues = (text) => {
   margin-bottom: 8px;
 }
 
-.reason-item h5 {
+.reason-item h3 {
   margin: 0 0 4px;
   font-size: 14px;
   color: #333;
@@ -630,7 +929,7 @@ const highlightStepValues = (text) => {
   margin-bottom: 16px;
 }
 
-.section-title h4 {
+.section-title h2 {
   margin: 0;
   font-size: 16px;
   color: #333;
@@ -647,6 +946,13 @@ const highlightStepValues = (text) => {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  color: inherit;
+  text-decoration: none;
+}
+
+.dish-item:focus-visible {
+  outline: 3px solid #409eff;
+  outline-offset: 3px;
 }
 
 .dish-image-wrapper {
@@ -664,7 +970,7 @@ const highlightStepValues = (text) => {
   padding: 12px;
 }
 
-.dish-content h5 {
+.dish-content h3 {
   margin: 0 0 8px;
   font-size: 15px;
   color: #333;
@@ -724,7 +1030,7 @@ const highlightStepValues = (text) => {
 
 /* 适配不同屏幕尺寸 */
 @media screen and (min-width: 768px) {
-  .mobile-dialog :deep(.el-dialog) {
+  :global(.mobile-dialog.el-dialog) {
     width: 90% !important;
     max-width: 600px;
     margin: 15vh auto !important;
@@ -750,45 +1056,161 @@ const highlightStepValues = (text) => {
   }
 }
 
+@media screen and (min-width: 900px) {
+  .recipe-detail-content {
+    padding: 32px 24px 40px;
+  }
+
+  .main-info :deep(.el-card__body) {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.75fr);
+    column-gap: 28px;
+    align-items: stretch;
+    padding: 20px;
+  }
+
+  .recipe-image {
+    height: clamp(340px, 28vw, 400px);
+    margin: 0;
+    align-self: stretch;
+  }
+
+  .recipe-summary-panel {
+    min-width: 0;
+    align-self: center;
+  }
+
+  .main-info h1 {
+    margin: 0 0 14px;
+    font-size: 2.2em;
+    text-align: left;
+  }
+
+  .recipe-meta {
+    justify-content: flex-start;
+    margin-bottom: 22px;
+  }
+
+  .advance-time {
+    text-align: left;
+  }
+
+  .nutrition-info {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  :global(.mobile-dialog.el-dialog) {
+    width: min(90%, 980px) !important;
+    max-width: 980px;
+    max-height: 88vh;
+    margin: 6vh auto !important;
+    border-radius: 8px;
+  }
+
+  .mobile-pairings-content {
+    padding: 24px;
+  }
+
+  .dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dish-item {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+  }
+
+  .dish-image-wrapper {
+    height: 100%;
+    min-height: 150px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .recipe-detail-content {
+    padding: 16px 12px;
+  }
+
+  .recipe-image {
+    height: 260px;
+    margin-bottom: 16px;
+  }
+
+  .main-info h1 {
+    font-size: 1.8em;
+  }
+
+  .section-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .section-header h2 {
+    font-size: 1.3em;
+  }
+
+  .step-item {
+    padding: 0 4px;
+  }
+
+  .step-content {
+    padding: 14px;
+  }
+
+  .preparation-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 641px) and (max-width: 899px) {
+  .recipe-image {
+    height: 360px;
+  }
+}
+
 :deep(.highlight-time) {
-  color: #F56C6C;
+  color: #a63232;
   font-weight: 600;
   padding: 0 2px;
 }
 
 :deep(.highlight-length) {
-  color: #409EFF;
+  color: #1261a0;
   font-weight: 600;
   padding: 0 2px;
 }
 
 :deep(.highlight-temp) {
-  color: #E6A23C;
+  color: #785000;
   font-weight: 600;
   padding: 0 2px;
 }
 
 :deep(.highlight-weight) {
-  color: #67C23A;
+  color: #2f741d;
   font-weight: 600;
   padding: 0 2px;
 }
 
 :deep(.highlight-volume) {
-  color: #909399;
+  color: #555b65;
   font-weight: 600;
   padding: 0 2px;
 }
 
 :deep(.highlight-measure) {
-  color: #9C27B0;
+  color: #7b1a8f;
   font-weight: 600;
   padding: 0 2px;
 }
 
 :deep(.highlight-quantity) {
-  color: #2196F3;
+  color: #1261a0;
   font-weight: 600;
   padding: 0 2px;
 }
-</style> 
+</style>

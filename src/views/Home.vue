@@ -2,9 +2,12 @@
   <div class="home">
     <!-- 头部区域 -->
     <div class="header">
+      <h1>今天吃什么？</h1>
+      <p>每天为您精选美味佳肴</p>
+
       <!-- 搜索栏 -->
       <div class="search-section">
-        <div class="search-bar">
+        <form class="search-bar" role="search" @submit.prevent="handleSearch">
           <el-input
             v-model="searchKeyword"
             placeholder="搜索菜品、食材..."
@@ -16,10 +19,17 @@
               <el-icon><Search /></el-icon>
             </template>
           </el-input>
-        </div>
+          <el-button
+            class="search-submit"
+            type="primary"
+            native-type="submit"
+            title="搜索菜谱"
+            aria-label="搜索菜谱"
+          >
+            <el-icon><Search /></el-icon>
+          </el-button>
+        </form>
       </div>
-      <h1>今天吃什么？</h1>
-      <p>每天为您精选美味佳肴</p>
     </div>
 
     <!-- 内容区域 -->
@@ -33,34 +43,66 @@
             换一个
           </el-button>
         </div>
-        <el-card class="recipe-card" @click="viewRecipeDetail(currentRecipe.id)">
-          <div class="recipe-image">
-            <img :src="getImageUrl(currentRecipe.image)" :alt="currentRecipe.name">
+        <router-link class="recipe-card-link" :to="`/recipe/${currentRecipe.id}`">
+          <el-card class="recipe-card">
+            <div class="recipe-image">
+            <ResponsiveDishImage
+              :src="currentRecipe.image"
+              :alt="currentRecipe.name"
+              class="recipe-media"
+              sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 899px) calc(100vw - 64px), 800px"
+              loading="eager"
+              fetch-priority="high"
+              fit="cover"
+            />
             <div class="recipe-overlay">
               <span class="cooking-time">
                 <el-icon><Clock /></el-icon>
                 {{ currentRecipe.cookingTime }}
               </span>
             </div>
-          </div>
-          <div class="recipe-info">
+            </div>
+            <div class="recipe-info">
             <h3>{{ currentRecipe.name }}</h3>
             <div class="recipe-tags">
               <el-tag size="small">{{ currentRecipe.category }}</el-tag>
               <el-tag size="small" type="success">{{ currentRecipe.cookingMethod }}</el-tag>
               <el-tag size="small" type="warning">{{ currentRecipe.difficulty }}</el-tag>
             </div>
-          </div>
-        </el-card>
+            <div class="featured-details">
+              <dl class="featured-meta">
+                <div>
+                  <dt>口味</dt>
+                  <dd>{{ currentRecipe.taste }}</dd>
+                </div>
+                <div>
+                  <dt>烹饪时间</dt>
+                  <dd>{{ currentRecipe.cookingTime }}</dd>
+                </div>
+              </dl>
+              <div class="featured-ingredients">
+                <span>主要食材</span>
+                <p>{{ currentRecipe.ingredients.slice(0, 4).join('、') }}</p>
+              </div>
+              <span class="recipe-entry-label">查看完整做法</span>
+            </div>
+            </div>
+          </el-card>
+        </router-link>
       </div>
 
       <!-- 分类快捷入口 -->
       <div class="category-shortcuts">
         <div class="shortcut-grid">
-          <div v-for="category in categories" :key="category.id" class="shortcut-item" @click="navigateToCategory(category)">
+          <router-link
+            v-for="category in categories"
+            :key="category.id"
+            class="shortcut-item"
+            :to="{ path: '/category', query: { id: category.id } }"
+          >
             <el-icon class="shortcut-icon"><component :is="category.icon" /></el-icon>
             <span>{{ category.name }}</span>
-          </div>
+          </router-link>
         </div>
       </div>
 
@@ -74,14 +116,20 @@
           </el-button>
         </div>
         <div class="recommend-grid">
-          <div 
-            v-for="dish in todayRecommends" 
+          <router-link
+            v-for="dish in todayRecommends"
             :key="dish.id"
             class="recommend-item"
-            @click="viewRecipeDetail(dish.id)"
+            :to="`/recipe/${dish.id}`"
           >
             <div class="recommend-image">
-              <img :src="getImageUrl(dish.image)" :alt="dish.name">
+              <ResponsiveDishImage
+                :src="dish.image"
+                :alt="dish.name"
+                class="recommend-media"
+                sizes="(max-width: 640px) calc((100vw - 36px) / 2), (max-width: 899px) calc((100vw - 36px) / 2), 368px"
+                fit="cover"
+              />
               <div class="recommend-overlay">
                 <span class="cooking-time">
                   <el-icon><Clock /></el-icon>
@@ -96,7 +144,7 @@
                 <el-tag size="small" type="success">{{ dish.cookingMethod }}</el-tag>
               </div>
             </div>
-          </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -104,122 +152,43 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch, computed } from 'vue'
+import { computed, ref, onMounted } from 'vue'
+import '@/styles/element-plus-home.css'
 import { useRouter } from 'vue-router'
 import { useRecipeStore } from '../stores/recipe'
 import { storeToRefs } from 'pinia'
-import { ElMessage } from 'element-plus'
-import { getImageUrl } from '@/utils/image'
-import { 
-  Clock, 
-  Search, 
+import {
+  ElButton,
+  ElCard,
+  ElIcon,
+  ElInput,
+  ElMessage,
+  ElTag
+} from 'element-plus'
+import ResponsiveDishImage from '@/components/ResponsiveDishImage.vue'
+import { RECIPE_CATEGORIES } from '@/config/categories'
+import {
+  Clock,
+  Search,
   Refresh,
   Food,
-  Timer,
   Chicken,
   Bowl,
-  Apple,
-  Coffee
+  Apple
 } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const recipeStore = useRecipeStore()
 const { homePageRecipe: currentRecipe, homePageRecommends: todayRecommends } = storeToRefs(recipeStore)
 const searchKeyword = ref('')
-const showSuggestions = ref(false)
-const searchSuggestions = ref([])
-const activeFilters = ref([])
-
-// 计算属性：按类型分组的建议
-const dishSuggestions = computed(() => 
-  searchSuggestions.value.filter(s => s.type === 'dish')
-)
-
-const ingredientSuggestions = computed(() => 
-  searchSuggestions.value.filter(s => s.type === 'ingredient')
-)
-
-const timeSuggestions = computed(() => 
-  searchSuggestions.value.filter(s => s.type === 'time')
-)
 
 // 获取随机推荐
 const getNewRecommend = async () => {
   try {
-    recipeStore.resetHomePageRecipe() // 只重置随机推荐
-    await recipeStore.getHomePageRecipe() // 获取新的随机推荐
-  } catch (error) {
+    await recipeStore.getHomePageRecipe()
+  } catch {
     ElMessage.error('获取推荐失败，请稍后重试')
   }
-}
-
-// 获取今日推荐
-const getTodayRecommends = async () => {
-  try {
-    await recipeStore.getHomePageRecommends()
-  } catch (error) {
-    ElMessage.error('获取今日推荐失败，请稍后重试')
-  }
-}
-
-// 查看菜品详情
-const viewRecipeDetail = (id) => {
-  if (!id) {
-    ElMessage.error('菜品ID不存在')
-    return
-  }
-  router.push(`/recipe/${id}`)
-}
-
-// 监听搜索关键词变化
-watch(searchKeyword, async (newValue) => {
-  if (newValue.trim()) {
-    // 模拟获取搜索建议
-    searchSuggestions.value = await getSearchSuggestions(newValue)
-    showSuggestions.value = true
-  } else {
-    showSuggestions.value = false
-  }
-})
-
-// 获取搜索建议
-const getSearchSuggestions = async (keyword) => {
-  // 这里应该调用后端API获取建议
-  // 目前使用模拟数据
-  const suggestions = []
-  
-  // 菜品建议
-  suggestions.push(
-    { id: 1, text: '红烧肉', type: 'dish', category: '肉类' },
-    { id: 2, text: '清炒西兰花', type: 'dish', category: '素菜' }
-  )
-  
-  // 食材建议
-  suggestions.push(
-    { id: 3, text: '五花肉', type: 'ingredient' },
-    { id: 4, text: '西兰花', type: 'ingredient' }
-  )
-  
-  // 时间建议
-  if (keyword.includes('分钟') || /\d+/.test(keyword)) {
-    suggestions.push(
-      { id: 5, text: '快速料理', type: 'time', duration: '15分钟以内' },
-      { id: 6, text: '常规烹饪', type: 'time', duration: '15-30分钟' }
-    )
-  }
-  
-  return suggestions.filter(item => 
-    item.text.toLowerCase().includes(keyword.toLowerCase()) ||
-    (item.category && item.category.toLowerCase().includes(keyword.toLowerCase())) ||
-    (item.duration && item.duration.toLowerCase().includes(keyword.toLowerCase()))
-  )
-}
-
-// 处理建议点击
-const handleSuggestionClick = (suggestion) => {
-  searchKeyword.value = suggestion.text
-  showSuggestions.value = false
-  handleSearch()
 }
 
 // 处理搜索
@@ -238,57 +207,36 @@ const handleSearch = () => {
   })
 }
 
-// 添加筛选标签
-const addFilter = (filter) => {
-  if (!activeFilters.value.find(f => f.value === filter.value)) {
-    activeFilters.value.push(filter)
-  }
-}
+const categoryIcons = { apple: Apple, bowl: Bowl, chicken: Chicken, food: Food }
+const categories = computed(() => {
+  const availableCategories = new Set(
+    recipeStore.getAllDishesArray().map(dish => dish.category)
+  )
 
-// 移除筛选标签
-const removeFilter = (filter) => {
-  activeFilters.value = activeFilters.value.filter(f => f.value !== filter.value)
-  if (filter.value === searchKeyword.value) {
-    searchKeyword.value = ''
-  }
-}
-
-// 新增状态
-const categories = [
-  { id: 1, name: '早餐', icon: 'Coffee' },
-  { id: 2, name: '午餐', icon: 'Bowl' },
-  { id: 3, name: '晚餐', icon: 'Food' },
-  { id: 4, name: '小食', icon: 'Apple' },
-  { id: 5, name: '汤品', icon: 'Bowl' },
-  { id: 6, name: '肉类', icon: 'Chicken' },
-  { id: 7, name: '素食', icon: 'Food' },
-  { id: 8, name: '饮品', icon: 'Coffee' }
-]
+  return RECIPE_CATEGORIES
+    .filter(category => category.sourceCategories.some(sourceCategory => availableCategories.has(sourceCategory)))
+    .map(category => ({ ...category, icon: categoryIcons[category.icon] }))
+})
 
 // 刷新推荐列表
 const refreshRecommends = async () => {
   try {
-    recipeStore.resetHomePageRecommends() // 先重置推荐列表
-    await recipeStore.getHomePageRecommends() // 获取新的推荐列表
-  } catch (error) {
+    await recipeStore.getHomePageRecommends(true)
+  } catch {
     ElMessage.error('获取推荐失败，请稍后重试')
   }
 }
 
-// 导航到分类页面
-const navigateToCategory = (category) => {
-  router.push({
-    path: '/category',
-    query: { id: category.id, name: category.name }
-  })
-}
-
 // 初始化数据
 onMounted(async () => {
-  await Promise.all([
-    recipeStore.getHomePageRecipe(),
-    recipeStore.getHomePageRecommends()
-  ])
+  try {
+    await Promise.all([
+      recipeStore.getHomePageRecipe(),
+      recipeStore.getHomePageRecommends()
+    ])
+  } catch {
+    ElMessage.error('获取推荐失败，请稍后重试')
+  }
 })
 </script>
 
@@ -303,15 +251,16 @@ onMounted(async () => {
 
 .header {
   background: linear-gradient(135deg, #409EFF, #66b1ff);
-  padding: 40px 16px;
+  padding: 32px 16px;
   text-align: center;
   color: #fff;
 }
 
 .header h1 {
   font-size: 2em;
-  margin: 16px 0 8px;
+  margin: 0 0 8px;
   font-weight: 700;
+  color: #fff;
 }
 
 .header p {
@@ -320,16 +269,48 @@ onMounted(async () => {
   opacity: 0.9;
 }
 
-.search-section {
-  max-width: 600px;
+.content-area {
+  width: min(100%, 1200px);
   margin: 0 auto;
-  padding: 0 16px;
+  padding-bottom: 24px;
+}
+
+.search-section {
+  max-width: 680px;
+  margin: 24px auto 0;
+}
+
+.search-bar {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.search-input {
+  min-width: 0;
 }
 
 .search-input :deep(.el-input__wrapper) {
-  border-radius: 20px;
-  height: 44px;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.95);
+  box-shadow: none;
+}
+
+.search-submit {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #1769aa;
+}
+
+.search-submit:hover,
+.search-submit:focus {
+  background: #12578f;
 }
 
 .section-title {
@@ -363,6 +344,22 @@ onMounted(async () => {
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.recipe-card-link,
+.recommend-item {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.shortcut-item:focus-visible,
+.recommend-item:focus-visible,
+.recipe-card-link:focus-visible {
+  outline: 3px solid #409eff;
+  outline-offset: 3px;
 }
 
 .shortcut-icon {
@@ -379,9 +376,10 @@ onMounted(async () => {
 
 .recommend-item {
   background: #fff;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
 }
 
 .recommend-image {
@@ -389,13 +387,11 @@ onMounted(async () => {
   padding-top: 100%;
 }
 
-.recommend-image img {
+.recommend-media {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 .recommend-overlay {
@@ -435,10 +431,15 @@ onMounted(async () => {
 
 .recipe-card {
   margin: 0 12px;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   border: none;
+  cursor: pointer;
+}
+
+.recipe-card :deep(.el-card__body) {
+  padding: 0;
 }
 
 .recipe-image {
@@ -446,13 +447,11 @@ onMounted(async () => {
   padding-top: 60%;
 }
 
-.recipe-image img {
+.recipe-media {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 .recipe-overlay {
@@ -488,13 +487,118 @@ onMounted(async () => {
   flex-wrap: wrap;
 }
 
+.featured-details {
+  display: none;
+}
+
+@media screen and (min-width: 900px) {
+  .header {
+    padding: 28px 24px;
+  }
+
+  .section-title {
+    padding: 20px 24px 14px;
+  }
+
+  .recipe-card {
+    margin: 0 24px;
+  }
+
+  .recipe-card :deep(.el-card__body) {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.7fr);
+  }
+
+  .recipe-image {
+    height: clamp(300px, 24vw, 360px);
+    padding-top: 0;
+  }
+
+  .recipe-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px;
+  }
+
+  .recipe-info h3 {
+    font-size: 1.5em;
+  }
+
+  .featured-details {
+    display: block;
+    margin-top: 24px;
+  }
+
+  .featured-meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 0;
+  }
+
+  .featured-meta div {
+    min-width: 0;
+  }
+
+  .featured-meta dt,
+  .featured-ingredients span {
+    margin-bottom: 5px;
+    color: #909399;
+    font-size: 12px;
+  }
+
+  .featured-meta dd {
+    margin: 0;
+    color: #303133;
+    font-weight: 600;
+  }
+
+  .featured-ingredients {
+    margin-top: 20px;
+  }
+
+  .featured-ingredients p {
+    margin: 6px 0 0;
+    color: #606266;
+    line-height: 1.6;
+  }
+
+  .recipe-entry-label {
+    display: inline-block;
+    margin-top: 22px;
+    color: #1769aa;
+    font-weight: 600;
+  }
+
+  .category-shortcuts {
+    margin: 24px 24px 8px;
+    padding: 20px 16px;
+    border-radius: 8px;
+  }
+
+  .shortcut-grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+
+  .recommend-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    padding: 0 24px;
+  }
+
+  .recommend-image {
+    padding-top: 75%;
+  }
+}
+
 @media screen and (max-width: 320px) {
   .recommend-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .shortcut-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-</style> 
+</style>
