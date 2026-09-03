@@ -38,8 +38,14 @@
       <div class="random-recommend" v-if="currentRecipe">
         <div class="section-title">
           <h2>今日推荐</h2>
-          <el-button text @click="getNewRecommend">
-            <el-icon><Refresh /></el-icon>
+          <el-button
+            text
+            :loading="isChangingRecommend"
+            :disabled="isChangingRecommend"
+            :aria-busy="isChangingRecommend"
+            @click="getNewRecommend"
+          >
+            <el-icon v-if="!isChangingRecommend"><Refresh /></el-icon>
             换一个
           </el-button>
         </div>
@@ -47,10 +53,11 @@
           <el-card class="recipe-card">
             <div class="recipe-image">
             <ResponsiveDishImage
+              :key="currentRecipe.id"
               :src="currentRecipe.image"
               :alt="currentRecipe.name"
               class="recipe-media"
-              sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 899px) calc(100vw - 64px), 800px"
+              :sizes="featuredImageSizes"
               loading="eager"
               fetch-priority="high"
               fit="cover"
@@ -152,7 +159,7 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted } from 'vue'
+import { computed, nextTick, ref, onMounted } from 'vue'
 import '@/styles/element-plus-home.css'
 import { useRouter } from 'vue-router'
 import { useRecipeStore } from '../stores/recipe'
@@ -167,6 +174,7 @@ import {
 } from 'element-plus'
 import ResponsiveDishImage from '@/components/ResponsiveDishImage.vue'
 import { RECIPE_CATEGORIES } from '@/config/categories'
+import { preloadResponsiveImage } from '@/utils/image'
 import {
   Clock,
   Search,
@@ -181,13 +189,44 @@ const router = useRouter()
 const recipeStore = useRecipeStore()
 const { homePageRecipe: currentRecipe, homePageRecommends: todayRecommends } = storeToRefs(recipeStore)
 const searchKeyword = ref('')
+const isChangingRecommend = ref(false)
+const featuredImageSizes = '(max-width: 640px) calc(100vw - 48px), (max-width: 899px) calc(100vw - 64px), 800px'
+let queuedRecipe = null
+let queuedImagePromise = null
+
+const prepareNextRecommend = () => {
+  try {
+    queuedRecipe = recipeStore.getNextHomePageRecipe()
+    queuedImagePromise = preloadResponsiveImage(queuedRecipe.image, {
+      sizes: featuredImageSizes
+    })
+  } catch {
+    queuedRecipe = null
+    queuedImagePromise = null
+  }
+}
 
 // 获取随机推荐
 const getNewRecommend = async () => {
+  if (isChangingRecommend.value) return
+  isChangingRecommend.value = true
+
   try {
-    await recipeStore.getHomePageRecipe()
+    const nextRecipe = queuedRecipe || recipeStore.getNextHomePageRecipe()
+    const imagePromise = queuedRecipe
+      ? queuedImagePromise
+      : preloadResponsiveImage(nextRecipe.image, { sizes: featuredImageSizes })
+
+    await imagePromise
+    recipeStore.setHomePageRecipe(nextRecipe)
+    queuedRecipe = null
+    queuedImagePromise = null
+    await nextTick()
+    prepareNextRecommend()
   } catch {
     ElMessage.error('获取推荐失败，请稍后重试')
+  } finally {
+    isChangingRecommend.value = false
   }
 }
 
@@ -222,6 +261,7 @@ const categories = computed(() => {
 const refreshRecommends = async () => {
   try {
     await recipeStore.getHomePageRecommends(true)
+    prepareNextRecommend()
   } catch {
     ElMessage.error('获取推荐失败，请稍后重试')
   }
@@ -234,6 +274,7 @@ onMounted(async () => {
       recipeStore.getHomePageRecipe(),
       recipeStore.getHomePageRecommends()
     ])
+    prepareNextRecommend()
   } catch {
     ElMessage.error('获取推荐失败，请稍后重试')
   }
@@ -452,6 +493,18 @@ onMounted(async () => {
   inset: 0;
   width: 100%;
   height: 100%;
+  animation: featured-image-in 180ms ease-out;
+}
+
+@keyframes featured-image-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recipe-media {
+    animation: none;
+  }
 }
 
 .recipe-overlay {

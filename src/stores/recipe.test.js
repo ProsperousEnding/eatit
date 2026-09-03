@@ -61,6 +61,22 @@ describe('recipe store', () => {
     expect(thirdBatch.some(dish => [...firstBatch, ...secondBatch].some(previous => previous.id === dish.id))).toBe(false)
   })
 
+  it('stages a new featured recipe without exposing it before commit', async () => {
+    const store = useRecipeStore()
+    const currentRecipe = await store.getHomePageRecipe()
+    const currentHistory = [...store.recentHomeFeatureIds]
+    const nextRecipe = store.getNextHomePageRecipe()
+
+    expect(nextRecipe.id).not.toBe(currentRecipe.id)
+    expect(store.homePageRecipe.id).toBe(currentRecipe.id)
+    expect(store.recentHomeFeatureIds).toEqual(currentHistory)
+
+    store.setHomePageRecipe(nextRecipe)
+
+    expect(store.homePageRecipe.id).toBe(nextRecipe.id)
+    expect(store.recentHomeFeatureIds.at(-1)).toBe(nextRecipe.id)
+  })
+
   it('builds complementary meal pairings with truthful reasons', async () => {
     const store = useRecipeStore()
     const currentDish = await store.getRecipeById(2068)

@@ -23,3 +23,51 @@ export const getResponsiveImageData = (imageName) => {
       .join(', ')
   }
 }
+
+export const preloadResponsiveImage = (imageName, {
+  sizes = '100vw',
+  timeout = 8000
+} = {}) => {
+  if (typeof Image === 'undefined') return Promise.resolve(false)
+
+  const imageData = getResponsiveImageData(imageName)
+
+  return new Promise(resolve => {
+    const image = new Image()
+    let settled = false
+    let loadStarted = false
+
+    const finish = (loaded) => {
+      if (settled) return
+      settled = true
+      clearTimeout(timeoutId)
+      image.onload = null
+      image.onerror = null
+      resolve(loaded)
+    }
+
+    const handleLoad = async () => {
+      if (loadStarted) return
+      loadStarted = true
+
+      if (typeof image.decode === 'function') {
+        try {
+          await image.decode()
+        } catch {
+          // An onload event with a valid width is still safe to display.
+        }
+      }
+      finish(image.naturalWidth > 0)
+    }
+
+    const timeoutId = setTimeout(() => finish(false), timeout)
+    image.onload = handleLoad
+    image.onerror = () => finish(false)
+    image.sizes = sizes
+    image.fetchPriority = 'high'
+    if (imageData.srcset) image.srcset = imageData.srcset
+    image.src = imageData.fallback
+
+    if (image.complete && image.naturalWidth > 0) void handleLoad()
+  })
+}

@@ -109,34 +109,50 @@ export const useRecipeStore = defineStore('recipe', {
 
   actions: {
     /**
-     * 获取首页随机推荐
+     * 选出下一道首页推荐，但暂不更新页面状态
+     */
+    getNextHomePageRecipe() {
+      const allDishesArray = this.getAllDishesArray()
+      if (!allDishesArray || allDishesArray.length === 0) {
+        throw new Error('没有可用的菜品数据')
+      }
+
+      const excludedIds = new Set([
+        this.homePageRecipe?.id,
+        ...this.homePageRecommends.map(dish => dish.id),
+        ...this.recentHomeFeatureIds
+      ].filter(Boolean))
+      const availableDishes = allDishesArray.filter(dish => !excludedIds.has(dish.id))
+      const candidates = availableDishes.length > 0 ? availableDishes : allDishesArray
+      const categories = shuffle([...new Set(candidates.map(dish => dish.category))])
+      const selectedCategory = categories[0]
+      const recipe = shuffle(candidates.filter(dish => dish.category === selectedCategory))[0]
+
+      if (!recipe?.id) throw new Error('获取菜品数据失败')
+      return recipe
+    },
+
+    /**
+     * 将已经准备好的菜品提交为首页推荐
+     */
+    setHomePageRecipe(recipe) {
+      if (!recipe?.id) throw new Error('获取菜品数据失败')
+
+      this.homePageRecipe = recipe
+      this.recentHomeFeatureIds = appendRecentIds(
+        this.recentHomeFeatureIds,
+        [recipe.id],
+        HOME_FEATURE_HISTORY_LIMIT
+      )
+      return this.homePageRecipe
+    },
+
+    /**
+     * 获取并立即提交首页随机推荐
      */
     async getHomePageRecipe() {
       try {
-        const allDishesArray = this.getAllDishesArray()
-        if (!allDishesArray || allDishesArray.length === 0) {
-          throw new Error('没有可用的菜品数据')
-        }
-        const excludedIds = new Set([
-          this.homePageRecipe?.id,
-          ...this.homePageRecommends.map(dish => dish.id),
-          ...this.recentHomeFeatureIds
-        ].filter(Boolean))
-        const availableDishes = allDishesArray.filter(dish => !excludedIds.has(dish.id))
-        const candidates = availableDishes.length > 0 ? availableDishes : allDishesArray
-        const categories = shuffle([...new Set(candidates.map(dish => dish.category))])
-        const selectedCategory = categories[0]
-        const recipe = shuffle(candidates.filter(dish => dish.category === selectedCategory))[0]
-        if (!recipe || !recipe.id) {
-          throw new Error('获取菜品数据失败')
-        }
-        this.homePageRecipe = recipe
-        this.recentHomeFeatureIds = appendRecentIds(
-          this.recentHomeFeatureIds,
-          [recipe.id],
-          HOME_FEATURE_HISTORY_LIMIT
-        )
-        return this.homePageRecipe
+        return this.setHomePageRecipe(this.getNextHomePageRecipe())
       } catch (error) {
         console.error('获取首页推荐失败:', error)
         throw error

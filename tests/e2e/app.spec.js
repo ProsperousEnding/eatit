@@ -90,6 +90,36 @@ test('video tutorial links expose only the two platform choices', async ({ page 
   await expect(page.locator('.video-tutorials')).not.toContainText('教程')
 })
 
+test('featured recommendation waits for its preloaded image before switching', async ({ page }) => {
+  await page.addInitScript(() => {
+    const NativeImage = window.Image
+    let releaseDecode
+    const decodeGate = new Promise(resolve => { releaseDecode = resolve })
+
+    window.__releaseFeaturedImage = releaseDecode
+    window.Image = function Image(...args) {
+      const image = new NativeImage(...args)
+      image.decode = () => decodeGate
+      return image
+    }
+  })
+
+  await page.goto('./')
+  const changeButton = page.getByRole('button', { name: '换一个', exact: true })
+  const featuredLink = page.locator('.recipe-card-link')
+  const previousHref = await featuredLink.getAttribute('href')
+
+  await changeButton.click()
+  await expect(changeButton).toBeDisabled()
+  await expect(featuredLink).toHaveAttribute('href', previousHref)
+
+  await page.evaluate(() => window.__releaseFeaturedImage())
+  await expect(featuredLink).not.toHaveAttribute('href', previousHref)
+  await expect(changeButton).toBeEnabled()
+  await expect.poll(() => page.locator('.recipe-media img').evaluate(image => image.naturalWidth))
+    .toBeGreaterThan(0)
+})
+
 test('zero results and invalid categories keep useful navigation', async ({ page }) => {
   await page.goto('search?keyword=不存在的菜品')
   await expect(page.locator('.filter-container')).toBeVisible()
