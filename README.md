@@ -5,7 +5,7 @@
 [![Build and Deploy](https://github.com/ProsperousEnding/eatit/actions/workflows/deploy.yml/badge.svg)](https://github.com/ProsperousEnding/eatit/actions/workflows/deploy.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-2f855a.svg)](LICENSE)
 
-[在线体验](https://prosperousending.github.io/eatit/) · [提交问题](https://github.com/ProsperousEnding/eatit/issues) · [菜谱来源](IMAGE_CREDITS.md)
+[在线体验](https://cook.initzo.com/) · [提交问题](https://github.com/ProsperousEnding/eatit/issues) · [菜谱来源](IMAGE_CREDITS.md)
 
 ## 项目简介
 
@@ -84,7 +84,7 @@ pnpm run preview
 | --- | --- |
 | `pnpm run dev` | 启动本地开发服务器 |
 | `pnpm run build` | 构建生产版本 |
-| `pnpm run build:pages` | 使用 `/eatit/` 基础路径构建 GitHub Pages 版本 |
+| `pnpm run build:pages` | 使用自定义域名根路径构建 GitHub Pages 版本 |
 | `pnpm run preview` | 预览本地生产构建 |
 | `pnpm run lint` | 检查 JavaScript 和 Vue 文件 |
 | `pnpm run test` | 运行 Vitest 单元与组件测试 |
@@ -153,7 +153,7 @@ pnpm run check
 
 ## 部署
 
-推送到 `main` 分支后，[GitHub Actions](.github/workflows/deploy.yml) 会执行完整质量检查、构建 GitHub Pages 版本并部署。Pull Request 只执行检查和构建，不会发布站点。
+推送到 `main` 分支后，[GitHub Actions](.github/workflows/deploy.yml) 会执行完整质量检查、构建 GitHub Pages 版本并部署到 <https://cook.initzo.com/>。Pull Request 只执行检查和构建，不会发布站点。
 
 站点基础路径由 `VITE_BASE_URL` 控制：
 
@@ -161,7 +161,7 @@ pnpm run check
 VITE_BASE_URL=/
 ```
 
-本地开发通常使用 `/`，部署到当前 GitHub Pages 项目时使用 `/eatit/`。
+本地开发和自定义域名都使用 `/` 根路径。Cloudflare DNS 需要添加一条 `CNAME` 记录：名称为 `cook`，目标为 `prosperousending.github.io`，首次验证时使用 `DNS only`。
 
 ## 参与贡献
 

@@ -25,11 +25,11 @@ test('search, detail and pairing flows work without browser errors', async ({ pa
   await expect(page.locator('.recipe-media img')).toHaveCSS('object-fit', 'cover')
   await page.getByPlaceholder('搜索菜品、食材...').fill('鸡蛋')
   await page.getByPlaceholder('搜索菜品、食材...').press('Enter')
-  await expect(page).toHaveURL(/\/eatit\/search\?keyword=/)
+  await expect(page).toHaveURL(/\/search\?keyword=/)
   await expect(page.locator('.recipe-item').first()).toBeVisible()
 
   await page.locator('.recipe-item').first().click()
-  await expect(page).toHaveURL(/\/eatit\/recipe\/\d+/)
+  await expect(page).toHaveURL(/\/recipe\/\d+/)
   await expect(page.locator('.recipe-detail h1')).toBeVisible()
   await expect(page.getByLabel('主要导航')).toBeVisible()
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', /做法 - EatIt$/)
@@ -110,9 +110,9 @@ test('zero results and invalid categories keep useful navigation', async ({ page
   await expect(page).toHaveURL(/\/recipe\/999999$/)
 })
 
-test('GitHub Pages route handoff normalizes the redirected path', async ({ page }) => {
+test('custom-domain route handoff normalizes the redirected path', async ({ page }) => {
   await page.goto('?p=%2F%2Frecipe%2F2068')
-  await expect(page).toHaveURL(/\/eatit\/recipe\/2068$/)
+  await expect(page).toHaveURL(/\/recipe\/2068$/)
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('宫保鸡丁')
 })
 

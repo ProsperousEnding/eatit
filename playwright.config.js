@@ -8,7 +8,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: process.env.CI ? 'github' : 'list',
   use: {
-    baseURL: 'http://127.0.0.1:8891/eatit/',
+    baseURL: 'http://127.0.0.1:8891/',
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure'
   },
@@ -30,7 +30,7 @@ export default defineConfig({
     command: process.env.CI
       ? 'pnpm run preview:pages'
       : 'pnpm run build:pages && pnpm run preview:pages',
-    url: 'http://127.0.0.1:8891/eatit/',
+    url: 'http://127.0.0.1:8891/',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000
   }

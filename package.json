@@ -10,9 +10,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:pages": "vite build --base /eatit/",
+    "build:pages": "vite build --base /",
     "preview": "vite preview",
-    "preview:pages": "vite preview --base /eatit/ --host 127.0.0.1 --port 8891",
+    "preview:pages": "vite preview --base / --host 127.0.0.1 --port 8891",
     "images:optimize": "node scripts/images.mjs",
     "images:check": "node scripts/images.mjs --check",
     "recipes:client": "node scripts/recipe-data.mjs",
