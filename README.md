@@ -171,6 +171,14 @@ VITE_BASE_URL=/
 2. 修改菜谱或图片后运行对应的数据生成脚本。
 3. 确保 `pnpm run check` 通过；涉及页面交互时再运行 `pnpm run test:e2e`。
 
+## 参考项目
+
+- [HowToCook](https://github.com/Anduin2017/HowToCook)：程序员在家做饭指南，也是本项目菜谱内容和图片的主要上游来源。
+
+## 友情链接
+
+- [LINUX DO](https://linux.do/)：新的理想型社区。
+
 ## 许可证
 
 项目代码采用 [MIT License](LICENSE)。菜谱内容和图片保留各自来源所声明的许可证，使用或再分发时请同时查阅 [IMAGE_CREDITS.md](IMAGE_CREDITS.md) 和 [IMAGE_INVENTORY.md](IMAGE_INVENTORY.md)。
