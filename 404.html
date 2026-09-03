@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
     <title>今天吃什么 - EatIt</title>
     <script>
-      // 获取当前 URL 的路径部分
-      const segment = 1
-      const path = window.location.pathname.split('/').slice(segment).join('/')
-      const redirect = window.location.protocol + '//' + window.location.hostname +
-        (window.location.port ? ':' + window.location.port : '') +
-        '/eatit' +
-        '/?p=' + encodeURIComponent(path) +
-        (window.location.search ? '&' + window.location.search.slice(1) : '') +
-        (window.location.hash || '')
-      
+      const segments = window.location.pathname.split('/').filter(Boolean)
+      const isGitHubPages = window.location.hostname.endsWith('.github.io')
+      const repositoryPath = isGitHubPages && segments.length > 0 ? '/' + segments[0] : ''
+      const routePath = '/' + segments.slice(repositoryPath ? 1 : 0).join('/')
+      const searchParams = new URLSearchParams(window.location.search)
+      searchParams.set('p', routePath)
+      const redirect = window.location.origin + repositoryPath + '/?' +
+        searchParams.toString() + window.location.hash
+
       window.location.replace(redirect)
     </script>
   </head>
   <body>
-    正在重定向...
+    <p>正在重定向，若页面没有自动跳转，请<a href="./">返回首页</a>。</p>
   </body>
-</html> 
+</html>
