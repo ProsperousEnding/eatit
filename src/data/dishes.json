@@ -4,12 +4,13 @@
       "METHOD_1": "煮制",
       "METHOD_2": "炖煮",
       "METHOD_3": "炒制",
-      "METHOD_4": "煎制",
-      "METHOD_5": "烤制",
-      "METHOD_6": "蒸制",
-      "METHOD_7": "焖烧",
-      "METHOD_8": "凉拌",
-      "METHOD_9": "炸制"
+      "METHOD_4": "蒸制",
+      "METHOD_5": "煎制",
+      "METHOD_6": "焖烧",
+      "METHOD_7": "烤制",
+      "METHOD_8": "早餐制作",
+      "METHOD_9": "凉拌",
+      "METHOD_10": "炸制"
     },
     "TASTES": {
       "LIGHT": "清淡",
@@ -25,10 +26,11 @@
     },
     "CATEGORIES": {
       "CATEGORY_1": "水产",
-      "CATEGORY_2": "荤菜",
-      "CATEGORY_3": "汤粥",
-      "CATEGORY_4": "主食",
-      "CATEGORY_5": "素菜"
+      "CATEGORY_2": "早餐",
+      "CATEGORY_3": "荤菜",
+      "CATEGORY_4": "汤粥",
+      "CATEGORY_5": "主食",
+      "CATEGORY_6": "素菜"
     }
   },
   "HOWTOCOOK_DISHES": [
@@ -333,6 +335,82 @@
       }
     },
     {
+      "id": 2005,
+      "name": "葱油桂鱼",
+      "image": "/images/dishes/htc-2005.jpg",
+      "category": "水产",
+      "taste": "咸鲜",
+      "cookingMethod": "蒸制",
+      "difficulty": "复杂",
+      "cookingTime": "35分钟",
+      "servings": "",
+      "ingredients": [
+        "桂鱼",
+        "小葱",
+        "小米辣（可选）",
+        "姜",
+        "料酒",
+        "植物油",
+        "盐",
+        "蒸鱼豉油",
+        "清水"
+      ],
+      "tools": [
+        "蒸笼（含蒸锅）",
+        "砧板",
+        "塑料盘或塑料盆（腌鱼用）",
+        "厨房纸",
+        "菜刀"
+      ],
+      "preparation": [
+        "桂鱼 1条（约500g，已去鳞和内脏）",
+        "小葱 1根（约30cm）",
+        "小米辣 2个（可选）",
+        "姜 30g",
+        "料酒 25ml",
+        "植物油 15ml",
+        "盐 4g",
+        "蒸鱼豉油 10ml",
+        "清水 足量（蒸锅用）"
+      ],
+      "steps": [
+        "将桂鱼表面的余鳞刮净，去除鱼腹内的黑膜和贴骨血，用流动清水冲洗后以厨房纸吸干。",
+        "鱼身两面各划 2-3 刀。姜切片，小葱切段，小米辣切圈。",
+        "在鱼身内外均匀抹上盐和料酒，刀口及鱼腹放入一半姜片，冷藏腌制 10 分钟。",
+        "蒸锅加入足量清水并烧开。倒掉鱼盘中的腌制液，取出旧姜片，重新放入剩余姜片。",
+        "水开后放入鱼盘，保持中大火蒸 8-10 分钟；鱼身较厚时适当延长，确保最厚处完全变白并能轻松剥离鱼骨。",
+        "关火焖 2 分钟后取出鱼盘，倒掉盘中腥水并夹去姜片，淋上蒸鱼豉油，铺上小葱和小米辣。",
+        "植物油用中火加热至表面微微流动但不冒烟，关火后均匀淋在葱段上即可。"
+      ],
+      "nutrition": {
+        "calories": "311 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E8%91%B1%E6%B2%B9%E6%A1%82%E9%B1%BC%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E8%91%B1%E6%B2%B9%E6%A1%82%E9%B1%BC%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/aquatic/葱油桂鱼/葱油桂鱼.md",
+        "imagePath": "dishes/aquatic/葱油桂鱼/葱油桂鱼.jpg",
+        "editorialCorrections": 26,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/aquatic/%E8%91%B1%E6%B2%B9%E6%A1%82%E9%B1%BC/%E8%91%B1%E6%B2%B9%E6%A1%82%E9%B1%BC.md"
+      }
+    },
+    {
       "id": 2006,
       "name": "干煎阿根廷红虾",
       "image": "/images/dishes/htc-2006.jpg",
@@ -413,6 +491,98 @@
         ],
         "editorialCorrections": 1,
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/aquatic/%E5%B9%B2%E7%85%8E%E9%98%BF%E6%A0%B9%E5%BB%B7%E7%BA%A2%E8%99%BE/%E5%B9%B2%E7%85%8E%E9%98%BF%E6%A0%B9%E5%BB%B7%E7%BA%A2%E8%99%BE.md"
+      }
+    },
+    {
+      "id": 2008,
+      "name": "红烧鱼",
+      "image": "/images/dishes/htc-2008.jpg",
+      "category": "水产",
+      "taste": "香辣",
+      "cookingMethod": "焖烧",
+      "difficulty": "复杂",
+      "cookingTime": "45分钟",
+      "servings": "",
+      "ingredients": [
+        "鱼",
+        "姜",
+        "蒜",
+        "小葱",
+        "干辣椒（可选）",
+        "食用油",
+        "盐",
+        "料酒",
+        "生抽",
+        "老抽",
+        "陈醋",
+        "白砂糖",
+        "清水"
+      ],
+      "preparation": [
+        "鱼 1条（约600-800g，已去鳞、鳃和内脏）",
+        "姜 15g",
+        "蒜 4瓣（约16g）",
+        "小葱 2根（约10g）",
+        "干辣椒 2个（可选）",
+        "食用油 30ml",
+        "盐 4g",
+        "料酒 20ml",
+        "生抽 15ml",
+        "老抽 3ml",
+        "陈醋 5ml",
+        "白砂糖 6g",
+        "清水 400ml"
+      ],
+      "steps": [
+        "鱼腹内的黑膜和贴骨血清理干净，用流动清水冲洗后以厨房纸吸干；鱼身两面各划 2-3 刀。",
+        "姜切片，蒜拍碎，小葱切段，干辣椒切段。生抽、老抽、陈醋和白砂糖混合成料汁。",
+        "鱼身内外抹 2g 盐和一半料酒，冷藏腌制 10 分钟；取出后再次吸干表面水分。",
+        "炒锅中火加热后倒入食用油，放入鱼，先不要翻动；煎 2-3 分钟至定型后翻面，再煎 2 分钟。",
+        "将鱼拨到一侧，放入姜、蒜、葱白和干辣椒炒香，沿锅边淋入剩余料酒和调好的料汁。",
+        "加入 400ml 热水，烧开后盖锅盖转中小火烧 12-15 分钟；中途将汤汁淋在鱼身上，不必反复翻鱼。",
+        "加入剩余盐调味，确认鱼肉最厚处完全变白且能轻松剥离鱼骨后，转大火收汁 2-3 分钟，撒葱绿即可。"
+      ],
+      "nutrition": {
+        "calories": "570 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E7%BA%A2%E7%83%A7%E9%B1%BC%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E7%BA%A2%E7%83%A7%E9%B1%BC%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/aquatic/红烧鱼.md",
+        "imagePath": "File:红烧明太鱼.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:红烧明太鱼.jpg",
+          "author": "E2568",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:%E7%BA%A2%E7%83%A7%E6%98%8E%E5%A4%AA%E9%B1%BC.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.08,
+          0.08,
+          0.84,
+          0.84
+        ],
+        "editorialCorrections": 34,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/aquatic/%E7%BA%A2%E7%83%A7%E9%B1%BC.md"
       }
     },
     {
@@ -814,6 +984,172 @@
       }
     },
     {
+      "id": 2017,
+      "name": "清蒸生蚝",
+      "image": "/images/dishes/htc-2017.jpg",
+      "category": "水产",
+      "taste": "清淡",
+      "cookingMethod": "蒸制",
+      "difficulty": "普通",
+      "cookingTime": "25分钟",
+      "servings": "",
+      "ingredients": [
+        "生蚝",
+        "蒜",
+        "姜",
+        "小葱",
+        "生抽",
+        "清水"
+      ],
+      "preparation": [
+        "带壳生蚝 6个",
+        "蒜 6瓣（约24g）",
+        "姜 6片（约12g）",
+        "小葱 1根（约5g）",
+        "生抽 6ml",
+        "清水 1L（蒸锅用）"
+      ],
+      "steps": [
+        "生蚝外壳用硬毛刷在流动水下刷净；丢弃外壳破裂，或轻敲后仍不闭合的生蚝。蒜切末，小葱切葱花。",
+        "蒸锅加入清水并烧开，生蚝凸面朝下平铺在蒸屉上，盖锅盖蒸 5 分钟。",
+        "戴隔热手套，身体避开蒸汽方向打开锅盖；丢弃仍完全闭合的生蚝，其余生蚝去掉上壳。",
+        "每个蚝肉放 1 片姜，并均匀分配蒜末；盖锅盖继续蒸 2-3 分钟，直至蚝肉完全变得饱满不透明。",
+        "关火后每个生蚝淋约 1ml 生抽，撒葱花，趁热食用。"
+      ],
+      "nutrition": {
+        "calories": "184 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E6%B8%85%E8%92%B8%E7%94%9F%E8%9A%9D%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E6%B8%85%E8%92%B8%E7%94%9F%E8%9A%9D%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/aquatic/清蒸生蚝.md",
+        "imagePath": "File:Freshippo steamed oysters with vermicelli and garlic.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Freshippo steamed oysters with vermicelli and garlic.jpg",
+          "author": "Fumikas Sagisavas",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Freshippo%20steamed%20oysters%20with%20vermicelli%20and%20garlic.jpg",
+          "modifications": "resized and re-encoded as JPEG"
+        },
+        "editorialCorrections": 18,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/aquatic/%E6%B8%85%E8%92%B8%E7%94%9F%E8%9A%9D.md"
+      }
+    },
+    {
+      "id": 2019,
+      "name": "水煮鱼",
+      "image": "/images/dishes/htc-2019.jpg",
+      "category": "水产",
+      "taste": "香辣",
+      "cookingMethod": "煮制",
+      "difficulty": "复杂",
+      "cookingTime": "45分钟",
+      "servings": "",
+      "ingredients": [
+        "巴沙鱼柳",
+        "蔬菜",
+        "红油豆瓣酱",
+        "干辣椒",
+        "花椒",
+        "姜",
+        "蒜",
+        "鸡蛋清",
+        "土豆淀粉",
+        "菜籽油",
+        "盐",
+        "白砂糖",
+        "白胡椒粉",
+        "清水"
+      ],
+      "preparation": [
+        "巴沙鱼柳 500g",
+        "豆芽、生菜或花菜等蔬菜 共400g",
+        "红油豆瓣酱 25g",
+        "干辣椒 8g（按口味调整）",
+        "花椒 3g（按口味调整）",
+        "姜 10g",
+        "蒜 5瓣（约20g）",
+        "鸡蛋清 1个",
+        "土豆淀粉 10g",
+        "菜籽油 40ml",
+        "盐 4g",
+        "白砂糖 2g",
+        "白胡椒粉 1g",
+        "清水 700ml"
+      ],
+      "steps": [
+        "冷冻鱼柳提前一晚移入冷藏室解冻；需要快速解冻时密封后浸入冷水并每 30 分钟换水，不要放在室温下长时间解冻。",
+        "鱼柳吸干水分后斜切约 4mm 厚的片，加入 2g 盐、白胡椒粉、鸡蛋清和土豆淀粉，轻轻抓匀后冷藏腌制 15 分钟。",
+        "蔬菜洗净切成易熟的小块；姜切末，蒜切末，干辣椒剪段。",
+        "锅中烧开适量水，将蔬菜分别焯至熟透，充分沥水后铺在大碗底部。",
+        "炒锅加入 25ml 菜籽油，中小火炒香姜末、一半蒜末和豆瓣酱，加入 700ml 清水、白砂糖和剩余盐，煮沸 3 分钟。",
+        "转小火，将鱼片逐片放入汤中；全部放完后转中火，轻推使其散开，煮至鱼片完全变白且中心熟透，约 2-3 分钟。",
+        "鱼片和汤倒在蔬菜上，表面放剩余蒜末、干辣椒和花椒。",
+        "剩余菜籽油加热至微微流动后关火，小心淋在香料上即可。"
+      ],
+      "advanceTime": "冷冻鱼柳建议提前一晚转入冷藏室解冻",
+      "nutrition": {
+        "calories": "248 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E6%B0%B4%E7%85%AE%E9%B1%BC%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E6%B0%B4%E7%85%AE%E9%B1%BC%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/aquatic/水煮鱼.md",
+        "imagePath": "File:Shuizhufish2.JPG",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Shuizhufish2.JPG",
+          "author": "Jiaqing Pan / Princevegetam",
+          "license": "GFDL",
+          "licenseUrl": "https://www.gnu.org/licenses/fdl-1.2.html",
+          "url": "https://commons.wikimedia.org/wiki/File:Shuizhufish2.JPG",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.1,
+          0.05,
+          0.8,
+          0.9
+        ],
+        "editorialCorrections": 38,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/aquatic/%E6%B0%B4%E7%85%AE%E9%B1%BC.md"
+      }
+    },
+    {
       "id": 2020,
       "name": "蒜蓉虾",
       "image": "/images/dishes/htc-2020.jpg",
@@ -1129,12 +1465,21 @@
         "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
         "license": "Unlicense",
         "recipePath": "dishes/aquatic/香煎翘嘴鱼/香煎翘嘴鱼.md",
-        "imagePath": "dishes/aquatic/香煎翘嘴鱼/香煎翘嘴鱼.jpeg",
+        "imagePath": "File:Fried fish of Lijiang.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Fried fish of Lijiang.jpg",
+          "author": "Kent Wang",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Fried%20fish%20of%20Lijiang.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
         "imageCrop": [
-          0,
+          0.06,
           0.02,
-          1,
-          0.42
+          0.65,
+          0.96
         ],
         "editorialCorrections": 14,
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/aquatic/%E9%A6%99%E7%85%8E%E7%BF%98%E5%98%B4%E9%B1%BC/%E9%A6%99%E7%85%8E%E7%BF%98%E5%98%B4%E9%B1%BC.md"
@@ -1386,6 +1731,468 @@
         "recipePath": "dishes/aquatic/油焖大虾/油焖大虾.md",
         "imagePath": "dishes/aquatic/油焖大虾/油焖大虾.jpg",
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/aquatic/%E6%B2%B9%E7%84%96%E5%A4%A7%E8%99%BE/%E6%B2%B9%E7%84%96%E5%A4%A7%E8%99%BE.md"
+      }
+    },
+    {
+      "id": 2029,
+      "name": "茶叶蛋",
+      "image": "/images/dishes/htc-2029.jpg",
+      "category": "早餐",
+      "taste": "咸鲜",
+      "cookingMethod": "早餐制作",
+      "difficulty": "普通",
+      "cookingTime": "55分钟",
+      "servings": "",
+      "ingredients": [
+        "鸡蛋",
+        "红茶",
+        "八角",
+        "香叶",
+        "桂皮",
+        "小茴香",
+        "生抽",
+        "老抽",
+        "冰糖",
+        "盐",
+        "清水"
+      ],
+      "preparation": [
+        "鸡蛋 8个",
+        "红茶 10g",
+        "八角 2颗（约4g）",
+        "香叶 2片",
+        "桂皮 1小块（约3g）",
+        "小茴香 3g",
+        "生抽 25ml",
+        "老抽 10ml",
+        "冰糖 10g",
+        "盐 4g",
+        "清水 1L"
+      ],
+      "steps": [
+        "鸡蛋轻轻刷洗，放入锅中并加入没过鸡蛋的冷水；中火煮开后转小火煮 9 分钟。",
+        "鸡蛋捞入冷水中降温，待不烫手后用勺背轻敲，使蛋壳形成均匀裂纹。",
+        "锅中加入 1L 清水、红茶、八角、香叶、桂皮、小茴香、生抽、老抽、冰糖和盐，煮开 5 分钟。",
+        "放入带壳鸡蛋，重新煮开后转小火煮 30 分钟。",
+        "关火后让鸡蛋在卤汁中自然降温；2 小时内连同卤汁一起移入冰箱冷藏。",
+        "冷藏浸泡 8-12 小时后食用更入味；取食时使用干净餐具，并在 2 天内吃完。"
+      ],
+      "advanceTime": "煮好后建议冷藏浸泡 8-12 小时",
+      "nutrition": {
+        "calories": "193 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E8%8C%B6%E5%8F%B6%E8%9B%8B%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E8%8C%B6%E5%8F%B6%E8%9B%8B%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/breakfast/茶叶蛋.md",
+        "imagePath": "File:Tea eggs ez.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Tea eggs ez.jpg",
+          "author": "Dllu",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Tea%20eggs%20ez.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.2,
+          0.05,
+          0.6,
+          0.9
+        ],
+        "editorialCorrections": 30,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/breakfast/%E8%8C%B6%E5%8F%B6%E8%9B%8B.md"
+      }
+    },
+    {
+      "id": 2034,
+      "name": "煎饺",
+      "image": "/images/dishes/htc-2034.jpg",
+      "category": "早餐",
+      "taste": "咸鲜",
+      "cookingMethod": "煎制",
+      "difficulty": "简单",
+      "cookingTime": "15分钟",
+      "servings": "每份：",
+      "ingredients": [
+        "速冻水饺",
+        "食用油",
+        "清水",
+        "黑芝麻（可选）",
+        "小葱（可选）"
+      ],
+      "preparation": [
+        "速冻水饺 10-15个（约300g，无需解冻）",
+        "食用油 12ml",
+        "清水 150ml",
+        "黑芝麻 2g（可选）",
+        "小葱 1根（约5g，可选）"
+      ],
+      "steps": [
+        "小葱洗净切葱花；确认使用可生煎的速冻水饺，并按包装说明适当调整时间。",
+        "不粘平底锅加入食用油，中火放入未解冻的水饺，彼此留出少量空隙。",
+        "煎约 1 分钟至底部微黄，沿锅边倒入清水，立即盖上锅盖。",
+        "转中小火焖煮 8-10 分钟，直至水量明显减少、水饺皮变得透明。",
+        "打开锅盖，让剩余水分完全蒸发；继续煎 1-2 分钟，使底部形成金黄色脆壳。",
+        "切开一个水饺确认馅料中心完全熟透，撒上可选的黑芝麻和葱花后出锅。"
+      ],
+      "nutrition": {
+        "calories": "769 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E7%85%8E%E9%A5%BA%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E7%85%8E%E9%A5%BA%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/breakfast/煎饺.md",
+        "imagePath": "File:煎饺.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:煎饺.jpg",
+          "author": "Yangbinlive",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:%E7%85%8E%E9%A5%BA.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.03,
+          0.05,
+          0.94,
+          0.92
+        ],
+        "editorialCorrections": 17,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/breakfast/%E7%85%8E%E9%A5%BA.md"
+      }
+    },
+    {
+      "id": 2038,
+      "name": "牛奶燕麦",
+      "image": "/images/dishes/htc-2038.jpg",
+      "category": "早餐",
+      "taste": "咸鲜",
+      "cookingMethod": "早餐制作",
+      "difficulty": "简单",
+      "cookingTime": "10分钟",
+      "servings": "",
+      "ingredients": [
+        "即食或快熟燕麦片",
+        "牛奶",
+        "清水（可选）"
+      ],
+      "preparation": [
+        "即食或快熟燕麦片 40g",
+        "牛奶 250ml",
+        "清水 0-100ml（喜欢稀一些时添加）"
+      ],
+      "steps": [
+        "炉灶做法：燕麦片、牛奶和可选的清水放入小锅，中小火加热并持续搅拌。",
+        "液体微沸后转小火，按燕麦包装说明煮 3-5 分钟，直至燕麦变软、整体略微浓稠。",
+        "微波炉做法：所有材料放入容量至少为食材体积 3 倍的微波炉适用大碗中，不要使用密闭容器。",
+        "以中高火加热 2 分钟，取出搅拌，再每次加热 30 秒，直至燕麦熟软；全程留意防止溢出。",
+        "静置 1-2 分钟，温度适口后食用。"
+      ],
+      "nutrition": {
+        "calories": "421 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E7%89%9B%E5%A5%B6%E7%87%95%E9%BA%A6%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E7%89%9B%E5%A5%B6%E7%87%95%E9%BA%A6%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/breakfast/牛奶燕麦.md",
+        "imagePath": "File:Oatmeal (1).jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Oatmeal (1).jpg",
+          "author": "Renee Comet",
+          "license": "Public domain",
+          "licenseUrl": "https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia",
+          "url": "https://commons.wikimedia.org/wiki/File:Oatmeal%20(1).jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.05,
+          0.1,
+          0.75,
+          0.8
+        ],
+        "editorialCorrections": 12,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/breakfast/%E7%89%9B%E5%A5%B6%E7%87%95%E9%BA%A6.md"
+      }
+    },
+    {
+      "id": 2039,
+      "name": "手抓饼",
+      "image": "/images/dishes/htc-2039.jpg",
+      "category": "早餐",
+      "taste": "咸鲜",
+      "cookingMethod": "早餐制作",
+      "difficulty": "简单",
+      "cookingTime": "45分钟",
+      "servings": "每次制作前需要确定计划做几份。一份正好够 1~2 人食用。",
+      "ingredients": [
+        "中筋面粉",
+        "开水",
+        "冷水",
+        "食用油",
+        "盐",
+        "鸡蛋",
+        "生菜",
+        "火腿",
+        "芝士片（可选）"
+      ],
+      "preparation": [
+        "中筋面粉 200g",
+        "开水 80ml",
+        "冷水 40-50ml",
+        "食用油 15ml（饼坯10ml，煎制5ml）",
+        "盐 2g",
+        "鸡蛋 1个",
+        "生菜 30g",
+        "火腿 30g",
+        "芝士片 1片（可选）"
+      ],
+      "steps": [
+        "面粉中先倒入开水，用筷子搅成絮状；再分次加入冷水，揉成柔软且不粘手的面团，盖好醒 20 分钟。",
+        "面团分成 2 个剂子，分别擀成薄片；表面刷 10ml 食用油并均匀撒盐。",
+        "将面片卷成长条，再盘成蜗牛状，盖好松弛 10 分钟后擀成约 3mm 厚的圆饼。",
+        "生菜逐片洗净并沥干；火腿两面煎热，鸡蛋煎至蛋白和蛋黄完全凝固。",
+        "平底锅刷剩余食用油，中小火放入饼坯，每面煎 2-3 分钟；翻面时用锅铲轻压，使饼层散开并均匀受热。",
+        "确认饼坯中心熟透、两面金黄后取出，夹入鸡蛋、生菜、火腿和可选芝士，卷起即可。"
+      ],
+      "advanceTime": "面团需醒面和松弛共 30 分钟",
+      "nutrition": {
+        "calories": "1050 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E6%89%8B%E6%8A%93%E9%A5%BC%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E6%89%8B%E6%8A%93%E9%A5%BC%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/breakfast/手抓饼.md",
+        "imagePath": "File:Cong zhua bing.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Cong zhua bing.jpg",
+          "author": "Joy",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Cong%20zhua%20bing.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.05,
+          0.05,
+          0.9,
+          0.9
+        ],
+        "editorialCorrections": 26,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/breakfast/%E6%89%8B%E6%8A%93%E9%A5%BC.md"
+      }
+    },
+    {
+      "id": 2040,
+      "name": "水煮玉米",
+      "image": "/images/dishes/htc-2040.jpg",
+      "category": "早餐",
+      "taste": "咸鲜",
+      "cookingMethod": "煮制",
+      "difficulty": "简单",
+      "cookingTime": "20分钟",
+      "servings": "",
+      "ingredients": [
+        "新鲜玉米",
+        "盐",
+        "白砂糖（可选）",
+        "清水"
+      ],
+      "preparation": [
+        "新鲜玉米 1根（约300g）",
+        "盐 2g",
+        "白砂糖 5g（可选）",
+        "清水 约1500ml（以没过玉米为准）"
+      ],
+      "steps": [
+        "玉米剥去最外层老叶和玉米须，保留内层 1-2 层嫩叶，冲洗干净。",
+        "玉米放入大小合适的锅中，加入足以没过玉米的清水，再加入盐和白砂糖。",
+        "大火煮开后转中小火，加盖煮 10-15 分钟；较老或颗粒较硬的玉米适当延长时间。",
+        "夹出一粒玉米尝一下，确认中心熟透且达到喜欢的软硬度后关火。",
+        "玉米捞出沥水，趁温热食用。"
+      ],
+      "nutrition": {
+        "calories": "108 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E6%B0%B4%E7%85%AE%E7%8E%89%E7%B1%B3%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E6%B0%B4%E7%85%AE%E7%8E%89%E7%B1%B3%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/breakfast/水煮玉米.md",
+        "imagePath": "File:Boiled corn on a white plate.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Boiled corn on a white plate.jpg",
+          "author": "TudorTulok",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Boiled%20corn%20on%20a%20white%20plate.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.05,
+          0.05,
+          0.9,
+          0.9
+        ],
+        "editorialCorrections": 14,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/breakfast/%E6%B0%B4%E7%85%AE%E7%8E%89%E7%B1%B3.md"
+      }
+    },
+    {
+      "id": 2050,
+      "name": "燕麦鸡蛋饼",
+      "image": "/images/dishes/htc-2050.jpg",
+      "category": "早餐",
+      "taste": "咸鲜",
+      "cookingMethod": "早餐制作",
+      "difficulty": "简单",
+      "cookingTime": "15分钟",
+      "servings": "",
+      "ingredients": [
+        "快熟燕麦片",
+        "鸡蛋",
+        "牛奶",
+        "食用油或黄油",
+        "菠菜（可选）",
+        "盐（可选）",
+        "白胡椒粉（可选）"
+      ],
+      "preparation": [
+        "快熟燕麦片 50g",
+        "鸡蛋 2个",
+        "牛奶 80ml",
+        "食用油或黄油 5ml",
+        "菠菜 50g（可选）",
+        "盐 1g（可选）",
+        "白胡椒粉 0.5g（可选）"
+      ],
+      "steps": [
+        "燕麦片与牛奶混合，静置 5 分钟使燕麦吸水变软。",
+        "鸡蛋充分打散；使用菠菜时，将菠菜洗净、焯水 30 秒并挤干后切碎。",
+        "蛋液、泡软的燕麦和可选菠菜混合，加入盐和白胡椒粉搅匀。",
+        "不粘平底锅刷油，中小火倒入面糊并摊成厚度均匀的圆饼。",
+        "加盖煎 3-4 分钟，待底部定型、表面基本凝固后翻面。",
+        "另一面继续煎 2-3 分钟，确认中心蛋液完全凝固后出锅。"
+      ],
+      "nutrition": {
+        "calories": "535 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E7%87%95%E9%BA%A6%E9%B8%A1%E8%9B%8B%E9%A5%BC%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E7%87%95%E9%BA%A6%E9%B8%A1%E8%9B%8B%E9%A5%BC%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/breakfast/燕麦鸡蛋饼.md",
+        "imagePath": "File:Oatmeal pancake with fruit.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Oatmeal pancake with fruit.jpg",
+          "author": "Drhnn",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Oatmeal%20pancake%20with%20fruit.jpg",
+          "modifications": "resized and re-encoded as JPEG"
+        },
+        "editorialCorrections": 21,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/breakfast/%E7%87%95%E9%BA%A6%E9%B8%A1%E8%9B%8B%E9%A5%BC.md"
       }
     },
     {
@@ -2144,12 +2951,21 @@
         "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
         "license": "Unlicense",
         "recipePath": "dishes/meat_dish/黑椒牛柳/黑椒牛柳.md",
-        "imagePath": "dishes/meat_dish/黑椒牛柳/黑椒牛柳.jpg",
+        "imagePath": "File:黑椒牛肉饭 Black Pepper Beef on rice - Hongyun Chinese Restaurant AUD8.50 (3450250738).jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:黑椒牛肉饭 Black Pepper Beef on rice - Hongyun Chinese Restaurant AUD8.50 (3450250738).jpg",
+          "author": "Alpha",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:%E9%BB%91%E6%A4%92%E7%89%9B%E8%82%89%E9%A5%AD%20Black%20Pepper%20Beef%20on%20rice%20-%20Hongyun%20Chinese%20Restaurant%20AUD8.50%20(3450250738).jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
         "imageCrop": [
-          0.15,
-          0.13,
-          0.72,
-          0.75
+          0.35,
+          0.44,
+          0.62,
+          0.54
         ],
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E9%BB%91%E6%A4%92%E7%89%9B%E6%9F%B3/%E9%BB%91%E6%A4%92%E7%89%9B%E6%9F%B3.md"
       }
@@ -2307,7 +3123,22 @@
         "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
         "license": "Unlicense",
         "recipePath": "dishes/meat_dish/红烧猪蹄/红烧猪蹄.md",
-        "imagePath": "dishes/meat_dish/红烧猪蹄/红烧猪蹄.jpg",
+        "imagePath": "File:Braised pork trotters.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Braised pork trotters.jpg",
+          "author": "Fumikas Sagisavas",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Braised%20pork%20trotters.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.05,
+          0.05,
+          0.9,
+          0.9
+        ],
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E7%BA%A2%E7%83%A7%E7%8C%AA%E8%B9%84/%E7%BA%A2%E7%83%A7%E7%8C%AA%E8%B9%84.md"
       }
     },
@@ -2383,6 +3214,95 @@
         "recipePath": "dishes/meat_dish/湖南家常红烧肉/湖南家常红烧肉.md",
         "imagePath": "dishes/meat_dish/湖南家常红烧肉/湖南家常红烧肉.jpeg",
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E6%B9%96%E5%8D%97%E5%AE%B6%E5%B8%B8%E7%BA%A2%E7%83%A7%E8%82%89/%E6%B9%96%E5%8D%97%E5%AE%B6%E5%B8%B8%E7%BA%A2%E7%83%A7%E8%82%89.md"
+      }
+    },
+    {
+      "id": 2082,
+      "name": "黄焖鸡",
+      "image": "/images/dishes/htc-2082.jpg",
+      "category": "荤菜",
+      "taste": "香辣",
+      "cookingMethod": "焖烧",
+      "difficulty": "普通",
+      "cookingTime": "50分钟",
+      "servings": "",
+      "ingredients": [
+        "鸡腿",
+        "干香菇",
+        "青椒",
+        "土豆（可选）",
+        "姜",
+        "干辣椒（可选）",
+        "食用油",
+        "白砂糖",
+        "料酒",
+        "生抽",
+        "老抽",
+        "盐",
+        "白胡椒粉",
+        "清水"
+      ],
+      "preparation": [
+        "鸡腿 2只（带骨约600g）",
+        "干香菇 5朵（约20g）",
+        "青椒 2个（约180g）",
+        "土豆 1个（约200g，可选）",
+        "姜 10g",
+        "干辣椒 2个（可选）",
+        "食用油 15ml",
+        "白砂糖 5g",
+        "料酒 15ml",
+        "生抽 15ml",
+        "老抽 3ml",
+        "盐 3g",
+        "白胡椒粉 0.5g",
+        "清水 500ml"
+      ],
+      "steps": [
+        "干香菇洗去浮尘，用温水泡软后切片，泡香菇的水静置备用；鸡腿剁成约 4cm 的块并用厨房纸吸干。",
+        "青椒去蒂去籽切块，姜切片；使用土豆时去皮切滚刀块。",
+        "炒锅中火加热后倒入食用油和白砂糖，小火搅拌至糖溶化并呈浅琥珀色；不熟悉炒糖色可跳过此步，直接用油煎鸡块。",
+        "放入鸡块转中大火翻炒至表面变色微黄，加入姜片、干辣椒和料酒炒香。",
+        "加入生抽和老抽翻匀，再放入香菇、土豆、白胡椒粉和盐。",
+        "倒入过滤后的香菇水并补清水至共约 500ml，烧开后盖锅盖转小火焖 20-25 分钟。",
+        "确认鸡肉中心完全熟透、土豆能被筷子轻松扎透后，开盖收汁；放入青椒翻炒 1-2 分钟即可。"
+      ],
+      "advanceTime": "干香菇需提前浸泡约 30 分钟",
+      "nutrition": {
+        "calories": "766 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E9%BB%84%E7%84%96%E9%B8%A1%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E9%BB%84%E7%84%96%E9%B8%A1%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/meat_dish/黄焖鸡.md",
+        "imagePath": "File:Yellow braised chicken.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Yellow braised chicken.jpg",
+          "author": "Fumikas Sagisavas",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Yellow%20braised%20chicken.jpg",
+          "modifications": "resized and re-encoded as JPEG"
+        },
+        "editorialCorrections": 37,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E9%BB%84%E7%84%96%E9%B8%A1.md"
       }
     },
     {
@@ -2777,12 +3697,21 @@
         "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
         "license": "Unlicense",
         "recipePath": "dishes/meat_dish/酱牛肉/酱牛肉.md",
-        "imagePath": "dishes/meat_dish/酱牛肉/酱牛肉.jpg",
+        "imagePath": "File:Beef seasoned with soy sauce at Lady Chai, Ganjiakou (20211022125335).jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Beef seasoned with soy sauce at Lady Chai, Ganjiakou (20211022125335).jpg",
+          "author": "N509FZ",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Beef%20seasoned%20with%20soy%20sauce%20at%20Lady%20Chai%2C%20Ganjiakou%20(20211022125335).jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
         "imageCrop": [
-          0,
-          0.08,
-          0.84,
-          0.73
+          0.05,
+          0.15,
+          0.75,
+          0.72
         ],
         "editorialCorrections": 3,
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E9%85%B1%E7%89%9B%E8%82%89/%E9%85%B1%E7%89%9B%E8%82%89.md"
@@ -3008,38 +3937,41 @@
       "name": "咖喱肥牛",
       "image": "/images/dishes/htc-2096.jpg",
       "category": "荤菜",
-      "taste": "咸鲜",
+      "taste": "清淡",
       "cookingMethod": "炒制",
       "difficulty": "复杂",
       "cookingTime": "40分钟",
       "servings": "每次制作前需要确定计划做几份。一份正好够 2 个人吃。",
       "ingredients": [
-        "香叶",
-        "纯牛奶（推荐卫岗鲜奶）",
-        "洋葱",
-        "胡萝卜",
-        "土豆",
         "肥牛卷",
-        "咖喱块"
+        "土豆",
+        "胡萝卜",
+        "洋葱",
+        "咖喱块",
+        "纯牛奶",
+        "香叶",
+        "食用油",
+        "清水"
       ],
       "preparation": [
-        "香叶 1 片",
-        "纯牛奶 50ml",
-        "洋葱 100g",
+        "肥牛卷 300g",
+        "土豆 200g",
         "胡萝卜 150g",
-        "土豆 200g （挺饱腹的，酌情添加）",
-        "肥牛卷 300g （喜欢吃肉就多来点）",
-        "咖喱块 2 块 （大约 100g）"
+        "洋葱 100g",
+        "咖喱块 100g",
+        "纯牛奶 50ml",
+        "香叶 1片",
+        "食用油 15ml",
+        "清水 约1500ml（焯水1000ml，炖煮约500ml）"
       ],
       "steps": [
-        "洋葱切成条状、胡萝卜以及土豆切成块状，备用",
-        "烧一锅开水，水沸时将肥牛卷下锅，捞出血沫后放在一边沥水，备用",
-        "热锅，锅内放入 10ml - 15ml 食用油，等待 10 秒让油温升高",
-        "放入洋葱，翻炒至洋葱变软变透明",
-        "放入土豆以及胡萝卜翻炒 2 分钟",
-        "加入冷水至淹没所有食材即可",
-        "将香叶、咖喱块投入锅中，盖上锅盖，待水沸腾后将火调小然后等待直至土豆块以及胡萝卜块炖至软烂（可用筷子确认）",
-        "加入肥牛卷以及牛奶，盖上锅盖再小火煮 2-3 分钟即可出锅（用勺子搅拌食材，注意力度，避免肥牛卷破碎）"
+        "洋葱切条，土豆和胡萝卜去皮后切成约 2cm 的块。",
+        "锅中加入约 1000ml 清水并烧开，放入肥牛卷，待肉片完全变色后捞出，冲去浮沫并沥水。",
+        "炒锅中火加热，倒入食用油，放入洋葱炒至变软、略微透明。",
+        "加入土豆和胡萝卜翻炒 2 分钟，再加入香叶和约 500ml 清水，以水面接近没过食材为准。",
+        "大火煮开后转小火，加盖炖 15-20 分钟，至土豆和胡萝卜可被筷子轻松插入。",
+        "关小火，放入咖喱块并不断搅拌至完全溶化，再加入牛奶搅匀。",
+        "放入焯好的肥牛卷，小火煮 2-3 分钟；确认肉片热透、汤汁达到喜欢的浓度后关火。"
       ],
       "nutrition": {
         "calories": "1821 大卡"
@@ -3064,14 +3996,108 @@
         "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
         "license": "Unlicense",
         "recipePath": "dishes/meat_dish/咖喱肥牛/咖喱肥牛.md",
-        "imagePath": "dishes/meat_dish/咖喱肥牛/咖喱肥牛.jpg",
+        "imagePath": "File:咖喱牛肉饭.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:咖喱牛肉饭.jpg",
+          "author": "Richard923888",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:%E5%92%96%E5%96%B1%E7%89%9B%E8%82%89%E9%A5%AD.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
         "imageCrop": [
-          0.29,
-          0.18,
-          0.32,
+          0.37,
+          0.47,
+          0.6,
           0.34
         ],
+        "editorialCorrections": 26,
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E5%92%96%E5%96%B1%E8%82%A5%E7%89%9B/%E5%92%96%E5%96%B1%E8%82%A5%E7%89%9B.md"
+      }
+    },
+    {
+      "id": 2098,
+      "name": "可乐鸡翅",
+      "image": "/images/dishes/htc-2098.jpg",
+      "category": "荤菜",
+      "taste": "甜香",
+      "cookingMethod": "炒制",
+      "difficulty": "普通",
+      "cookingTime": "40分钟",
+      "servings": "按照 1 盘的份量：",
+      "ingredients": [
+        "鸡翅中",
+        "可乐",
+        "姜",
+        "小葱",
+        "食用油",
+        "料酒",
+        "生抽",
+        "老抽",
+        "盐"
+      ],
+      "preparation": [
+        "鸡翅中 10只（约500g）",
+        "可乐 330ml",
+        "姜 10g",
+        "小葱 2根（约10g）",
+        "食用油 10ml",
+        "料酒 15ml",
+        "生抽 15ml",
+        "老抽 3ml",
+        "盐 1g"
+      ],
+      "steps": [
+        "鸡翅用厨房纸吸干，两面各划 2 刀；加入料酒和 10ml 生抽，盖好后冷藏腌制 15 分钟。",
+        "姜切片，小葱打结。鸡翅取出后沥去多余腌汁。",
+        "炒锅中火加热，倒入食用油，放入姜片和鸡翅；每面煎约 2-3 分钟，至表面金黄。",
+        "倒入可乐，加入葱结、剩余生抽、老抽和盐，烧开后撇去浮沫。",
+        "转中小火加盖煮 15 分钟，中途翻动一次。",
+        "取出葱结和姜片，确认鸡翅最厚处已完全熟透，再转中火收汁并频繁翻动。",
+        "酱汁浓稠并均匀裹住鸡翅后立即关火，避免糖分烧焦发苦。"
+      ],
+      "nutrition": {
+        "calories": "960 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E5%8F%AF%E4%B9%90%E9%B8%A1%E7%BF%85%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E5%8F%AF%E4%B9%90%E9%B8%A1%E7%BF%85%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/meat_dish/可乐鸡翅.md",
+        "imagePath": "File:Home made chicken wings with coca cola.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Home made chicken wings with coca cola.jpg",
+          "author": "Pauloleong2002",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Home%20made%20chicken%20wings%20with%20coca%20cola.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0,
+          0.05,
+          1,
+          0.9
+        ],
+        "editorialCorrections": 26,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E5%8F%AF%E4%B9%90%E9%B8%A1%E7%BF%85.md"
       }
     },
     {
@@ -3163,6 +4189,89 @@
         ],
         "editorialCorrections": 6,
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E5%8F%A3%E6%B0%B4%E9%B8%A1/%E5%8F%A3%E6%B0%B4%E9%B8%A1.md"
+      }
+    },
+    {
+      "id": 2101,
+      "name": "辣椒炒肉",
+      "image": "/images/dishes/htc-2101.jpg",
+      "category": "荤菜",
+      "taste": "香辣",
+      "cookingMethod": "炒制",
+      "difficulty": "普通",
+      "cookingTime": "25分钟",
+      "servings": "每次制作前需要确定计划做几份。一份正好够 1 个人食用",
+      "ingredients": [
+        "猪瘦肉",
+        "青椒",
+        "蒜",
+        "姜",
+        "豆豉（可选）",
+        "食用油",
+        "盐",
+        "生抽",
+        "蚝油"
+      ],
+      "preparation": [
+        "猪瘦肉 200g",
+        "青椒或螺丝椒 250g",
+        "蒜 3瓣（约12g）",
+        "姜 5g",
+        "豆豉 5g（可选）",
+        "食用油 15ml",
+        "盐 3g",
+        "生抽 5ml",
+        "蚝油 5g"
+      ],
+      "steps": [
+        "青椒去蒂后斜切片；蒜切片，姜切末。",
+        "猪肉逆着纹理切薄片，加入生抽、蚝油和 1g 盐抓匀，冷藏腌制 10 分钟。",
+        "炒锅烧热，不放油，放入青椒和 1g 盐，中火干煸 2-3 分钟，至表面出现焦斑后盛出。",
+        "锅中倒入食用油，放入蒜、姜和豆豉炒香。",
+        "加入肉片，中大火迅速炒散，直至肉片完全变色且中心熟透。",
+        "放回青椒，加入剩余盐，大火翻炒约 1 分钟即可。"
+      ],
+      "nutrition": {
+        "calories": "425 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E8%BE%A3%E6%A4%92%E7%82%92%E8%82%89%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E8%BE%A3%E6%A4%92%E7%82%92%E8%82%89%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/meat_dish/辣椒炒肉.md",
+        "imagePath": "File:Chinese food in Hunan.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Chinese food in Hunan.jpg",
+          "author": "CHENG SHIYI",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Chinese%20food%20in%20Hunan.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.02,
+          0.46,
+          0.7,
+          0.53
+        ],
+        "editorialCorrections": 25,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E8%BE%A3%E6%A4%92%E7%82%92%E8%82%89.md"
       }
     },
     {
@@ -3502,8 +4611,111 @@
         "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
         "license": "Unlicense",
         "recipePath": "dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.md",
-        "imagePath": "dishes/meat_dish/凉拌鸡丝/凉拌鸡丝.jpg",
+        "imagePath": "File:Sichuan shredded chicken salad.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Sichuan shredded chicken salad.jpg",
+          "author": "Coolli22",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Sichuan%20shredded%20chicken%20salad.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.03,
+          0.2,
+          0.94,
+          0.72
+        ],
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E5%87%89%E6%8B%8C%E9%B8%A1%E4%B8%9D/%E5%87%89%E6%8B%8C%E9%B8%A1%E4%B8%9D.md"
+      }
+    },
+    {
+      "id": 2109,
+      "name": "麻辣香锅",
+      "image": "/images/dishes/htc-2109.jpg",
+      "category": "荤菜",
+      "taste": "香辣",
+      "cookingMethod": "炒制",
+      "difficulty": "普通",
+      "cookingTime": "35分钟",
+      "servings": "",
+      "ingredients": [
+        "肉类或虾",
+        "豆制品",
+        "耐煮蔬菜",
+        "叶菜",
+        "麻辣香锅调料",
+        "姜",
+        "蒜",
+        "干辣椒",
+        "食用油",
+        "生抽",
+        "白砂糖"
+      ],
+      "preparation": [
+        "鸡肉、猪肉或鲜虾 共300g",
+        "豆腐干或腐竹 100g",
+        "土豆、藕、花菜或菌菇等耐煮蔬菜 共350g",
+        "油麦菜、生菜等叶菜 共150g",
+        "麻辣香锅调料 60g",
+        "姜 10g",
+        "蒜 5瓣（约20g）",
+        "干辣椒 8g（按口味调整）",
+        "食用油 35ml",
+        "生抽 10ml",
+        "白砂糖 3g"
+      ],
+      "steps": [
+        "所有食材分别洗净；肉类切薄片，虾去虾线；豆制品和蔬菜切成大小接近、适合入口的块。姜切片，蒜拍碎。",
+        "锅中烧开水，先将土豆、藕、花菜等耐煮蔬菜焯至八成熟，再将叶菜快速焯至断生，分别捞出并充分沥水。",
+        "肉类或虾另行焯熟或炒熟：肉片中心不得有粉红色，虾应整体变色卷曲。",
+        "炒锅擦干后倒入食用油，中小火放入姜、蒜和干辣椒炒香。",
+        "加入麻辣香锅调料，小火翻炒约 1 分钟，避免炒糊。",
+        "先放耐煮蔬菜、豆制品和肉类，大火翻炒 2 分钟；再放叶菜、生抽和白砂糖翻炒均匀。",
+        "确认全部食材热透后关火装盘；成品调料通常含盐，不再额外加盐，尝味后再决定是否补充。"
+      ],
+      "nutrition": {
+        "calories": "1050 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E9%BA%BB%E8%BE%A3%E9%A6%99%E9%94%85%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E9%BA%BB%E8%BE%A3%E9%A6%99%E9%94%85%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/meat_dish/麻辣香锅.md",
+        "imagePath": "File:Ma La Xiang Guo.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Ma La Xiang Guo.jpg",
+          "author": "我乃野云鹤",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Ma%20La%20Xiang%20Guo.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.03,
+          0.12,
+          0.92,
+          0.72
+        ],
+        "editorialCorrections": 30,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E9%BA%BB%E8%BE%A3%E9%A6%99%E9%94%85.md"
       }
     },
     {
@@ -3891,6 +5103,78 @@
       }
     },
     {
+      "id": 2119,
+      "name": "青椒土豆炒肉",
+      "image": "/images/dishes/htc-2119.jpg",
+      "category": "荤菜",
+      "taste": "咸鲜",
+      "cookingMethod": "炒制",
+      "difficulty": "普通",
+      "cookingTime": "30分钟",
+      "servings": "每次制作前需要确定计划做几份。一份正好够 2 个人吃。",
+      "ingredients": [
+        "青椒",
+        "土豆",
+        "猪肉",
+        "葱",
+        "姜",
+        "蒜",
+        "盐",
+        "生抽",
+        "食用油",
+        "土豆淀粉",
+        "清水"
+      ],
+      "preparation": [
+        "青椒 2个（共约200g）",
+        "土豆 2个（共约300g）",
+        "猪肉 200g",
+        "葱 1根（约10g）",
+        "姜 1块（约5g）",
+        "蒜 3瓣（约12g）",
+        "盐 4g",
+        "生抽 8ml",
+        "食用油 15ml",
+        "土豆淀粉 5g",
+        "清水 15ml"
+      ],
+      "steps": [
+        "青椒去蒂去籽切块；土豆去皮切约 2mm 薄片，清水冲去表面淀粉后沥干；猪肉切约 4mm 薄片，葱姜蒜切末。",
+        "土豆淀粉加入 15ml 清水调成水淀粉。",
+        "炒锅中火加热，倒入食用油；油面微微流动后放入肉片，炒至完全变色，再加入 3ml 生抽和 1g 盐翻匀。",
+        "加入葱姜蒜炒香，放入土豆片，转中大火翻炒 3-5 分钟；加入剩余生抽和 2g 盐，炒至土豆断生且边缘微黄。",
+        "加入青椒大火翻炒约 1 分钟，青椒颜色变亮后沿锅边淋入水淀粉，翻匀并煮至芡汁透明。",
+        "尝味后用剩余盐调整，确认猪肉熟透、土豆无生硬口感后关火装盘。"
+      ],
+      "nutrition": {
+        "calories": "1288 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E9%9D%92%E6%A4%92%E5%9C%9F%E8%B1%86%E7%82%92%E8%82%89%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E9%9D%92%E6%A4%92%E5%9C%9F%E8%B1%86%E7%82%92%E8%82%89%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/meat_dish/青椒土豆炒肉/青椒土豆炒肉.md",
+        "imagePath": "dishes/meat_dish/青椒土豆炒肉/青椒土豆炒肉.jpg",
+        "editorialCorrections": 29,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E9%9D%92%E6%A4%92%E5%9C%9F%E8%B1%86%E7%82%92%E8%82%89/%E9%9D%92%E6%A4%92%E5%9C%9F%E8%B1%86%E7%82%92%E8%82%89.md"
+      }
+    },
+    {
       "id": 2120,
       "name": "清蒸鳜鱼",
       "image": "/images/dishes/htc-2120.jpg",
@@ -4094,6 +5378,208 @@
       }
     },
     {
+      "id": 2127,
+      "name": "水煮肉片",
+      "image": "/images/dishes/htc-2127.jpg",
+      "category": "荤菜",
+      "taste": "香辣",
+      "cookingMethod": "煮制",
+      "difficulty": "复杂",
+      "cookingTime": "45分钟",
+      "servings": "",
+      "ingredients": [
+        "猪里脊",
+        "豆芽",
+        "莴笋叶或油麦菜",
+        "红油豆瓣酱",
+        "干辣椒",
+        "花椒",
+        "姜",
+        "蒜",
+        "小葱",
+        "鸡蛋清",
+        "土豆淀粉",
+        "生抽",
+        "料酒",
+        "食用油",
+        "盐",
+        "白砂糖",
+        "白胡椒粉",
+        "清水"
+      ],
+      "preparation": [
+        "猪里脊 300g",
+        "绿豆芽 200g",
+        "莴笋叶或油麦菜 200g",
+        "红油豆瓣酱 25g",
+        "干辣椒 10g（按口味调整）",
+        "花椒 3g（按口味调整）",
+        "姜 10g",
+        "蒜 5瓣（约20g）",
+        "小葱 2根（约10g）",
+        "鸡蛋清 1个",
+        "土豆淀粉 12g",
+        "生抽 10ml",
+        "料酒 10ml",
+        "食用油 60ml",
+        "盐 4g",
+        "白砂糖 2g",
+        "白胡椒粉 1g",
+        "清水 700ml"
+      ],
+      "steps": [
+        "猪里脊逆着纹理切约 2mm 薄片，加入生抽、料酒、1g 盐、白胡椒粉、鸡蛋清和土豆淀粉，顺一个方向抓匀，冷藏腌制 15 分钟。",
+        "豆芽和叶菜洗净沥水；姜、蒜切末，小葱切葱花，干辣椒剪段。",
+        "炒锅加入 15ml 食用油，先炒豆芽 2 分钟，再加入叶菜和 1g 盐炒至断生，盛入大碗垫底。",
+        "锅中加入 25ml 食用油，中小火炒香姜末、一半蒜末和豆瓣酱，倒入清水，加入白砂糖和剩余盐，煮沸 3 分钟。",
+        "转小火，将肉片逐片放入汤中；全部放完后转中火轻推散开，煮至肉片完全变色、中心熟透，约 2-3 分钟。",
+        "将肉片和适量汤汁倒在蔬菜上，表面撒剩余蒜末、葱花、干辣椒和花椒。",
+        "剩余食用油加热至微微流动后关火，小心淋在香料上即可。"
+      ],
+      "advanceTime": "猪里脊需冷藏腌制 15 分钟",
+      "nutrition": {
+        "calories": "约1050大卡（整份）"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E6%B0%B4%E7%85%AE%E8%82%89%E7%89%87%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B",
+            "references": [
+              {
+                "title": "美食作家王刚R",
+                "url": "https://www.bilibili.com/video/BV1ys411u7Z4",
+                "platform": "bilibili",
+                "source": "HowToCook 上游参考"
+              }
+            ]
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E6%B0%B4%E7%85%AE%E8%82%89%E7%89%87%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/meat_dish/水煮肉片.md",
+        "imagePath": "File:Shuizhu Roupian at Daqian Restaurant, Dachenglu (20260126131419).jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Shuizhu Roupian at Daqian Restaurant, Dachenglu (20260126131419).jpg",
+          "author": "N509FZ",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Shuizhu%20Roupian%20at%20Daqian%20Restaurant%2C%20Dachenglu%20(20260126131419).jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.04,
+          0.05,
+          0.92,
+          0.9
+        ],
+        "editorialCorrections": 46,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E6%B0%B4%E7%85%AE%E8%82%89%E7%89%87.md"
+      }
+    },
+    {
+      "id": 2130,
+      "name": "糖醋里脊",
+      "image": "/images/dishes/htc-2130.jpg",
+      "category": "荤菜",
+      "taste": "甜香",
+      "cookingMethod": "炒制",
+      "difficulty": "复杂",
+      "cookingTime": "50分钟",
+      "servings": "每份：",
+      "ingredients": [
+        "猪里脊",
+        "鸡蛋",
+        "玉米淀粉",
+        "食用油",
+        "盐",
+        "白胡椒粉",
+        "料酒",
+        "生抽",
+        "番茄酱",
+        "白砂糖",
+        "米醋",
+        "清水"
+      ],
+      "preparation": [
+        "猪里脊 400g",
+        "鸡蛋 1个",
+        "玉米淀粉 80g",
+        "食用油 约600ml（炸制后大部分会剩余）",
+        "盐 3g",
+        "白胡椒粉 1g",
+        "料酒 10ml",
+        "生抽 5ml",
+        "番茄酱 50g",
+        "白砂糖 25g",
+        "米醋 20ml",
+        "清水 60ml"
+      ],
+      "steps": [
+        "猪里脊切成约 1cm 粗、5cm 长的肉条，加入盐、白胡椒粉、料酒和生抽抓匀，冷藏腌制 15 分钟。",
+        "鸡蛋打散后拌入肉条，再加入 70g 玉米淀粉，使每根肉条均匀挂糊；剩余淀粉与清水调匀。",
+        "番茄酱、白砂糖、米醋和水淀粉混合成糖醋汁。",
+        "炸锅倒入食用油，加热至约 160°C；肉条逐根下锅，分批炸 3-4 分钟，至表面浅黄且肉心熟透后捞出。",
+        "油温升至约 185°C，将肉条复炸 20-30 秒至表面金黄酥脆，立即捞出沥油。",
+        "另取炒锅，倒入糖醋汁，中小火不断搅拌至冒泡并变得浓稠。",
+        "关火后放入炸好的里脊，快速翻匀使其裹满酱汁，立即装盘。"
+      ],
+      "advanceTime": "里脊需冷藏腌制 15 分钟",
+      "nutrition": {
+        "calories": "1573 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E7%B3%96%E9%86%8B%E9%87%8C%E8%84%8A%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E7%B3%96%E9%86%8B%E9%87%8C%E8%84%8A%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/meat_dish/糖醋里脊.md",
+        "imagePath": "File:Sweet sour pork.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Sweet sour pork.jpg",
+          "author": "BorgQueen",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Sweet%20sour%20pork.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.02,
+          0.12,
+          0.96,
+          0.82
+        ],
+        "editorialCorrections": 33,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E7%B3%96%E9%86%8B%E9%87%8C%E8%84%8A.md"
+      }
+    },
+    {
       "id": 2131,
       "name": "糖醋排骨",
       "image": "/images/dishes/htc-2131.jpg",
@@ -4268,6 +5754,99 @@
       }
     },
     {
+      "id": 2134,
+      "name": "土豆炖排骨",
+      "image": "/images/dishes/htc-2134.jpg",
+      "category": "荤菜",
+      "taste": "香辣",
+      "cookingMethod": "炖煮",
+      "difficulty": "普通",
+      "cookingTime": "90分钟",
+      "servings": "注意：以下参数为标准 2-3 人份的精确配置。",
+      "ingredients": [
+        "肋排",
+        "土豆",
+        "姜",
+        "小葱",
+        "料酒",
+        "白糖",
+        "干辣椒",
+        "八角",
+        "花椒",
+        "桂皮",
+        "生抽",
+        "老抽",
+        "蚝油",
+        "黄豆酱",
+        "盐",
+        "食用油",
+        "青椒（可选）"
+      ],
+      "preparation": [
+        "肋排：750g",
+        "土豆：300g",
+        "姜：30g （分为两份：15g 焯水用，15g 炒制用）",
+        "小葱：25g （分为两份：15g 打成葱结，10g 切葱花）",
+        "料酒：25ml （分为两份：15ml 焯水用，10ml 炒制用）",
+        "白糖：10g",
+        "干辣椒：5g",
+        "八角：1g （约 1-2 颗）",
+        "花椒：1g （约 10 粒）",
+        "桂皮：1g （一小块）",
+        "生抽：10ml",
+        "老抽：5ml",
+        "蚝油：5ml",
+        "黄豆酱：5g",
+        "盐：3g （最后收汁调味用）",
+        "开水：700ml",
+        "食用油：20ml",
+        "青椒 1个（约100g，可选）"
+      ],
+      "steps": [
+        "土豆去皮切滚刀块，浸入清水防止氧化；姜切片，15g 小葱打结，剩余小葱切葱花。",
+        "将生抽、老抽、蚝油和黄豆酱在小碗中混合；干辣椒、八角、花椒、桂皮和 15g 姜片放在另一小碟备用。",
+        "排骨冷水下锅，加入葱结、剩余姜片和 15ml 料酒。煮沸后继续焯 2 分钟，捞出洗净浮沫并充分沥干。",
+        "炒锅加入食用油，中火将排骨煎至表面微黄；转中小火加入白糖，翻炒至糖溶化并均匀裹在排骨表面，避免将糖烧黑。",
+        "加入香料炒约 10 秒，沿锅边淋入剩余料酒，再倒入调好的酱汁翻炒 30 秒。",
+        "加入 700ml 开水并烧开，盖锅盖转小火炖 40 分钟。",
+        "土豆沥干后放入锅中，继续加盖小火炖 15-20 分钟，直至土豆能被筷子轻松扎透。使用青椒时，将其切块并在收汁前 2 分钟放入。",
+        "加入盐调味，转大火收汁 3-5 分钟；汤汁浓稠后关火，撒葱花即可。"
+      ],
+      "nutrition": {
+        "calories": "991 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E5%9C%9F%E8%B1%86%E7%82%96%E6%8E%92%E9%AA%A8%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E5%9C%9F%E8%B1%86%E7%82%96%E6%8E%92%E9%AA%A8%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/meat_dish/土豆炖排骨/土豆炖排骨.md",
+        "imagePath": "dishes/meat_dish/土豆炖排骨/排骨2.jpg",
+        "imageCrop": [
+          0.18,
+          0.04,
+          0.64,
+          0.88
+        ],
+        "editorialCorrections": 11,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E5%9C%9F%E8%B1%86%E7%82%96%E6%8E%92%E9%AA%A8/%E5%9C%9F%E8%B1%86%E7%82%96%E6%8E%92%E9%AA%A8.md"
+      }
+    },
+    {
       "id": 2135,
       "name": "无骨鸡爪",
       "image": "/images/dishes/htc-2135.jpg",
@@ -4371,94 +5950,6 @@
       }
     },
     {
-      "id": 2137,
-      "name": "西红柿土豆炖牛肉",
-      "image": "/images/dishes/htc-2137.jpg",
-      "category": "荤菜",
-      "taste": "清淡",
-      "cookingMethod": "炖煮",
-      "difficulty": "复杂",
-      "cookingTime": "90分钟",
-      "servings": "",
-      "ingredients": [
-        "牛肉",
-        "葱",
-        "姜",
-        "料酒",
-        "花椒",
-        "八角",
-        "香叶",
-        "白糖 or 冰糖",
-        "酱油（可选）",
-        "老抽",
-        "黑胡椒粉（或白胡椒粉）",
-        "土豆",
-        "西红柿",
-        "洋葱",
-        "食用油",
-        "盐",
-        "番茄膏或番茄酱"
-      ],
-      "preparation": [
-        "牛肉 500-700g",
-        "葱一根，姜四片，料酒",
-        "花椒 3g",
-        "八角一个（半）",
-        "香叶两片",
-        "油 15ml （若用牛腩可根据喜好减少为 10ml）",
-        "白糖 or 冰糖（上游未标明用量）",
-        "酱油（千禾酿造生抽无添加），老抽（上游未标明用量）",
-        "黑胡椒粉（白的也行）2g",
-        "土豆两三个（看喜好，锅能盛了为准）",
-        "西红柿拳头大小中等个头两三个",
-        "比拳头大一点的洋葱一个",
-        "白糖或冰糖（按口味）",
-        "生抽 15ml",
-        "老抽（上游未标明用量）",
-        "料酒 35ml（焯煮 20ml，炒制 15ml）",
-        "番茄膏或番茄酱 5-10g",
-        "盐（按口味）"
-      ],
-      "steps": [
-        "备菜:土豆去皮、切成 5cm 大块，备用；西红柿切十字花刀，开水烫后去皮，把中间的芯去掉，切 3cm 小块备用；葱切 4g 的葱花出来，剩下的掰成 5-8cm 大段；牛肉泡凉水半小时去血水，或凉水下锅煮至表面变白捞出，期间撇去浮末；洋葱切 0.5-1cm 小粒",
-        "制作；全程中火；凉水没过牛肉，放入高压锅，放入葱段，姜片，放入 20g 料酒，上汽压 20 分钟；取出牛肉后，切 5cm 大块，挑出姜，汤盛到一个大碗里一会炖煮用；倒油，油四到五成热以后下花椒八角香叶，出香味之后糊之前挑出不用；下入牛肉，葱姜，炒香，炒多久都无所谓，看着有点要糊可以舀 10ml 汤，此下同理；炒香后加入生抽 15ml，料酒 15ml，胡椒粉，5-10g 番茄膏番茄酱或一个番茄罐头，加入洋葱炒至透明；（可选）可以加一点点盐使洋葱出水不容易糊，不要加太多，后面再调味；加入西红柿炒至西红柿化开软烂，倒入剩下的汤",
-        "炖煮；中火开锅后，全程小火；出锅前 30-40 分钟 加土豆并调味；依据个人口味边尝边加糖盐，合适为止；筷子戳牛肉软烂后出锅！"
-      ],
-      "nutrition": {
-        "calories": "827 大卡"
-      },
-      "videoTutorials": {
-        "platforms": [
-          {
-            "key": "bilibili",
-            "name": "哔哩哔哩",
-            "searchUrl": "https://search.bilibili.com/all?keyword=%E8%A5%BF%E7%BA%A2%E6%9F%BF%E5%9C%9F%E8%B1%86%E7%82%96%E7%89%9B%E8%82%89%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
-          },
-          {
-            "key": "douyin",
-            "name": "抖音",
-            "searchUrl": "https://www.douyin.com/search/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E5%9C%9F%E8%B1%86%E7%82%96%E7%89%9B%E8%82%89%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
-          }
-        ]
-      },
-      "source": {
-        "name": "HowToCook",
-        "repository": "Anduin2017/HowToCook",
-        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
-        "license": "Unlicense",
-        "recipePath": "dishes/meat_dish/西红柿土豆炖牛肉/西红柿土豆炖牛肉.md",
-        "imagePath": "dishes/meat_dish/西红柿土豆炖牛肉/abaaba_1.png",
-        "imageCrop": [
-          0.18,
-          0.14,
-          0.68,
-          0.6
-        ],
-        "editorialCorrections": 9,
-        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E5%9C%9F%E8%B1%86%E7%82%96%E7%89%9B%E8%82%89/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E5%9C%9F%E8%B1%86%E7%82%96%E7%89%9B%E8%82%89.md"
-      }
-    },
-    {
       "id": 2139,
       "name": "香干芹菜炒肉",
       "image": "/images/dishes/htc-2139.jpg",
@@ -4532,76 +6023,6 @@
         "recipePath": "dishes/meat_dish/香干芹菜炒肉/香干芹菜炒肉.md",
         "imagePath": "dishes/meat_dish/香干芹菜炒肉/香干芹菜炒肉.jpg",
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E9%A6%99%E5%B9%B2%E8%8A%B9%E8%8F%9C%E7%82%92%E8%82%89/%E9%A6%99%E5%B9%B2%E8%8A%B9%E8%8F%9C%E7%82%92%E8%82%89.md"
-      }
-    },
-    {
-      "id": 2141,
-      "name": "香菇滑鸡",
-      "image": "/images/dishes/htc-2141.jpg",
-      "category": "荤菜",
-      "taste": "清淡",
-      "cookingMethod": "炒制",
-      "difficulty": "普通",
-      "cookingTime": "60分钟",
-      "servings": "每份：",
-      "ingredients": [
-        "大鸡腿",
-        "干香菇",
-        "姜",
-        "葱",
-        "蒜"
-      ],
-      "preparation": [
-        "大鸡腿 2 个",
-        "干香菇 5 粒",
-        "姜 2 片",
-        "葱 2 颗",
-        "蒜 2 瓣",
-        "温水(30-40 ℃) 150ml",
-        "料酒 15ml",
-        "生抽 30ml",
-        "盐 1.5g",
-        "老抽 15ml",
-        "糖 15ml",
-        "香油 5ml"
-      ],
-      "steps": [
-        "温水泡发干香菇",
-        "姜切小块，葱切段，蒜对半切小粒",
-        "鸡腿去骨（不去骨也可，只是略影响程序员吃饭的效率而已），切成小块",
-        "泡发的香菇一分为四，香菇水留着备用",
-        "鸡腿肉焯水 1 分钟，去除血沫和杂质",
-        "鸡腿肉中加料酒 15ml、生抽 15ml、盐 1.5g、老抽 15ml，抓匀",
-        "油温 3 成，下入鸡腿肉煸炒，等鸡腿肉金黄后盛出备用",
-        "锅留底油，下入葱、姜、蒜炒香，香菇入锅，大火翻匀",
-        "等待 20 秒会有香菇香味从锅中飘出，此时下入煸炒过的鸡腿肉，下入香菇水（全部，本程序员认为的灵魂操作）、糖 15ml、生抽 30ml",
-        "转中火不盖盖，咕嘟 2 分钟收浓汤汁，淋入香油 5ml，撒上葱花后即可关火、装盘"
-      ],
-      "nutrition": {
-        "calories": "608 大卡"
-      },
-      "videoTutorials": {
-        "platforms": [
-          {
-            "key": "bilibili",
-            "name": "哔哩哔哩",
-            "searchUrl": "https://search.bilibili.com/all?keyword=%E9%A6%99%E8%8F%87%E6%BB%91%E9%B8%A1%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
-          },
-          {
-            "key": "douyin",
-            "name": "抖音",
-            "searchUrl": "https://www.douyin.com/search/%E9%A6%99%E8%8F%87%E6%BB%91%E9%B8%A1%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
-          }
-        ]
-      },
-      "source": {
-        "name": "HowToCook",
-        "repository": "Anduin2017/HowToCook",
-        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
-        "license": "Unlicense",
-        "recipePath": "dishes/meat_dish/香菇滑鸡/香菇滑鸡.md",
-        "imagePath": "dishes/meat_dish/香菇滑鸡/香菇滑鸡.jpg",
-        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E9%A6%99%E8%8F%87%E6%BB%91%E9%B8%A1/%E9%A6%99%E8%8F%87%E6%BB%91%E9%B8%A1.md"
       }
     },
     {
@@ -4747,84 +6168,6 @@
       }
     },
     {
-      "id": 2144,
-      "name": "湘祁米夫鸭",
-      "image": "/images/dishes/htc-2144.jpg",
-      "category": "荤菜",
-      "taste": "香辣",
-      "cookingMethod": "蒸制",
-      "difficulty": "复杂",
-      "cookingTime": "60分钟",
-      "servings": "",
-      "ingredients": [
-        "鸭子（必须新鲜现杀的）",
-        "糯米粉",
-        "粘米粉",
-        "蒸肉粉",
-        "细辣椒粉（吃辣则加）",
-        "白胡椒粉",
-        "五花肉（可加可不加）",
-        "姜蒜",
-        "盐",
-        "食用油",
-        "开水"
-      ],
-      "preparation": [
-        "鸭子：1000g",
-        "糯米粉：100g",
-        "粘米粉: 300g",
-        "蒸肉粉: 50g",
-        "细辣椒粉: 50g",
-        "白胡椒粉：5g",
-        "五花肉：50g",
-        "姜蒜：20g",
-        "盐：10g",
-        "食用油：10g",
-        "开水：100g"
-      ],
-      "steps": [
-        "将糯米粉、粘米粉、蒸肉粉、细辣椒粉、5 克盐、白胡椒粉倒一起搅匀",
-        "鸭子让热心摊主剁成蒸煮块，姜切片，蒜子剥皮，五花肉切片即可",
-        "热锅凉油煸炒五花肉出油，再加食用油烧热，下入鸭子煸炒",
-        "鸭子煸炒到表皮焦变色，下入姜蒜和盐继续煸炒香味",
-        "关小火倒入米粉翻炒，鸭肉均匀裹满米粉子，加入开水，少量多次的加，边加边翻炒",
-        "翻炒鸭肉和米粉有湿感，铲出入碗中，高压锅放水蒸 20-25 分钟",
-        "出锅前撒点葱花即可享用了"
-      ],
-      "nutrition": {
-        "calories": "1332 大卡"
-      },
-      "videoTutorials": {
-        "platforms": [
-          {
-            "key": "bilibili",
-            "name": "哔哩哔哩",
-            "searchUrl": "https://search.bilibili.com/all?keyword=%E6%B9%98%E7%A5%81%E7%B1%B3%E5%A4%AB%E9%B8%AD%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
-          },
-          {
-            "key": "douyin",
-            "name": "抖音",
-            "searchUrl": "https://www.douyin.com/search/%E6%B9%98%E7%A5%81%E7%B1%B3%E5%A4%AB%E9%B8%AD%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
-          }
-        ]
-      },
-      "source": {
-        "name": "HowToCook",
-        "repository": "Anduin2017/HowToCook",
-        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
-        "license": "Unlicense",
-        "recipePath": "dishes/meat_dish/湘祁米夫鸭/湘祁米夫鸭.md",
-        "imagePath": "dishes/meat_dish/湘祁米夫鸭/湘祁米夫鸭.jpg",
-        "imageCrop": [
-          0.05,
-          0.06,
-          0.9,
-          0.86
-        ],
-        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E6%B9%98%E7%A5%81%E7%B1%B3%E5%A4%AB%E9%B8%AD/%E6%B9%98%E7%A5%81%E7%B1%B3%E5%A4%AB%E9%B8%AD.md"
-      }
-    },
-    {
       "id": 2145,
       "name": "小炒黄牛肉",
       "image": "/images/dishes/htc-2145.jpg",
@@ -4958,6 +6301,95 @@
       }
     },
     {
+      "id": 2149,
+      "name": "小酥肉",
+      "image": "/images/dishes/htc-2149.jpg",
+      "category": "荤菜",
+      "taste": "咸鲜",
+      "cookingMethod": "炒制",
+      "difficulty": "普通",
+      "cookingTime": "70分钟",
+      "servings": "",
+      "ingredients": [
+        "去皮猪肉",
+        "鸡蛋",
+        "红薯淀粉",
+        "面粉",
+        "姜",
+        "小葱",
+        "花椒碎",
+        "十三香",
+        "白胡椒粉",
+        "料酒",
+        "生抽",
+        "盐",
+        "食用油",
+        "清水"
+      ],
+      "preparation": [
+        "去皮猪肉 500g",
+        "鸡蛋 2个",
+        "红薯淀粉 120g",
+        "面粉 30g",
+        "姜 20g",
+        "小葱 15g",
+        "花椒碎 4g",
+        "十三香 1g",
+        "白胡椒粉 1g",
+        "料酒 15ml",
+        "生抽 8ml",
+        "盐 4g",
+        "食用油 约700ml（炸制后大部分会剩余）",
+        "清水 80ml"
+      ],
+      "steps": [
+        "姜切丝，小葱切段，与清水和料酒一起抓揉 2 分钟，静置 5 分钟后滤出葱姜水。",
+        "猪肉切成约 1cm 粗、6cm 长的条，加入盐、生抽、白胡椒粉、十三香和花椒碎抓匀。",
+        "葱姜水分 2-3 次加入肉中，每次搅拌至吸收后再加；盖好后冷藏腌制 30 分钟。",
+        "鸡蛋打散，加入红薯淀粉和面粉调成浓稠面糊，再与肉条充分拌匀。",
+        "炸锅倒入食用油，加热至约 160°C；肉条逐根下锅并分批炸制，约 4-5 分钟，至表面浅黄且肉心熟透后捞出。",
+        "油温升至约 185°C，将酥肉复炸 20-30 秒至金黄酥脆，立即捞出沥油。",
+        "静置 2 分钟后掰开最粗的一条，确认中心没有粉红色再食用。"
+      ],
+      "advanceTime": "猪肉需冷藏腌制 30 分钟",
+      "nutrition": {
+        "calories": "1939 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E5%B0%8F%E9%85%A5%E8%82%89%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E5%B0%8F%E9%85%A5%E8%82%89%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/meat_dish/小酥肉.md",
+        "imagePath": "File:Freshippo crispy pork tenderloin.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Freshippo crispy pork tenderloin.jpg",
+          "author": "Fumikas Sagisavas",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Freshippo%20crispy%20pork%20tenderloin.jpg",
+          "modifications": "resized and re-encoded as JPEG"
+        },
+        "editorialCorrections": 37,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E5%B0%8F%E9%85%A5%E8%82%89.md"
+      }
+    },
+    {
       "id": 2150,
       "name": "新疆大盘鸡",
       "image": "/images/dishes/htc-2150.jpg",
@@ -5019,80 +6451,6 @@
         "recipePath": "dishes/meat_dish/新疆大盘鸡/新疆大盘鸡.md",
         "imagePath": "dishes/meat_dish/新疆大盘鸡/大盘鸡.jpeg",
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E6%96%B0%E7%96%86%E5%A4%A7%E7%9B%98%E9%B8%A1/%E6%96%B0%E7%96%86%E5%A4%A7%E7%9B%98%E9%B8%A1.md"
-      }
-    },
-    {
-      "id": 2151,
-      "name": "血浆鸭",
-      "image": "/images/dishes/htc-2151.jpg",
-      "category": "荤菜",
-      "taste": "香辣",
-      "cookingMethod": "炒制",
-      "difficulty": "复杂",
-      "cookingTime": "120分钟",
-      "servings": "每份（建议 2-4 人份）：",
-      "ingredients": [
-        "鲜仔鸭肉",
-        "鲜鸭血（宰杀鸭子时加醋接鸭血，用筷子顺时针搅拌防凝固）",
-        "姜",
-        "蒜仔",
-        "葱",
-        "辣椒",
-        "酒（或者白酒、啤酒、米酒皆可）",
-        "生抽",
-        "料酒",
-        "盐",
-        "鸡精"
-      ],
-      "preparation": [
-        "鲜仔鸭肉 2000g",
-        "鲜鸭血 250ml",
-        "姜 6 片 （根据个人吃辣喜好程度可多放 1-3 片姜）",
-        "蒜仔 6 瓣",
-        "香葱 2 根，切好备用",
-        "辣椒 1000g（根据个人吃辣喜好程度可选青椒，线椒，美人椒等，喜欢吃辣可增加 5-8 个小米辣或朝天椒，切好备用）",
-        "高度白酒 50ml + 水 150ml",
-        "啤酒 200ml",
-        "米酒 200ml",
-        "生抽 10ml",
-        "料酒 30ml",
-        "盐 8g",
-        "鸡精 5g"
-      ],
-      "steps": [
-        "鲜仔鸭肉切成约 3cm 小块，加料酒、姜片，去除血水。",
-        "炒锅烧热，放入约 100ml 食用油，大火待油烧开，放入腌制好的鲜鸭肉，不断翻炒。",
-        "待鸭肉完全变色（肉眼可见泛白），放入酒，再加入 200ml 开水，刚好淹没鸭肉即可，盖上锅盖中火煮 15 分钟。",
-        "水开之后，打开锅盖放入姜蒜，翻炒一遍，盖上锅盖持续加热 10 分钟。",
-        "打开锅盖放入辣椒，不断翻炒，待至肉眼可见辣椒炒软，放入鲜鸭血，此时需要不断翻炒，确保每块鸭肉和每片辣椒都有鸭血的浸润（此乃血浆鸭的精髓）。",
-        "翻炒至肉眼可见鸭血均为黑色，加入盐，鸡精，香葱，（喜欢食用山胡椒油的朋友也可以在此时放入 3-6 滴山胡椒油）再次翻炒一到二次即可。",
-        "出锅盛盘，上桌食用。"
-      ],
-      "nutrition": {
-        "calories": "2482 大卡"
-      },
-      "videoTutorials": {
-        "platforms": [
-          {
-            "key": "bilibili",
-            "name": "哔哩哔哩",
-            "searchUrl": "https://search.bilibili.com/all?keyword=%E8%A1%80%E6%B5%86%E9%B8%AD%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
-          },
-          {
-            "key": "douyin",
-            "name": "抖音",
-            "searchUrl": "https://www.douyin.com/search/%E8%A1%80%E6%B5%86%E9%B8%AD%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
-          }
-        ]
-      },
-      "source": {
-        "name": "HowToCook",
-        "repository": "Anduin2017/HowToCook",
-        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
-        "license": "Unlicense",
-        "recipePath": "dishes/meat_dish/血浆鸭/血浆鸭.md",
-        "imagePath": "dishes/meat_dish/血浆鸭/血浆鸭(微辣).jpg",
-        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E8%A1%80%E6%B5%86%E9%B8%AD/%E8%A1%80%E6%B5%86%E9%B8%AD.md"
       }
     },
     {
@@ -5419,6 +6777,94 @@
       }
     },
     {
+      "id": 2161,
+      "name": "孜然牛肉",
+      "image": "/images/dishes/htc-2161.jpg",
+      "category": "荤菜",
+      "taste": "咸鲜",
+      "cookingMethod": "炒制",
+      "difficulty": "普通",
+      "cookingTime": "30分钟",
+      "servings": "",
+      "ingredients": [
+        "牛里脊或牛肩肉",
+        "青椒",
+        "洋葱",
+        "小米椒（可选）",
+        "孜然粒",
+        "小葱",
+        "生抽",
+        "料酒",
+        "玉米淀粉",
+        "食用油",
+        "盐"
+      ],
+      "preparation": [
+        "牛里脊或牛肩肉 300g",
+        "青椒 2个（约160g）",
+        "洋葱 半个（约100g）",
+        "小米椒 2个（可选）",
+        "孜然粒 8g",
+        "小葱 2根（约10g）",
+        "生抽 10ml",
+        "料酒 10ml",
+        "玉米淀粉 8g",
+        "食用油 20ml",
+        "盐 2g"
+      ],
+      "steps": [
+        "牛肉逆着纹理切约 3mm 薄片；青椒和洋葱切丝，小米椒切圈，小葱切段。",
+        "牛肉加入生抽、料酒、玉米淀粉和 5ml 食用油抓匀，冷藏腌制 15 分钟。",
+        "孜然粒用擀面杖轻轻压碎，保留部分颗粒。",
+        "炒锅中大火加热，倒入剩余食用油；放入牛肉迅速摊开，翻炒至刚变色后盛出。",
+        "锅中放入洋葱、青椒、小米椒和葱白，大火翻炒 1-2 分钟至断生。",
+        "放回牛肉，加入孜然和盐，大火翻炒约 30 秒；确认牛肉熟透后立即关火，撒葱绿即可。"
+      ],
+      "advanceTime": "牛肉需冷藏腌制 15 分钟",
+      "nutrition": {
+        "calories": "612 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E5%AD%9C%E7%84%B6%E7%89%9B%E8%82%89%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E5%AD%9C%E7%84%B6%E7%89%9B%E8%82%89%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/meat_dish/孜然牛肉.md",
+        "imagePath": "File:Sanxia Renjia, Fitzrovia, London (5561016228).jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Sanxia Renjia, Fitzrovia, London (5561016228).jpg",
+          "author": "Ewan Munro",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Sanxia%20Renjia%2C%20Fitzrovia%2C%20London%20(5561016228).jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.15,
+          0.02,
+          0.76,
+          0.94
+        ],
+        "editorialCorrections": 30,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/meat_dish/%E5%AD%9C%E7%84%B6%E7%89%9B%E8%82%89.md"
+      }
+    },
+    {
       "id": 2162,
       "name": "淄博烧烤",
       "image": "/images/dishes/htc-2162.jpg",
@@ -5634,142 +7080,6 @@
       }
     },
     {
-      "id": 2166,
-      "name": "陈皮排骨汤",
-      "image": "/images/dishes/htc-2166.jpg",
-      "category": "汤粥",
-      "taste": "清淡",
-      "cookingMethod": "炖煮",
-      "difficulty": "普通",
-      "cookingTime": "120分钟",
-      "servings": "每份：",
-      "ingredients": [
-        "排骨",
-        "陈皮",
-        "西洋参",
-        "石斛",
-        "玉竹",
-        "麦冬",
-        "煲汤盅",
-        "盐"
-      ],
-      "preparation": [
-        "排骨，用猪骨也替代也可，4-5 块",
-        "陈皮（一般选用 8-20 年制），一般 1 块陈皮是 3 瓣，取 1 瓣即可",
-        "西洋参（又名花旗参），9 片",
-        "石斛， 6 颗",
-        "玉竹， 5 片",
-        "麦冬， 7 个",
-        "煲汤盅，按 1 人份",
-        "食盐，5g"
-      ],
-      "steps": [
-        "排骨用热水过一边，去血水",
-        "陈皮、麦冬、玉竹、石斛和西洋参，冲洗干净即可",
-        "煲汤盅洗干净",
-        "打开煲汤盅，先放入排骨在底部，然后依次放入陈皮、麦冬、玉竹、石斛和西洋参",
-        "加入热水进煲汤盅，水不宜太满",
-        "煲汤容器加入水，炖煮 1.5 小时即可",
-        "加入食盐，趁热饮用"
-      ],
-      "nutrition": {
-        "calories": "365 大卡"
-      },
-      "videoTutorials": {
-        "platforms": [
-          {
-            "key": "bilibili",
-            "name": "哔哩哔哩",
-            "searchUrl": "https://search.bilibili.com/all?keyword=%E9%99%88%E7%9A%AE%E6%8E%92%E9%AA%A8%E6%B1%A4%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
-          },
-          {
-            "key": "douyin",
-            "name": "抖音",
-            "searchUrl": "https://www.douyin.com/search/%E9%99%88%E7%9A%AE%E6%8E%92%E9%AA%A8%E6%B1%A4%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
-          }
-        ]
-      },
-      "source": {
-        "name": "HowToCook",
-        "repository": "Anduin2017/HowToCook",
-        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
-        "license": "Unlicense",
-        "recipePath": "dishes/soup/陈皮排骨汤/陈皮排骨汤.md",
-        "imagePath": "dishes/soup/陈皮排骨汤/陈皮排骨汤.jpg",
-        "imageCrop": [
-          0.02,
-          0.52,
-          0.62,
-          0.46
-        ],
-        "editorialCorrections": 1,
-        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/soup/%E9%99%88%E7%9A%AE%E6%8E%92%E9%AA%A8%E6%B1%A4/%E9%99%88%E7%9A%AE%E6%8E%92%E9%AA%A8%E6%B1%A4.md"
-      }
-    },
-    {
-      "id": 2168,
-      "name": "勾芡香菇汤",
-      "image": "/images/dishes/htc-2168.jpg",
-      "category": "汤粥",
-      "taste": "清淡",
-      "cookingMethod": "炖煮",
-      "difficulty": "普通",
-      "cookingTime": "25分钟",
-      "servings": "每份：",
-      "ingredients": [
-        "香菇",
-        "香葱",
-        "食用油",
-        "食用盐",
-        "鸡精",
-        "生粉"
-      ],
-      "preparation": [
-        "鲜香菇 2 朵",
-        "香葱 0.5 根",
-        "鸡精 3 g",
-        "食用油 10 ml",
-        "食用盐 3 g",
-        "开水 350 ml",
-        "生粉 10 g"
-      ],
-      "steps": [
-        "香菇切片（每片厚度 0.5-1 cm,厚点相对薄点更有嚼劲），放入大碗中，倒入 2g 食用盐 浸泡 15 分钟",
-        "生粉倒入小碗中，加入 50ml 水，搅拌生粉直至融化没有颗粒（即水淀粉）",
-        "倒掉碗中的盐水，适当去掉香菇本身的水分（方便下一步煎炸）【可选】",
-        "小火，倒入油，待油开始冒小泡（小火 30s ，看每个锅的功率），倒入香菇，每面煎 10s 【可选】",
-        "倒入开水 300ml ，调中火再煮 3-5 分钟",
-        "倒入水淀粉，适当搅拌锅中汤汁后，加入 3g 盐、3g 鸡精，最后撒上葱花出锅"
-      ],
-      "nutrition": {
-        "calories": "146 大卡"
-      },
-      "videoTutorials": {
-        "platforms": [
-          {
-            "key": "bilibili",
-            "name": "哔哩哔哩",
-            "searchUrl": "https://search.bilibili.com/all?keyword=%E5%8B%BE%E8%8A%A1%E9%A6%99%E8%8F%87%E6%B1%A4%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
-          },
-          {
-            "key": "douyin",
-            "name": "抖音",
-            "searchUrl": "https://www.douyin.com/search/%E5%8B%BE%E8%8A%A1%E9%A6%99%E8%8F%87%E6%B1%A4%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
-          }
-        ]
-      },
-      "source": {
-        "name": "HowToCook",
-        "repository": "Anduin2017/HowToCook",
-        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
-        "license": "Unlicense",
-        "recipePath": "dishes/soup/勾芡香菇汤/勾芡香菇汤.md",
-        "imagePath": "dishes/soup/勾芡香菇汤/3.jpeg",
-        "editorialCorrections": 1,
-        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/soup/%E5%8B%BE%E8%8A%A1%E9%A6%99%E8%8F%87%E6%B1%A4/%E5%8B%BE%E8%8A%A1%E9%A6%99%E8%8F%87%E6%B1%A4.md"
-      }
-    },
-    {
       "id": 2171,
       "name": "菌菇炖乳鸽",
       "image": "/images/dishes/htc-2171.jpg",
@@ -5838,6 +7148,446 @@
       }
     },
     {
+      "id": 2172,
+      "name": "腊八粥",
+      "image": "/images/dishes/htc-2172.jpg",
+      "category": "汤粥",
+      "taste": "清淡",
+      "cookingMethod": "炖煮",
+      "difficulty": "复杂",
+      "cookingTime": "120分钟",
+      "servings": "对于一人份（三小碗）的情况，一份的分量是：",
+      "ingredients": [
+        "大米",
+        "糯米",
+        "黑米",
+        "小米",
+        "红豆",
+        "花生",
+        "莲子",
+        "红枣",
+        "桂圆干",
+        "冰糖（可选）",
+        "清水"
+      ],
+      "tools": [
+        "小碗若干"
+      ],
+      "preparation": [
+        "大米 50g",
+        "糯米 40g",
+        "黑米 30g",
+        "小米 30g",
+        "红豆 30g",
+        "花生 25g",
+        "莲子 20g",
+        "红枣 30g",
+        "桂圆干 20g",
+        "冰糖 0-30g",
+        "清水 1600ml"
+      ],
+      "steps": [
+        "红豆、花生和莲子淘洗干净，加入足量清水，盖好后放入冰箱冷藏浸泡一晚。",
+        "大米、糯米、黑米和小米轻轻淘洗 1-2 次；红枣洗净去核，桂圆干快速冲洗。",
+        "泡好的豆类和莲子沥水，与 1600ml 清水放入锅中，大火煮开后转小火煮 30 分钟。",
+        "加入全部米类，重新煮开后将锅盖留一条缝，小火煮 45-60 分钟；每隔 10 分钟从锅底搅动一次。",
+        "加入红枣和桂圆干，再煮 15 分钟；粥过稠时少量补充热水。",
+        "确认豆类和米粒完全软烂后，按口味加入冰糖，搅拌至溶化即可。"
+      ],
+      "advanceTime": "红豆、花生和莲子需提前冷藏浸泡一晚",
+      "nutrition": {
+        "calories": "约1200大卡（整锅，约4份）"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E8%85%8A%E5%85%AB%E7%B2%A5%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B",
+            "references": [
+              {
+                "title": "全网最正宗腊八粥做法，香甜软糯一次成功！\\哔哩哔哩\\bilibili",
+                "url": "https://www.bilibili.com/video/BV1Mt411H7by",
+                "platform": "bilibili",
+                "source": "HowToCook 上游参考"
+              }
+            ]
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E8%85%8A%E5%85%AB%E7%B2%A5%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/soup/腊八粥.md",
+        "imagePath": "File:Laba Congee at Hongzhuangyuan, Shangdi (20220110173848).jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Laba Congee at Hongzhuangyuan, Shangdi (20220110173848).jpg",
+          "author": "N509FZ",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Laba%20Congee%20at%20Hongzhuangyuan%2C%20Shangdi%20(20220110173848).jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.05,
+          0.08,
+          0.7,
+          0.84
+        ],
+        "editorialCorrections": 31,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/soup/%E8%85%8A%E5%85%AB%E7%B2%A5.md"
+      }
+    },
+    {
+      "id": 2178,
+      "name": "皮蛋瘦肉粥",
+      "image": "/images/dishes/htc-2178.jpg",
+      "category": "汤粥",
+      "taste": "清淡",
+      "cookingMethod": "炖煮",
+      "difficulty": "普通",
+      "cookingTime": "75分钟",
+      "servings": "",
+      "ingredients": [
+        "大米",
+        "瘦肉",
+        "皮蛋",
+        "生姜",
+        "小葱",
+        "香菜（可选）",
+        "生菜（可选）",
+        "生抽",
+        "蚝油",
+        "盐",
+        "白胡椒粉",
+        "食用油",
+        "清水"
+      ],
+      "tools": [
+        "小碗若干"
+      ],
+      "preparation": [
+        "大米 120g",
+        "清水 1L",
+        "瘦肉 100g",
+        "皮蛋 2个",
+        "生姜 10g",
+        "小葱 1根（约5g）",
+        "香菜 1根（约5g，可选）",
+        "生菜 4片（约80g，可选）",
+        "生抽 5ml",
+        "蚝油 5ml",
+        "盐 2g",
+        "白胡椒粉 1g",
+        "食用油 10ml"
+      ],
+      "steps": [
+        "大米淘洗干净，与 1L 清水放入电饭锅，选择煮粥模式；用普通锅时，煮开后转小火并不时搅拌，煮 45-60 分钟至米粒开花。",
+        "瘦肉切细丝，加入生抽、蚝油和食用油抓匀，盖好后冷藏腌制 10 分钟。",
+        "皮蛋去壳切小块，生姜切细丝；小葱、香菜和生菜洗净切碎。",
+        "粥底煮至黏稠并保持沸腾后，放入肉丝并迅速搅散，继续煮 5-8 分钟，确保肉丝完全变色熟透。",
+        "加入皮蛋和姜丝，再煮 3 分钟，用盐和白胡椒粉调味。",
+        "使用生菜时先放入粥中煮至变软；关火后撒小葱和香菜即可。"
+      ],
+      "nutrition": {
+        "calories": "776 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E7%9A%AE%E8%9B%8B%E7%98%A6%E8%82%89%E7%B2%A5%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E7%9A%AE%E8%9B%8B%E7%98%A6%E8%82%89%E7%B2%A5%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/soup/皮蛋瘦肉粥.md",
+        "imagePath": "File:A century eggs and Pork Congee from Chi Kee Congee Shop.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:A century eggs and Pork Congee from Chi Kee Congee Shop.jpg",
+          "author": "Peachyeung316",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:A_century_eggs_and_Pork_Congee_from_Chi_Kee_Congee_Shop.jpg",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f8/A_century_eggs_and_Pork_Congee_from_Chi_Kee_Congee_Shop.jpg",
+          "modifications": "cropped to the bowl, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.02,
+          0.2,
+          0.84,
+          0.78
+        ],
+        "editorialCorrections": 33,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/soup/%E7%9A%AE%E8%9B%8B%E7%98%A6%E8%82%89%E7%B2%A5.md"
+      }
+    },
+    {
+      "id": 2179,
+      "name": "生汆丸子汤",
+      "image": "/images/dishes/htc-2179.jpg",
+      "category": "汤粥",
+      "taste": "清淡",
+      "cookingMethod": "炖煮",
+      "difficulty": "复杂",
+      "cookingTime": "55分钟",
+      "servings": "每份：",
+      "ingredients": [
+        "猪前腿肉",
+        "鸡蛋清",
+        "土豆淀粉",
+        "小葱",
+        "姜",
+        "花椒",
+        "干木耳",
+        "粉丝",
+        "青菜",
+        "盐",
+        "白胡椒粉",
+        "香油",
+        "清水"
+      ],
+      "preparation": [
+        "猪前腿肉 300g（肥瘦约3:7）",
+        "鸡蛋清 1个",
+        "土豆淀粉 15g",
+        "小葱 2根（约10g）",
+        "姜 10g",
+        "花椒 1g",
+        "干木耳 10g",
+        "粉丝 50g",
+        "青菜 100g",
+        "盐 5g",
+        "白胡椒粉 1g",
+        "香油 2ml",
+        "清水 900ml（其中100ml制作葱姜水）"
+      ],
+      "steps": [
+        "干木耳用冷水泡发约 45 分钟，去掉硬根并洗净；粉丝按包装说明泡软，青菜洗净。",
+        "5g 小葱、姜和花椒加入 100ml 清水，抓揉后静置 10 分钟，滤出葱姜水；剩余小葱切葱花。",
+        "猪肉剁成肉末，加入 3g 盐和白胡椒粉，顺一个方向搅拌。葱姜水分次加入，每次搅至吸收后再加。",
+        "加入鸡蛋清和土豆淀粉，继续顺同一方向搅拌至肉馅黏稠上劲。",
+        "锅中加入剩余清水和木耳，烧开后转小火，使汤面保持微沸。",
+        "手蘸清水，将肉馅挤成直径约 3cm 的丸子，用勺子逐个放入锅中；全部下锅后转中火。",
+        "丸子浮起后再煮 3-5 分钟，加入粉丝和青菜煮熟；切开最大的丸子，确认中心完全熟透。",
+        "加入剩余盐调味，盛入碗中，淋香油并撒葱花即可。"
+      ],
+      "advanceTime": "干木耳需提前用冷水泡发约 45 分钟",
+      "nutrition": {
+        "calories": "857 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E7%94%9F%E6%B1%86%E4%B8%B8%E5%AD%90%E6%B1%A4%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B",
+            "references": [
+              {
+                "title": "生汆丸子汤，吃的就是一个鲜、嫩、弹，学会打丸子的这些技巧，这碗汤才地道",
+                "url": "https://www.bilibili.com/video/BV1Ga411C7zg",
+                "platform": "bilibili",
+                "source": "HowToCook 上游参考"
+              }
+            ]
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E7%94%9F%E6%B1%86%E4%B8%B8%E5%AD%90%E6%B1%A4%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/soup/生汆丸子汤.md",
+        "imagePath": "File:Pork Meat Ball Soup.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Pork Meat Ball Soup.jpg",
+          "author": "Sumit Surai",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Pork%20Meat%20Ball%20Soup.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.18,
+          0.08,
+          0.65,
+          0.85
+        ],
+        "editorialCorrections": 36,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/soup/%E7%94%9F%E6%B1%86%E4%B8%B8%E5%AD%90%E6%B1%A4.md"
+      }
+    },
+    {
+      "id": 2180,
+      "name": "西红柿鸡蛋汤",
+      "image": "/images/dishes/htc-2180.jpg",
+      "category": "汤粥",
+      "taste": "清淡",
+      "cookingMethod": "炖煮",
+      "difficulty": "简单",
+      "cookingTime": "15分钟",
+      "servings": "",
+      "ingredients": [
+        "西红柿",
+        "鸡蛋",
+        "小葱",
+        "姜",
+        "蒜",
+        "食用油",
+        "盐",
+        "香油",
+        "味精（可选）",
+        "清水"
+      ],
+      "preparation": [
+        "西红柿 1个（约200g）",
+        "鸡蛋 2个",
+        "小葱 1根（约5g）",
+        "姜 3g",
+        "蒜 1瓣（约5g）",
+        "食用油 10ml",
+        "盐 3g",
+        "香油 2ml",
+        "味精 0.5g（可选）",
+        "清水 600ml"
+      ],
+      "steps": [
+        "西红柿洗净切小块，小葱切葱花，姜和蒜切末。",
+        "鸡蛋打入碗中，充分搅散。",
+        "锅中火加热后倒入食用油，放入姜蒜末和葱白炒约 20 秒。",
+        "加入西红柿翻炒 1-2 分钟，至边缘变软并析出汁水。",
+        "倒入 600ml 清水并煮沸，加入盐。",
+        "保持汤面微沸，将蛋液细细淋入锅中，停 10 秒后用汤勺轻推形成蛋花。",
+        "再煮 30 秒后关火，加入味精和香油，撒葱绿即可。"
+      ],
+      "nutrition": {
+        "calories": "258 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E8%A5%BF%E7%BA%A2%E6%9F%BF%E9%B8%A1%E8%9B%8B%E6%B1%A4%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E9%B8%A1%E8%9B%8B%E6%B1%A4%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/soup/西红柿鸡蛋汤.md",
+        "imagePath": "File:Tomato and egg soup.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Tomato and egg soup.jpg",
+          "author": "NNU-10-HanRongrong",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Tomato_and_egg_soup.jpg",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/Tomato_and_egg_soup.jpg",
+          "modifications": "resized and re-encoded as JPEG"
+        },
+        "editorialCorrections": 28,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/soup/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E9%B8%A1%E8%9B%8B%E6%B1%A4.md"
+      }
+    },
+    {
+      "id": 2181,
+      "name": "小米粥",
+      "image": "/images/dishes/htc-2181.jpg",
+      "category": "汤粥",
+      "taste": "清淡",
+      "cookingMethod": "炖煮",
+      "difficulty": "简单",
+      "cookingTime": "35分钟",
+      "servings": "",
+      "ingredients": [
+        "小米",
+        "清水"
+      ],
+      "preparation": [
+        "小米 100g",
+        "清水 1200ml（喜欢稀粥可增加至1500ml）"
+      ],
+      "steps": [
+        "小米放入碗中，用清水轻轻淘洗 1-2 次，不要用力搓洗，沥干备用。",
+        "锅中加入清水并大火烧开，再倒入小米，立即搅拌防止粘底。",
+        "重新煮开后保持中大火 5 分钟，期间搅拌 1-2 次并注意防止溢锅。",
+        "转小火煮 20-25 分钟，锅盖留一条缝，并每隔几分钟搅拌一次。",
+        "米粒开花、粥体黏稠后关火，静置 5 分钟即可。"
+      ],
+      "nutrition": {
+        "calories": "362 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E5%B0%8F%E7%B1%B3%E7%B2%A5%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E5%B0%8F%E7%B1%B3%E7%B2%A5%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/soup/小米粥.md",
+        "imagePath": "File:A BOWL OF FOXTAIL MILLET CONGEE.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:A BOWL OF FOXTAIL MILLET CONGEE.jpg",
+          "author": "Dinkun Chen",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:A_BOWL_OF_FOXTAIL_MILLET_CONGEE.jpg",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/20/A_BOWL_OF_FOXTAIL_MILLET_CONGEE.jpg",
+          "modifications": "resized and re-encoded as JPEG"
+        },
+        "editorialCorrections": 10,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/soup/%E5%B0%8F%E7%B1%B3%E7%B2%A5.md"
+      }
+    },
+    {
       "id": 2182,
       "name": "羊肉汤",
       "image": "/images/dishes/htc-2182.jpg",
@@ -5901,7 +7651,22 @@
         "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
         "license": "Unlicense",
         "recipePath": "dishes/soup/羊肉汤/羊肉汤.md",
-        "imagePath": "dishes/soup/羊肉汤/羊肉汤.jpg",
+        "imagePath": "File:Shanxian Mutton Soup in Beijing (20230224111441).jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Shanxian Mutton Soup in Beijing (20230224111441).jpg",
+          "author": "N509FZ",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Shanxian%20Mutton%20Soup%20in%20Beijing%20(20230224111441).jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.14,
+          0.05,
+          0.64,
+          0.9
+        ],
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/soup/%E7%BE%8A%E8%82%89%E6%B1%A4/%E7%BE%8A%E8%82%89%E6%B1%A4.md"
       }
     },
@@ -6046,46 +7811,54 @@
       }
     },
     {
-      "id": 2185,
-      "name": "朱雀汤",
-      "image": "/images/dishes/htc-2185.jpg",
+      "id": 2186,
+      "name": "紫菜蛋花汤",
+      "image": "/images/dishes/htc-2186.jpg",
       "category": "汤粥",
       "taste": "清淡",
       "cookingMethod": "炖煮",
       "difficulty": "简单",
-      "cookingTime": "10分钟",
+      "cookingTime": "15分钟",
       "servings": "按照 1 人份的份量：",
       "ingredients": [
+        "干紫菜",
         "鸡蛋",
-        "香油（芝麻油）",
-        "白糖",
-        "水"
+        "小葱",
+        "虾皮（可选）",
+        "盐",
+        "香油",
+        "清水"
       ],
       "preparation": [
-        "一个鸡蛋",
-        "500ml 水",
-        "20 克白糖（根据个人口味调整）",
-        "2ml 香油"
+        "干紫菜 8g",
+        "鸡蛋 2个",
+        "小葱 1根（约5g）",
+        "虾皮 5g（可选）",
+        "盐 3g",
+        "香油 2ml",
+        "清水 700ml"
       ],
       "steps": [
-        "鸡蛋在碗中打散，再倒入香油。",
-        "水烧开后，在沸腾状态下快速倒入盛有鸡蛋的碗中。",
-        "放入白糖。"
+        "紫菜用清水快速漂洗并沥干；鸡蛋打散，小葱切葱花。",
+        "锅中加入清水和虾皮，大火烧开。",
+        "放入紫菜，用筷子拨散，重新煮开后加入盐。",
+        "保持汤面微沸，将蛋液细细淋入锅中，停 10 秒后用汤勺轻推形成蛋花。",
+        "再煮 30 秒后关火，淋入香油并撒葱花即可。"
       ],
       "nutrition": {
-        "calories": "168 大卡"
+        "calories": "217 大卡"
       },
       "videoTutorials": {
         "platforms": [
           {
             "key": "bilibili",
             "name": "哔哩哔哩",
-            "searchUrl": "https://search.bilibili.com/all?keyword=%E6%9C%B1%E9%9B%80%E6%B1%A4%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E7%B4%AB%E8%8F%9C%E8%9B%8B%E8%8A%B1%E6%B1%A4%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
           },
           {
             "key": "douyin",
             "name": "抖音",
-            "searchUrl": "https://www.douyin.com/search/%E6%9C%B1%E9%9B%80%E6%B1%A4%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+            "searchUrl": "https://www.douyin.com/search/%E7%B4%AB%E8%8F%9C%E8%9B%8B%E8%8A%B1%E6%B1%A4%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
           }
         ]
       },
@@ -6094,15 +7867,19 @@
         "repository": "Anduin2017/HowToCook",
         "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
         "license": "Unlicense",
-        "recipePath": "dishes/soup/朱雀汤/朱雀汤.md",
-        "imagePath": "dishes/soup/朱雀汤/朱雀汤.jpg",
-        "imageCrop": [
-          0.04,
-          0.02,
-          0.92,
-          0.94
-        ],
-        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/soup/%E6%9C%B1%E9%9B%80%E6%B1%A4/%E6%9C%B1%E9%9B%80%E6%B1%A4.md"
+        "recipePath": "dishes/soup/紫菜蛋花汤.md",
+        "imagePath": "File:Egg Drop Soup (蛋花湯）.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Egg Drop Soup (蛋花湯）.jpg",
+          "author": "Ralff Nestor Nacor",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Egg%20Drop%20Soup%20(%E8%9B%8B%E8%8A%B1%E6%B9%AF%EF%BC%89.jpg",
+          "modifications": "resized and re-encoded as JPEG"
+        },
+        "editorialCorrections": 20,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/soup/%E7%B4%AB%E8%8F%9C%E8%9B%8B%E8%8A%B1%E6%B1%A4.md"
       }
     },
     {
@@ -6250,6 +8027,176 @@
         "recipePath": "dishes/staple/炒凉粉/炒凉粉.md",
         "imagePath": "dishes/staple/炒凉粉/chaoliangfen.jpg",
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/staple/%E7%82%92%E5%87%89%E7%B2%89/%E7%82%92%E5%87%89%E7%B2%89.md"
+      }
+    },
+    {
+      "id": 2193,
+      "name": "葱油拌面",
+      "image": "/images/dishes/htc-2193.jpg",
+      "category": "主食",
+      "taste": "咸鲜",
+      "cookingMethod": "煮制",
+      "difficulty": "简单",
+      "cookingTime": "20分钟",
+      "servings": "葱油酱汁可以一次制作多份的量，分次使用。以下提供制作葱油酱汁的基础量，以及每份面条所需的葱油酱汁量。",
+      "ingredients": [
+        "干面条",
+        "小葱",
+        "生抽",
+        "老抽",
+        "白糖"
+      ],
+      "preparation": [
+        "小葱 100 g",
+        "食用油 100 ml",
+        "生抽 60 ml",
+        "老抽 20 ml",
+        "白糖 15 g",
+        "干面条 80 g （约相当于 150 g 湿面条）",
+        "葱油酱汁 15 ml"
+      ],
+      "steps": [
+        "将 小葱 洗净，切成长段（约 5-7 cm）。葱白和葱绿可以分开。",
+        "锅中加入 100 ml 食用油，中火烧热。先放入葱白段，煸炒至微黄。",
+        "加入葱绿段，转小火，继续煸炒。",
+        "保持小火，耐心煸炒约 15-20 分钟，直至葱段变得焦黄酥脆。",
+        "将焦黄的葱段捞出（葱油保留在锅中）。",
+        "在锅中的葱油中，加入 60 ml 生抽，20 ml 老抽，15 g 白糖。小火加热并搅拌，约 1 分钟，至糖溶解，酱汁混合均匀。立即关火。将制作好的葱油酱汁倒入容器中，放凉后密封保存。",
+        "取 80 g 干面条。",
+        "锅中加入 1000 ml 饮用水，大火烧开。",
+        "放入 面条，根据面条包装说明，煮至熟透（通常 3-8 分钟，以包装说明为准）。",
+        "将 煮好的 面条 捞出，沥干水分，放入碗中。",
+        "在装有 面条 的碗中，加入 15 ml 之前做好的 葱油酱汁。",
+        "可以加入之前炸好的葱段（可选）。",
+        "用 筷子 快速搅拌均匀，即可食用。"
+      ],
+      "nutrition": {
+        "calories": "355 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E8%91%B1%E6%B2%B9%E6%8B%8C%E9%9D%A2%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E8%91%B1%E6%B2%B9%E6%8B%8C%E9%9D%A2%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/staple/葱油拌面.md",
+        "imagePath": "File:Food 上海菜, 滬菜, 本幫菜, 上海, 中華人民共和國, 中國, Shanghai, People's Republic of China, PRC, China (30427507516).jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Food 上海菜, 滬菜, 本幫菜, 上海, 中華人民共和國, 中國, Shanghai, People's Republic of China, PRC, China (30427507516).jpg",
+          "author": "bryan...",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Food%20%E4%B8%8A%E6%B5%B7%E8%8F%9C%2C%20%E6%BB%AC%E8%8F%9C%2C%20%E6%9C%AC%E5%B9%AB%E8%8F%9C%2C%20%E4%B8%8A%E6%B5%B7%2C%20%E4%B8%AD%E8%8F%AF%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9C%8B%2C%20%E4%B8%AD%E5%9C%8B%2C%20Shanghai%2C%20People's%20Republic%20of%20China%2C%20PRC%2C%20China%20(30427507516).jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0,
+          0.16,
+          0.78,
+          0.84
+        ],
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/staple/%E8%91%B1%E6%B2%B9%E6%8B%8C%E9%9D%A2.md"
+      }
+    },
+    {
+      "id": 2195,
+      "name": "蛋炒饭",
+      "image": "/images/dishes/htc-2195.jpg",
+      "category": "主食",
+      "taste": "咸鲜",
+      "cookingMethod": "煮制",
+      "difficulty": "普通",
+      "cookingTime": "25分钟",
+      "servings": "每次制作前需要确定计划做几份。一份正好够 1-2 个人食用",
+      "ingredients": [
+        "冷米饭",
+        "鸡蛋",
+        "火腿肠",
+        "胡萝卜（可选）",
+        "黄瓜（可选）",
+        "小葱",
+        "食用油",
+        "盐",
+        "白胡椒粉",
+        "生抽"
+      ],
+      "preparation": [
+        "冷米饭 500ml（约350g）",
+        "鸡蛋 2个",
+        "火腿肠 2根（约80g）",
+        "胡萝卜 30g（可选）",
+        "黄瓜 30g（可选）",
+        "小葱 1根（约5g）",
+        "食用油 15ml",
+        "盐 3g",
+        "白胡椒粉 0.5g",
+        "生抽 5ml"
+      ],
+      "steps": [
+        "冷米饭提前用饭勺拨散；火腿肠、胡萝卜和黄瓜切小丁，小葱切葱花。",
+        "鸡蛋打入碗中搅散。",
+        "炒锅中火加热，倒入一半食用油；油面微微流动后倒入蛋液，快速炒至刚凝固，盛出备用。",
+        "锅中加入剩余食用油，放入火腿肠和胡萝卜，中大火翻炒约 1 分钟。",
+        "加入冷米饭，边炒边压散饭团，持续翻炒至米饭热透、颗粒分明。",
+        "加入生抽、盐和白胡椒粉翻匀，再放回鸡蛋，加入黄瓜丁和葱花翻炒 30 秒。",
+        "确认鸡蛋熟透、米饭热透后关火装盘。"
+      ],
+      "nutrition": {
+        "calories": "853 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E8%9B%8B%E7%82%92%E9%A5%AD%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E8%9B%8B%E7%82%92%E9%A5%AD%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/staple/蛋炒饭.md",
+        "imagePath": "File:Egg Fried Rice from a Chinese Home.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Egg Fried Rice from a Chinese Home.jpg",
+          "author": "Tofu fighting",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Egg_Fried_Rice_from_a_Chinese_Home.jpg",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/31/Egg_Fried_Rice_from_a_Chinese_Home.jpg",
+          "modifications": "resized and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.18,
+          0.08,
+          0.64,
+          0.82
+        ],
+        "editorialCorrections": 28,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/staple/%E8%9B%8B%E7%82%92%E9%A5%AD.md"
       }
     },
     {
@@ -6540,6 +8487,83 @@
       }
     },
     {
+      "id": 2206,
+      "name": "韭菜盒子",
+      "image": "/images/dishes/htc-2206.jpg",
+      "category": "主食",
+      "taste": "咸鲜",
+      "cookingMethod": "煮制",
+      "difficulty": "普通",
+      "cookingTime": "70分钟",
+      "servings": "每次制作前需要确定计划做几份。一份正好够 2 个人吃。",
+      "ingredients": [
+        "中筋面粉",
+        "韭菜",
+        "鸡蛋",
+        "虾仁",
+        "食用油",
+        "香油",
+        "盐",
+        "热水"
+      ],
+      "preparation": [
+        "中筋面粉 250g",
+        "约80°C热水 150ml",
+        "韭菜 300g",
+        "鸡蛋 3个",
+        "虾仁 100g",
+        "食用油 25ml",
+        "香油 10ml",
+        "盐 4g"
+      ],
+      "steps": [
+        "面粉中分次倒入热水，边倒边用筷子搅成絮状；稍凉后揉成光滑面团，盖好醒面 30 分钟。",
+        "韭菜洗净后彻底晾干并切碎；虾仁去虾线后切小丁。",
+        "鸡蛋加入 1g 盐打散。炒锅放 10ml 食用油，中火炒成细小蛋块，盛出并完全放凉。",
+        "韭菜先与香油拌匀，再加入鸡蛋、虾仁和剩余盐，包制前才混合均匀。",
+        "面团搓长后分成 8 个剂子，逐个擀成直径约 15cm 的圆皮；放入馅料，对折并将边缘捏紧。",
+        "平底锅加入剩余食用油，中小火放入韭菜盒子，每面煎 2-3 分钟至金黄。",
+        "沿锅边加入 30ml 清水，立即盖锅盖焖 2-3 分钟；水分收干后再翻面 30 秒，确认虾仁和蛋馅热透后出锅。"
+      ],
+      "advanceTime": "面团需醒面 30 分钟",
+      "nutrition": {
+        "calories": "794 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E9%9F%AD%E8%8F%9C%E7%9B%92%E5%AD%90%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E9%9F%AD%E8%8F%9C%E7%9B%92%E5%AD%90%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/staple/韭菜盒子.md",
+        "imagePath": "File:Jiucai Hezi at Dongsi Minfang Restaurant, Chongwenmen (20220215114852)-cropped.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Jiucai Hezi at Dongsi Minfang Restaurant, Chongwenmen (20220215114852)-cropped.jpg",
+          "author": "N509FZ",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Jiucai%20Hezi%20at%20Dongsi%20Minfang%20Restaurant%2C%20Chongwenmen%20(20220215114852)-cropped.jpg",
+          "modifications": "resized and re-encoded as JPEG"
+        },
+        "editorialCorrections": 25,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/staple/%E9%9F%AD%E8%8F%9C%E7%9B%92%E5%AD%90.md"
+      }
+    },
+    {
       "id": 2211,
       "name": "老友猪肉粉",
       "image": "/images/dishes/htc-2211.jpg",
@@ -6825,6 +8849,93 @@
       }
     },
     {
+      "id": 2221,
+      "name": "热干面",
+      "image": "/images/dishes/htc-2221.jpg",
+      "category": "主食",
+      "taste": "香辣",
+      "cookingMethod": "煮制",
+      "difficulty": "普通",
+      "cookingTime": "15分钟",
+      "servings": "每份：",
+      "ingredients": [
+        "碱水面",
+        "小葱",
+        "酸豆角",
+        "萝卜干",
+        "芝麻酱",
+        "蒜水",
+        "生抽",
+        "辣椒油（可选）",
+        "白胡椒粉",
+        "盐",
+        "鸡精（可选）",
+        "熟肉末（可选）",
+        "肉汤（可选）",
+        "温水"
+      ],
+      "preparation": [
+        "碱水面 250g",
+        "小葱 10g",
+        "酸豆角 20g",
+        "萝卜干 20g",
+        "芝麻酱 30g",
+        "温水 45ml（调芝麻酱用）",
+        "蒜水 15ml",
+        "生抽 5ml",
+        "辣椒油 0-10ml",
+        "白胡椒粉 0.5g",
+        "盐 1g",
+        "鸡精 0.5g（可选）",
+        "熟肉末 30g（可选）",
+        "肉汤 30ml（可选）"
+      ],
+      "steps": [
+        "小葱切葱花，酸豆角和萝卜干切碎；芝麻酱分次加入 45ml 温水，搅拌至顺滑且能够流动。",
+        "锅中水烧开后下碱水面，按包装标示时间煮至熟透；鲜碱水面通常需要 1-3 分钟，不要只按固定秒数判断。",
+        "面条捞出并充分沥水，趁热放入大碗。",
+        "加入调好的芝麻酱、蒜水、生抽、白胡椒粉和盐；使用鸡精、肉汤或辣椒油时一并加入，迅速拌匀。",
+        "放上酸豆角、萝卜干、葱花和熟肉末，拌匀即可。"
+      ],
+      "nutrition": {
+        "calories": "1341 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E7%83%AD%E5%B9%B2%E9%9D%A2%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E7%83%AD%E5%B9%B2%E9%9D%A2%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/staple/热干面.md",
+        "imagePath": "File:Hot Dry Noodles.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Hot Dry Noodles.jpg",
+          "author": "ZhengZhou",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Hot_Dry_Noodles.jpg",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Hot_Dry_Noodles.jpg",
+          "modifications": "resized and re-encoded as JPEG"
+        },
+        "editorialCorrections": 34,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/staple/%E7%83%AD%E5%B9%B2%E9%9D%A2.md"
+      }
+    },
+    {
       "id": 2225,
       "name": "陕西油泼面",
       "image": "/images/dishes/htc-2225.jpg",
@@ -6908,6 +9019,522 @@
         "imagePath": "dishes/staple/陕西油泼面/成品.png",
         "editorialCorrections": 10,
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/staple/%E9%99%95%E8%A5%BF%E6%B2%B9%E6%B3%BC%E9%9D%A2/%E9%99%95%E8%A5%BF%E6%B2%B9%E6%B3%BC%E9%9D%A2.md"
+      }
+    },
+    {
+      "id": 2227,
+      "name": "手工水饺",
+      "image": "/images/dishes/htc-2227.jpg",
+      "category": "主食",
+      "taste": "咸鲜",
+      "cookingMethod": "煮制",
+      "difficulty": "复杂",
+      "cookingTime": "100分钟",
+      "servings": "每份：",
+      "ingredients": [
+        "中筋面粉",
+        "冷水",
+        "猪肉末",
+        "韭菜",
+        "姜",
+        "小葱",
+        "生抽",
+        "蚝油",
+        "香油",
+        "盐",
+        "清水"
+      ],
+      "tools": [
+        "直径 30cm 以上的盆"
+      ],
+      "preparation": [
+        "中筋面粉 300g",
+        "冷水 160ml（和面用）",
+        "猪肉末 300g",
+        "韭菜 250g",
+        "姜 10g",
+        "小葱 10g",
+        "生抽 15ml",
+        "蚝油 10g",
+        "香油 10ml",
+        "盐 5g",
+        "清水 60ml（调馅用）"
+      ],
+      "steps": [
+        "面粉中分次加入 160ml 冷水，搅成絮状后揉成面团；盖好醒 20 分钟，再揉至光滑，继续醒 20 分钟。",
+        "姜和小葱切末；韭菜洗净后彻底晾干，切成约 5mm 小段。",
+        "猪肉末加入姜末、葱末、生抽、蚝油和 3g 盐，顺一个方向搅拌；60ml 清水分 3 次加入，每次搅至吸收。",
+        "韭菜先与香油拌匀，包制前再与肉馅和剩余盐混合。",
+        "醒好的面团搓成长条，分成约 40 个剂子；按扁后擀成中间稍厚、边缘稍薄的圆皮。",
+        "每张皮放适量馅料，对折并将边缘捏紧；包好的饺子间隔摆放并盖布防干。",
+        "大锅加入足量清水并烧开，分批下饺子后用漏勺沿锅底轻推防粘。",
+        "水再次沸腾后转中火，保持稳定沸腾 6-8 分钟；饺子鼓起浮在水面，切开一个确认肉馅完全熟透后捞出。"
+      ],
+      "advanceTime": "面团需分两次醒面，共约 40 分钟",
+      "nutrition": {
+        "calories": "1313 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E6%89%8B%E5%B7%A5%E6%B0%B4%E9%A5%BA%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E6%89%8B%E5%B7%A5%E6%B0%B4%E9%A5%BA%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/staple/手工水饺.md",
+        "imagePath": "File:Shui jiao.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Shui jiao.jpg",
+          "author": "lazy fri13th",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Shui%20jiao.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.08,
+          0.05,
+          0.84,
+          0.9
+        ],
+        "editorialCorrections": 32,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/staple/%E6%89%8B%E5%B7%A5%E6%B0%B4%E9%A5%BA.md"
+      }
+    },
+    {
+      "id": 2231,
+      "name": "西红柿鸡蛋挂面",
+      "image": "/images/dishes/htc-2231.jpg",
+      "category": "主食",
+      "taste": "咸鲜",
+      "cookingMethod": "煮制",
+      "difficulty": "简单",
+      "cookingTime": "20分钟",
+      "servings": "",
+      "ingredients": [
+        "挂面",
+        "西红柿",
+        "鸡蛋",
+        "小葱",
+        "青椒（可选）",
+        "食用油",
+        "盐",
+        "生抽",
+        "蚝油或鸡精",
+        "白砂糖（可选）",
+        "香油（可选）",
+        "清水"
+      ],
+      "preparation": [
+        "挂面 80g",
+        "西红柿 1个（约200g）",
+        "鸡蛋 2个",
+        "小葱 1根（约5g）",
+        "青椒 半个（约50g，可选）",
+        "食用油 20ml",
+        "盐 3g",
+        "生抽 5ml",
+        "蚝油 5g或鸡精 1g",
+        "白砂糖 2g（西红柿较酸时使用）",
+        "香油 2ml（可选）",
+        "清水 700ml"
+      ],
+      "steps": [
+        "小葱切葱花，西红柿切小块；使用青椒时去蒂去籽后切小块。",
+        "鸡蛋打入碗中充分搅散。",
+        "炒锅中火加热，倒入 15ml 食用油；油面微微流动时倒入蛋液，快速划散，刚凝固便盛出。",
+        "锅中加入剩余食用油和葱白炒香，放入西红柿和青椒翻炒至西红柿出汁。",
+        "加入生抽、白砂糖和约 100ml 清水，煮开后放回鸡蛋，加蚝油或鸡精，转中小火煮 2-3 分钟，最后加香油和葱绿。",
+        "另起锅加入约 600ml 清水，煮沸后下挂面，按包装标示时间煮至面条无白芯。",
+        "面条沥水后盛入碗中，浇上西红柿鸡蛋臊子即可。"
+      ],
+      "nutrition": {
+        "calories": "654 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E8%A5%BF%E7%BA%A2%E6%9F%BF%E9%B8%A1%E8%9B%8B%E6%8C%82%E9%9D%A2%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E9%B8%A1%E8%9B%8B%E6%8C%82%E9%9D%A2%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/staple/西红柿鸡蛋挂面/西红柿鸡蛋挂面.md",
+        "imagePath": "dishes/staple/西红柿鸡蛋挂面/tomatoNoodle.jpg",
+        "editorialCorrections": 32,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/staple/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E9%B8%A1%E8%9B%8B%E6%8C%82%E9%9D%A2/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E9%B8%A1%E8%9B%8B%E6%8C%82%E9%9D%A2.md"
+      }
+    },
+    {
+      "id": 2232,
+      "name": "鲜肉烧卖",
+      "image": "/images/dishes/htc-2232.jpg",
+      "category": "主食",
+      "taste": "清淡",
+      "cookingMethod": "煮制",
+      "difficulty": "复杂",
+      "cookingTime": "65分钟",
+      "servings": "每次制作前需要确定计划做几份。一份够 2-3 个人吃。",
+      "ingredients": [
+        "烧卖皮",
+        "猪肉末",
+        "鲜香菇",
+        "冬笋（可选）",
+        "姜",
+        "小葱",
+        "生抽",
+        "料酒",
+        "盐",
+        "白砂糖",
+        "白胡椒粉",
+        "芝麻油",
+        "玉米淀粉",
+        "高汤或清水"
+      ],
+      "tools": [
+        "蒸笼垫（推荐顺序为刷油竹垫、草垫、粽叶、带孔硅油纸，传统上用草垫，现在更多用带孔硅油纸）"
+      ],
+      "preparation": [
+        "烧卖皮 30张（约300g）",
+        "猪肉末 300g（肥瘦约3:7）",
+        "鲜香菇 80g",
+        "冬笋 50g（可选）",
+        "姜 8g",
+        "小葱 15g",
+        "生抽 15ml",
+        "料酒 10ml",
+        "盐 3g",
+        "白砂糖 3g",
+        "白胡椒粉 1g",
+        "芝麻油 5ml",
+        "玉米淀粉 5g",
+        "高汤或清水 60ml"
+      ],
+      "steps": [
+        "香菇和冬笋切细丁，姜和小葱切末；香菇和冬笋用沸水焯 1 分钟，捞出后挤去多余水分。",
+        "猪肉末加入姜末、生抽、料酒、盐、白砂糖、白胡椒粉和玉米淀粉，顺一个方向搅拌。",
+        "高汤或清水分 3 次加入肉馅，每次搅至完全吸收；再拌入香菇、冬笋、葱末和芝麻油，冷藏 20 分钟。",
+        "烧卖皮边缘用擀面杖擀薄，中央放约 20g 馅料。",
+        "用虎口轻轻收拢皮边，捏成顶部留口的烧卖形状，并将底部在案板上轻压平。",
+        "蒸笼垫打孔蒸纸或薄薄刷油，烧卖间留出空隙摆放。",
+        "蒸锅水烧开后上笼，大火蒸 10-12 分钟，确认中心肉馅完全熟透后取出。"
+      ],
+      "advanceTime": "肉馅需冷藏静置 20 分钟",
+      "nutrition": {
+        "calories": "1485 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E9%B2%9C%E8%82%89%E7%83%A7%E5%8D%96%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E9%B2%9C%E8%82%89%E7%83%A7%E5%8D%96%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/staple/鲜肉烧卖.md",
+        "imagePath": "File:Homemade style pork shumai in Hong Kong.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Homemade style pork shumai in Hong Kong.jpg",
+          "author": "Peachyeung316",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Homemade%20style%20pork%20shumai%20in%20Hong%20Kong.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.1,
+          0.05,
+          0.8,
+          0.9
+        ],
+        "editorialCorrections": 37,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/staple/%E9%B2%9C%E8%82%89%E7%83%A7%E5%8D%96.md"
+      }
+    },
+    {
+      "id": 2234,
+      "name": "扬州炒饭",
+      "image": "/images/dishes/htc-2234.jpg",
+      "category": "主食",
+      "taste": "咸鲜",
+      "cookingMethod": "煮制",
+      "difficulty": "复杂",
+      "cookingTime": "35分钟",
+      "servings": "每次制作前需要确定计划做几份。一份正好够 1-2 个人吃。",
+      "ingredients": [
+        "冷米饭",
+        "鸡蛋",
+        "虾仁",
+        "火腿",
+        "青豆",
+        "胡萝卜",
+        "玉米粒（可选）",
+        "小葱",
+        "食用油",
+        "盐",
+        "白胡椒粉"
+      ],
+      "preparation": [
+        "冷米饭 400g",
+        "鸡蛋 2个",
+        "虾仁 120g",
+        "火腿 80g",
+        "青豆 40g",
+        "胡萝卜 40g",
+        "玉米粒 40g（可选）",
+        "小葱 2根（约10g）",
+        "食用油 25ml",
+        "盐 4g",
+        "白胡椒粉 0.5g"
+      ],
+      "steps": [
+        "冷米饭提前拨散；火腿和胡萝卜切小丁，小葱的葱白与葱绿分开切碎，鸡蛋打散。",
+        "锅中烧开水，将青豆、胡萝卜和玉米粒焯 1-2 分钟，捞出并充分沥水。",
+        "炒锅中火加热，倒入 10ml 食用油，将虾仁炒至完全变色卷曲，盛出备用。",
+        "锅中再加 8ml 食用油，倒入蛋液快速划散，刚凝固便盛出。",
+        "加入剩余食用油和葱白炒香，放入冷米饭，中大火边炒边压散饭团，直至米饭热透且颗粒分明。",
+        "加入火腿、蔬菜丁、虾仁和鸡蛋，撒盐和白胡椒粉，大火翻炒 1-2 分钟。",
+        "确认虾仁、鸡蛋和米饭全部熟透，撒葱绿翻匀后关火装盘。"
+      ],
+      "nutrition": {
+        "calories": "1769 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E6%89%AC%E5%B7%9E%E7%82%92%E9%A5%AD%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E6%89%AC%E5%B7%9E%E7%82%92%E9%A5%AD%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/staple/扬州炒饭/扬州炒饭.md",
+        "imagePath": "File:Hung Hom Station Maxim's MX Yangzhou fried rice 11-01-2023.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Hung Hom Station Maxim's MX Yangzhou fried rice 11-01-2023.jpg",
+          "author": "LN9267",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Hung%20Hom%20Station%20Maxim's%20MX%20Yangzhou%20fried%20rice%2011-01-2023.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.12,
+          0.29,
+          0.6,
+          0.66
+        ],
+        "editorialCorrections": 30,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/staple/%E6%89%AC%E5%B7%9E%E7%82%92%E9%A5%AD/%E6%89%AC%E5%B7%9E%E7%82%92%E9%A5%AD.md"
+      }
+    },
+    {
+      "id": 2239,
+      "name": "炸酱面",
+      "image": "/images/dishes/htc-2239.jpg",
+      "category": "主食",
+      "taste": "甜香",
+      "cookingMethod": "煮制",
+      "difficulty": "普通",
+      "cookingTime": "30分钟",
+      "servings": "每次制作前需要确定计划做几份。一份正好够 1 个人食用",
+      "ingredients": [
+        "猪肉末",
+        "面条",
+        "黄瓜等菜码",
+        "小葱",
+        "蒜",
+        "黄豆酱或不辣豆瓣酱",
+        "甜面酱",
+        "食用油",
+        "清水"
+      ],
+      "preparation": [
+        "猪肉末 150g",
+        "挂面 150g或鲜面条 250g",
+        "黄瓜等菜码 100g",
+        "小葱 15g",
+        "蒜 1瓣（约5g）",
+        "黄豆酱或不辣豆瓣酱 20g",
+        "甜面酱 20g",
+        "食用油 10ml",
+        "清水 50ml（炒酱用）"
+      ],
+      "steps": [
+        "黄瓜等菜码洗净切细丝，小葱和蒜切末。",
+        "炒锅中火加热后倒入食用油，放入猪肉末炒散，直至完全变色且没有粉红色。",
+        "加入葱蒜末炒香，转小火放入黄豆酱和甜面酱，翻炒 1-2 分钟。",
+        "加入 50ml 清水搅匀，小火煮 3-5 分钟至酱汁浓稠，期间勤翻动避免糊底。",
+        "另起锅将水烧开，下入面条，按包装标示时间煮至无白芯。",
+        "面条捞出沥水；喜欢凉面口感时可过一次凉开水，再充分沥干。",
+        "面条盛入碗中，放上炸酱和菜码，食用前拌匀。"
+      ],
+      "nutrition": {
+        "calories": "1272 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E7%82%B8%E9%85%B1%E9%9D%A2%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E7%82%B8%E9%85%B1%E9%9D%A2%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/staple/炸酱面.md",
+        "imagePath": "File:Noodles with diced meat soybean paste before stirring (20210102181759).jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Noodles with diced meat soybean paste before stirring (20210102181759).jpg",
+          "author": "N509FZ",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Noodles_with_diced_meat_soybean_paste_before_stirring_(20210102181759).jpg",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Noodles_with_diced_meat_soybean_paste_before_stirring_%2820210102181759%29.jpg",
+          "modifications": "cropped to the noodle bowl, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.05,
+          0.24,
+          0.92,
+          0.7
+        ],
+        "editorialCorrections": 26,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/staple/%E7%82%B8%E9%85%B1%E9%9D%A2.md"
+      }
+    },
+    {
+      "id": 2243,
+      "name": "猪油拌饭",
+      "image": "/images/dishes/htc-2243.jpg",
+      "category": "主食",
+      "taste": "咸鲜",
+      "cookingMethod": "煮制",
+      "difficulty": "简单",
+      "cookingTime": "25分钟",
+      "servings": "每次制作前需要确定计划做几份。一份够 1 个人吃。",
+      "ingredients": [
+        "米饭（推荐用粳米）",
+        "猪油",
+        "生抽（推荐用李锦记或海天）",
+        "老抽",
+        "蚝油（可选）",
+        "葱花（可选）",
+        "猪油渣（可选）"
+      ],
+      "preparation": [
+        "米饭 200 g",
+        "猪油 15 g（添加蚝油时，减少到 10 g）",
+        "生抽 5 ml（添加蚝油时，减少到 3 ml）",
+        "老抽 2 ml",
+        "蚝油 8 g",
+        "葱花 0-12 g（初始建议 5 g）",
+        "猪油渣 5 g"
+      ],
+      "steps": [
+        "碗底铺猪油",
+        "加入米饭",
+        "淋上酱油与蚝油",
+        "撒上葱花和猪油渣",
+        "搅拌均匀"
+      ],
+      "nutrition": {
+        "calories": "420 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E7%8C%AA%E6%B2%B9%E6%8B%8C%E9%A5%AD%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E7%8C%AA%E6%B2%B9%E6%8B%8C%E9%A5%AD%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/staple/猪油拌饭.md",
+        "imagePath": "File:Rice with Whitebait and Lard at Chua Lam's Dim Sum, Dongzhimen (20200813174339).jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Rice with Whitebait and Lard at Chua Lam's Dim Sum, Dongzhimen (20200813174339).jpg",
+          "author": "N509FZ",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Rice%20with%20Whitebait%20and%20Lard%20at%20Chua%20Lam's%20Dim%20Sum%2C%20Dongzhimen%20(20200813174339).jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.36,
+          0.04,
+          0.6,
+          0.9
+        ],
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/staple/%E7%8C%AA%E6%B2%B9%E6%8B%8C%E9%A5%AD.md"
       }
     },
     {
@@ -7210,7 +9837,22 @@
         "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
         "license": "Unlicense",
         "recipePath": "dishes/vegetable_dish/炒滑蛋/炒滑蛋.md",
-        "imagePath": "dishes/vegetable_dish/炒滑蛋/炒滑蛋.jpg",
+        "imagePath": "File:Scrambled egg on plate.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Scrambled egg on plate.jpg",
+          "author": "Chammy17",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Scrambled%20egg%20on%20plate.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.05,
+          0.18,
+          0.9,
+          0.7
+        ],
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E7%82%92%E6%BB%91%E8%9B%8B/%E7%82%92%E6%BB%91%E8%9B%8B.md"
       }
     },
@@ -7473,63 +10115,68 @@
       }
     },
     {
-      "id": 2258,
-      "name": "红烧冬瓜",
-      "image": "/images/dishes/htc-2258.jpg",
+      "id": 2259,
+      "name": "红烧茄子",
+      "image": "/images/dishes/htc-2259.jpg",
       "category": "素菜",
-      "taste": "清淡",
+      "taste": "咸鲜",
       "cookingMethod": "焖烧",
-      "difficulty": "普通",
-      "cookingTime": "25分钟",
-      "servings": "每份：",
+      "difficulty": "复杂",
+      "cookingTime": "35分钟",
+      "servings": "每次制作前需要确定计划做几份。一份正好够 2 个人食用",
       "ingredients": [
-        "冬瓜",
+        "茄子",
+        "青椒",
+        "西红柿",
+        "洋葱",
+        "小葱",
+        "蒜",
         "食用油",
-        "料酒",
-        "淀粉",
+        "盐",
         "生抽",
         "老抽",
-        "鸡精",
-        "香葱",
-        "姜末",
-        "蚝油"
+        "白砂糖",
+        "玉米淀粉",
+        "清水"
       ],
       "preparation": [
-        "冬瓜 300 g",
-        "食用油 50 ml",
-        "料酒 2 ml",
-        "淀粉 10 g",
-        "生抽 10 ml",
-        "老抽 15 ml",
-        "鸡精 3 g",
-        "香葱 0.5 根",
-        "姜末 1 粒",
-        "蚝油 15 ml"
+        "茄子 500g",
+        "青椒 1个（约100g）",
+        "西红柿 1个（约150g）",
+        "洋葱 50g",
+        "小葱 1根（约5g）",
+        "蒜 4瓣（约16g）",
+        "食用油 30ml",
+        "盐 4g",
+        "生抽 15ml",
+        "老抽 3ml",
+        "白砂糖 5g",
+        "玉米淀粉 10g",
+        "清水 80ml"
       ],
       "steps": [
-        "冬瓜去皮，切 边长不超过 2cm 小块",
-        "起锅烧油，放入冬瓜，缓缓翻滚煎炸 2 分钟 ，直至冬瓜表面泛金黄色",
-        "取出冬瓜，放入大碗备用",
-        "利用锅中的剩余油，依次放入姜末、生抽、蚝油，翻炒 15 S",
-        "重新倒入冬瓜，翻炒 30 S 后，加入开水，水要没过冬瓜表面，大火煮 10 分钟",
-        "加入老抽上色，继续煮，直至冬瓜软糯（筷子可以轻松插近冬瓜）",
-        "加入鸡精、料酒、香葱翻炒后 30 S， 取出冬瓜到大碗中",
-        "锅中剩余汤汁保留，倒入水淀粉，煮开后汤汁浇灌在冬瓜表面"
+        "茄子切滚刀块，加入 2g 盐拌匀，静置 10 分钟后轻轻挤去析出的水分。",
+        "青椒和洋葱切块，西红柿切小块，小葱切葱花，蒜切末。",
+        "生抽、老抽、白砂糖、剩余盐、玉米淀粉和清水混合成料汁。",
+        "茄子加入 15ml 食用油拌匀；炒锅中火加热，放入茄子煎炒 6-8 分钟，至表面微黄、内部变软后盛出。",
+        "锅中倒入剩余食用油，放入葱白、蒜末和洋葱炒香，再加入西红柿炒至出汁。",
+        "放入青椒和茄子翻炒 1 分钟，倒入料汁并不断翻动。",
+        "料汁完全煮沸并变得透明浓稠后，撒葱绿，翻匀即可。"
       ],
       "nutrition": {
-        "calories": "519 大卡"
+        "calories": "547 大卡"
       },
       "videoTutorials": {
         "platforms": [
           {
             "key": "bilibili",
             "name": "哔哩哔哩",
-            "searchUrl": "https://search.bilibili.com/all?keyword=%E7%BA%A2%E7%83%A7%E5%86%AC%E7%93%9C%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E7%BA%A2%E7%83%A7%E8%8C%84%E5%AD%90%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
           },
           {
             "key": "douyin",
             "name": "抖音",
-            "searchUrl": "https://www.douyin.com/search/%E7%BA%A2%E7%83%A7%E5%86%AC%E7%93%9C%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+            "searchUrl": "https://www.douyin.com/search/%E7%BA%A2%E7%83%A7%E8%8C%84%E5%AD%90%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
           }
         ]
       },
@@ -7538,9 +10185,25 @@
         "repository": "Anduin2017/HowToCook",
         "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
         "license": "Unlicense",
-        "recipePath": "dishes/vegetable_dish/红烧冬瓜/红烧冬瓜.md",
-        "imagePath": "dishes/vegetable_dish/红烧冬瓜/2.jpeg",
-        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E7%BA%A2%E7%83%A7%E5%86%AC%E7%93%9C/%E7%BA%A2%E7%83%A7%E5%86%AC%E7%93%9C.md"
+        "recipePath": "dishes/vegetable_dish/红烧茄子.md",
+        "imagePath": "File:Hong shao qie zi.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Hong shao qie zi.jpg",
+          "author": "chomjong",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Hong%20shao%20qie%20zi.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.18,
+          0.02,
+          0.66,
+          0.96
+        ],
+        "editorialCorrections": 34,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E7%BA%A2%E7%83%A7%E8%8C%84%E5%AD%90.md"
       }
     },
     {
@@ -7736,139 +10399,6 @@
       }
     },
     {
-      "id": 2263,
-      "name": "微波炉鸡蛋羹",
-      "image": "/images/dishes/htc-2263.jpg",
-      "category": "素菜",
-      "taste": "清淡",
-      "cookingMethod": "炒制",
-      "difficulty": "简单",
-      "cookingTime": "10分钟",
-      "servings": "每次制作前需要确定计划做几份。一份正好够 1 个人食用",
-      "ingredients": [
-        "鸡蛋",
-        "水"
-      ],
-      "preparation": [
-        "鸡蛋 2 个 * 份数",
-        "水 200ml * 份数",
-        "虾皮 10 个 * 份数（可选）",
-        "葱 5g *份数（可选）",
-        "盐 3g * 份数",
-        "酱油（可选）",
-        "芝麻油（香油） 1ml（可选）"
-      ],
-      "steps": [
-        "将鸡蛋打入可使用微波炉加热的陶瓷碗中，使用筷子将其打散。",
-        "加入水和盐，搅拌均匀。",
-        "将虾皮放入碗中，搅拌均匀，保证所有虾皮不会堆积在一起。",
-        "葱切碎至边长 0.6±3mm 状，放入碗中搅拌均匀。",
-        "将此碗及内容物放入微波炉中，容器表面覆盖保鲜膜或以可微波瓷盘加盖（注意：不得密封，必须留有涨缩量）加热 2 分钟(500W)。",
-        "小心地取下保鲜膜或其他覆盖物，然后继续加热 2 分钟。",
-        "若微波炉不带旋转式加热盘，将碗缓慢的水平旋转 180 度，以确保内容物加热均匀。",
-        "放入芝麻油。",
-        "小心地从微波炉中拿出碗（真的很烫）。",
-        "如果选择放入酱油，则确保酱油在鸡蛋羹表面流动后能以最薄的形式沾满鸡蛋羹表面即可。",
-        "开心的享受鸡蛋羹"
-      ],
-      "nutrition": {
-        "calories": "160 大卡"
-      },
-      "videoTutorials": {
-        "platforms": [
-          {
-            "key": "bilibili",
-            "name": "哔哩哔哩",
-            "searchUrl": "https://search.bilibili.com/all?keyword=%E5%BE%AE%E6%B3%A2%E7%82%89%E9%B8%A1%E8%9B%8B%E7%BE%B9%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
-          },
-          {
-            "key": "douyin",
-            "name": "抖音",
-            "searchUrl": "https://www.douyin.com/search/%E5%BE%AE%E6%B3%A2%E7%82%89%E9%B8%A1%E8%9B%8B%E7%BE%B9%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
-          }
-        ]
-      },
-      "source": {
-        "name": "HowToCook",
-        "repository": "Anduin2017/HowToCook",
-        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
-        "license": "Unlicense",
-        "recipePath": "dishes/vegetable_dish/鸡蛋羹/微波炉鸡蛋羹.md",
-        "imagePath": "dishes/vegetable_dish/鸡蛋羹/微波炉鸡蛋羹.jpg",
-        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E9%B8%A1%E8%9B%8B%E7%BE%B9/%E5%BE%AE%E6%B3%A2%E7%82%89%E9%B8%A1%E8%9B%8B%E7%BE%B9.md"
-      }
-    },
-    {
-      "id": 2269,
-      "name": "椒盐玉米",
-      "image": "/images/dishes/htc-2269.jpg",
-      "category": "素菜",
-      "taste": "咸鲜",
-      "cookingMethod": "炒制",
-      "difficulty": "普通",
-      "cookingTime": "30分钟",
-      "servings": "",
-      "ingredients": [
-        "玉米粒",
-        "椒盐",
-        "芝麻粒",
-        "油",
-        "淀粉"
-      ],
-      "tools": [
-        "两个塑料簸箕",
-        "若干吸油纸"
-      ],
-      "preparation": [
-        "玉米粒（袋装） 350g",
-        "淀粉（在锅里完全能盖住玉米粒表面为准，在 40 - 70g）",
-        "椒盐粉 10g",
-        "芝麻粒 10g"
-      ],
-      "steps": [
-        "玉米粒都是剥好的，直接解冻即可，温水泡 15 分钟或者灶上开水煮 5 分钟。",
-        "拿出一个簸箕，将其假设为 BoxA，垫上吸油纸，倒进解冻好的玉米粒。",
-        "shaking shaking shaking! - 直到吸油纸全部变湿为止。",
-        "拿出第二个簸箕 BoxB，垫上吸油纸，将 BoxA 的玉米粒全部倒入 BoxB 中。",
-        "shaking shaking shaking! - 直到吸油纸全部变湿为止。",
-        "重复上述操作多次，直到玉米表面没有明显可见的水滴但保持湿润的状态。",
-        "倒入大量淀粉，能够完全盖住玉米粒。",
-        "shaking shaking shaking! - 直到淀粉裹住了玉米粒",
-        "开灶 - 放锅 - 倒入油 尽量铺满锅底 但不要太多。",
-        "油热 8 成，倒入裹上了淀粉的玉米粒。",
-        "中火先煎 30s，不要翻炒，不然淀粉会掉。",
-        "轻微翻炒 3 分钟即可出锅。",
-        "最重要的一步：撒上 3g 椒盐，撒上芝麻粒！",
-        "香喷喷的”椒盐玉米“就做好了"
-      ],
-      "nutrition": {
-        "calories": "693 大卡"
-      },
-      "videoTutorials": {
-        "platforms": [
-          {
-            "key": "bilibili",
-            "name": "哔哩哔哩",
-            "searchUrl": "https://search.bilibili.com/all?keyword=%E6%A4%92%E7%9B%90%E7%8E%89%E7%B1%B3%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
-          },
-          {
-            "key": "douyin",
-            "name": "抖音",
-            "searchUrl": "https://www.douyin.com/search/%E6%A4%92%E7%9B%90%E7%8E%89%E7%B1%B3%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
-          }
-        ]
-      },
-      "source": {
-        "name": "HowToCook",
-        "repository": "Anduin2017/HowToCook",
-        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
-        "license": "Unlicense",
-        "recipePath": "dishes/vegetable_dish/椒盐玉米/椒盐玉米.md",
-        "imagePath": "dishes/vegetable_dish/椒盐玉米/椒盐玉米.jpeg",
-        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E6%A4%92%E7%9B%90%E7%8E%89%E7%B1%B3/%E6%A4%92%E7%9B%90%E7%8E%89%E7%B1%B3.md"
-      }
-    },
-    {
       "id": 2273,
       "name": "烤茄子",
       "image": "/images/dishes/htc-2273.jpg",
@@ -8021,6 +10551,163 @@
       }
     },
     {
+      "id": 2277,
+      "name": "凉拌黄瓜",
+      "image": "/images/dishes/htc-2277.jpg",
+      "category": "素菜",
+      "taste": "甜香",
+      "cookingMethod": "凉拌",
+      "difficulty": "简单",
+      "cookingTime": "20分钟",
+      "servings": "每次制作前需要确定计划做几份。一份正好够 1 个人食用",
+      "ingredients": [
+        "黄瓜",
+        "蒜",
+        "白砂糖",
+        "陈醋",
+        "生抽",
+        "盐",
+        "香油",
+        "蚝油（可选）"
+      ],
+      "preparation": [
+        "黄瓜 200g",
+        "蒜 3瓣（约12g）",
+        "白砂糖 5g",
+        "陈醋 12ml",
+        "生抽 7.5ml",
+        "盐 0.6g",
+        "香油 7ml",
+        "蚝油 5ml（可选）"
+      ],
+      "steps": [
+        "黄瓜洗净，切下两端并尝一下确认没有明显苦味。",
+        "用刀面将黄瓜轻轻拍裂，再切成约 3cm 长的小块，放入碗中。",
+        "蒜拍碎后切成蒜末。",
+        "黄瓜加入白砂糖拌匀，冷藏腌制 15 分钟。",
+        "加入陈醋、生抽、盐、蒜末和蚝油，充分拌匀。",
+        "最后淋入香油拌匀；现拌现吃，暂不食用时应密封冷藏并在 8 小时内食用。"
+      ],
+      "nutrition": {
+        "calories": "107 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E5%87%89%E6%8B%8C%E9%BB%84%E7%93%9C%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E5%87%89%E6%8B%8C%E9%BB%84%E7%93%9C%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/vegetable_dish/凉拌黄瓜.md",
+        "imagePath": "File:Pai huang gua.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Pai huang gua.jpg",
+          "author": "John",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Pai_huang_gua.jpg",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/78/Pai_huang_gua.jpg",
+          "modifications": "re-encoded as JPEG"
+        },
+        "editorialCorrections": 23,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E5%87%89%E6%8B%8C%E9%BB%84%E7%93%9C.md"
+      }
+    },
+    {
+      "id": 2278,
+      "name": "凉拌金针菇",
+      "image": "/images/dishes/htc-2278.jpg",
+      "category": "素菜",
+      "taste": "香辣",
+      "cookingMethod": "凉拌",
+      "difficulty": "简单",
+      "cookingTime": "10分钟",
+      "servings": "每次制作前需要确定计划做几份。一份正好够 1 个人吃。",
+      "ingredients": [
+        "金针菇",
+        "小葱",
+        "大蒜",
+        "生抽",
+        "醋",
+        "白糖（可选）",
+        "香油（可选）",
+        "辣椒油（可选）"
+      ],
+      "preparation": [
+        "金针菇 150 g （约 1 小包）",
+        "小葱 5 g",
+        "大蒜 2 瓣",
+        "生抽 15 ml",
+        "醋 10 ml",
+        "白糖 3 g（可选）",
+        "香油 5 ml（可选）",
+        "辣椒油 5 ml（可选）"
+      ],
+      "steps": [
+        "将 金针菇 根部切除，用清水冲洗干净，备用。",
+        "将 小葱 洗净，切成葱花，备用。",
+        "将 大蒜 去皮，切成蒜末，备用。",
+        "锅中加入 1000 ml 饮用水，大火烧开。",
+        "放入 金针菇，煮 1-2 分钟，至金针菇变软。",
+        "将 煮好的 金针菇 捞出，沥干水分，放入一个较大的碗中，备用。",
+        "在另一个干净的小碗中，加入 15 ml 生抽，10 ml 醋，3 g 白糖（可选），5 ml 香油（可选）。",
+        "加入切好的 大蒜末。",
+        "搅拌均匀，使 白糖 充分溶解，酱汁混合均匀。",
+        "将制作好的酱汁均匀淋在 金针菇 上。",
+        "撒上切好的 小葱花。",
+        "根据个人喜好，淋上 5 ml 辣椒油（可选）。",
+        "用 筷子 轻轻拌匀，即可食用。"
+      ],
+      "nutrition": {
+        "calories": "163 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E5%87%89%E6%8B%8C%E9%87%91%E9%92%88%E8%8F%87%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E5%87%89%E6%8B%8C%E9%87%91%E9%92%88%E8%8F%87%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/vegetable_dish/凉拌金针菇.md",
+        "imagePath": "File:Salad enoki mushrooms.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Salad enoki mushrooms.jpg",
+          "author": "Fumikas Sagisavas",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Salad%20enoki%20mushrooms.jpg",
+          "modifications": "resized and re-encoded as JPEG"
+        },
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E5%87%89%E6%8B%8C%E9%87%91%E9%92%88%E8%8F%87.md"
+      }
+    },
+    {
       "id": 2279,
       "name": "凉拌木耳",
       "image": "/images/dishes/htc-2279.jpg",
@@ -8149,6 +10836,87 @@
         "recipePath": "dishes/vegetable_dish/凉拌莴笋/凉拌莴笋.md",
         "imagePath": "dishes/vegetable_dish/凉拌莴笋/1.jpeg",
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E5%87%89%E6%8B%8C%E8%8E%B4%E7%AC%8B/%E5%87%89%E6%8B%8C%E8%8E%B4%E7%AC%8B.md"
+      }
+    },
+    {
+      "id": 2282,
+      "name": "皮蛋豆腐",
+      "image": "/images/dishes/htc-2282.jpg",
+      "category": "素菜",
+      "taste": "香辣",
+      "cookingMethod": "炒制",
+      "difficulty": "简单",
+      "cookingTime": "10分钟",
+      "servings": "每次制作前需要确定计划做几份。一份正好够 1 个人吃。",
+      "ingredients": [
+        "内酯豆腐",
+        "皮蛋",
+        "蒜",
+        "小葱",
+        "生抽",
+        "香醋",
+        "白砂糖",
+        "香油",
+        "辣椒油（可选）"
+      ],
+      "preparation": [
+        "内酯豆腐 1盒（约350g）",
+        "皮蛋 2个",
+        "蒜 1瓣（约5g）",
+        "小葱 1根（约5g）",
+        "生抽 12ml",
+        "香醋 10ml",
+        "白砂糖 2g",
+        "香油 5ml",
+        "辣椒油 0-5ml"
+      ],
+      "steps": [
+        "内酯豆腐从盒中完整扣出，沥去多余水分后切块；使用开封即食的豆腐，并保持刀具和案板清洁。",
+        "皮蛋去壳切瓣，摆在豆腐周围；蒜切末，小葱切葱花。",
+        "生抽、香醋、白砂糖、香油、蒜末和辣椒油混合，搅拌至糖溶化。",
+        "料汁均匀淋在皮蛋和豆腐上，撒葱花；现做现吃，暂不食用时立即冷藏。"
+      ],
+      "nutrition": {
+        "calories": "566 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E7%9A%AE%E8%9B%8B%E8%B1%86%E8%85%90%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E7%9A%AE%E8%9B%8B%E8%B1%86%E8%85%90%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/vegetable_dish/皮蛋豆腐.md",
+        "imagePath": "File:Tofu with Century Egg 02.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Tofu with Century Egg 02.jpg",
+          "author": "Tbatb",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Tofu%20with%20Century%20Egg%2002.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.1,
+          0.05,
+          0.8,
+          0.9
+        ],
+        "editorialCorrections": 23,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E7%9A%AE%E8%9B%8B%E8%B1%86%E8%85%90.md"
       }
     },
     {
@@ -8354,12 +11122,21 @@
         "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
         "license": "Unlicense",
         "recipePath": "dishes/vegetable_dish/上汤娃娃菜/上汤娃娃菜.md",
-        "imagePath": "dishes/vegetable_dish/上汤娃娃菜/上汤娃娃菜.png",
+        "imagePath": "File:Yunnan ham and Chinese Cabbage Soup - Hongfa Canting.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Yunnan ham and Chinese Cabbage Soup - Hongfa Canting.jpg",
+          "author": "Alpha",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Yunnan%20ham%20and%20Chinese%20Cabbage%20Soup%20-%20Hongfa%20Canting.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
         "imageCrop": [
-          0,
-          0,
-          0.78,
-          0.8
+          0.02,
+          0.03,
+          0.96,
+          0.94
         ],
         "editorialCorrections": 14,
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E4%B8%8A%E6%B1%A4%E5%A8%83%E5%A8%83%E8%8F%9C/%E4%B8%8A%E6%B1%A4%E5%A8%83%E5%A8%83%E8%8F%9C.md"
@@ -8438,6 +11215,90 @@
         "recipePath": "dishes/vegetable_dish/手撕包菜/手撕包菜.md",
         "imagePath": "dishes/vegetable_dish/手撕包菜/4.jpeg",
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E6%89%8B%E6%92%95%E5%8C%85%E8%8F%9C/%E6%89%8B%E6%92%95%E5%8C%85%E8%8F%9C.md"
+      }
+    },
+    {
+      "id": 2294,
+      "name": "酸辣土豆丝",
+      "image": "/images/dishes/htc-2294.jpg",
+      "category": "素菜",
+      "taste": "酸辣",
+      "cookingMethod": "炒制",
+      "difficulty": "简单",
+      "cookingTime": "20分钟",
+      "servings": "每份：",
+      "ingredients": [
+        "土豆",
+        "大蒜",
+        "青椒",
+        "红椒",
+        "干辣椒",
+        "葱",
+        "生抽",
+        "陈醋",
+        "盐"
+      ],
+      "preparation": [
+        "土豆 240g（越细越长更好）",
+        "大蒜 4 瓣",
+        "青椒 0.5 个",
+        "红椒 0.5 个",
+        "干辣椒 3 个",
+        "葱 1 根",
+        "生抽 5ml",
+        "陈醋 10ml",
+        "盐 2g",
+        "食用油 10-15ml"
+      ],
+      "steps": [
+        "土豆去皮、切丝（或用刨丝器）。",
+        "切好的土豆丝用清水清洗，去除多余的淀粉，然后对土豆丝焯水 10 秒。沥干，备用。",
+        "葱切成葱花；大蒜拍碎切成蒜末（分为两等份备用）；干辣椒切小段；青红椒切丝。",
+        "热锅，小火热油，下入一半的葱花（葱白部分）、一半的蒜末和干辣椒爆香。",
+        "加入青红椒翻炒几下，加入土豆丝翻炒至变色。",
+        "加 5ml 生抽，10ml 陈醋，倒入剩下的一半蒜末和 2g 盐快速翻炒均匀。",
+        "出锅前撒上剩余的葱花，翻匀即可装盘。"
+      ],
+      "nutrition": {
+        "calories": "374 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E9%85%B8%E8%BE%A3%E5%9C%9F%E8%B1%86%E4%B8%9D%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E9%85%B8%E8%BE%A3%E5%9C%9F%E8%B1%86%E4%B8%9D%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/vegetable_dish/酸辣土豆丝.md",
+        "imagePath": "File:Taste of Beijing, Soho, London (4363975792).jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Taste of Beijing, Soho, London (4363975792).jpg",
+          "author": "Ewan Munro",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Taste%20of%20Beijing%2C%20Soho%2C%20London%20(4363975792).jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.1,
+          0.1,
+          0.76,
+          0.82
+        ],
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E9%85%B8%E8%BE%A3%E5%9C%9F%E8%B1%86%E4%B8%9D.md"
       }
     },
     {
@@ -8574,6 +11435,85 @@
       }
     },
     {
+      "id": 2297,
+      "name": "蒜蓉西兰花",
+      "image": "/images/dishes/htc-2297.jpg",
+      "category": "素菜",
+      "taste": "咸鲜",
+      "cookingMethod": "炒制",
+      "difficulty": "简单",
+      "cookingTime": "15分钟",
+      "servings": "每次制作前需要确定计划做几份。一份正好够 2 个人吃。",
+      "ingredients": [
+        "西兰花",
+        "大蒜",
+        "食用油",
+        "生抽",
+        "蚝油",
+        "白砂糖",
+        "清水"
+      ],
+      "preparation": [
+        "西兰花 200g",
+        "大蒜 4瓣（约16g）",
+        "食用油 10ml",
+        "生抽 10ml",
+        "蚝油 5g",
+        "白砂糖 2g",
+        "清水 1030ml（焯水1000ml，料汁30ml）"
+      ],
+      "steps": [
+        "西兰花切成大小接近的小朵，用流动清水洗净；大蒜去皮切末。",
+        "锅中加入 1000ml 清水，大火烧开后放入西兰花，焯 2-3 分钟至颜色翠绿。",
+        "将西兰花捞出并充分沥水，整齐摆入盘中。",
+        "炒锅小火加热，倒入食用油，放入蒜末炒至出香味，不要炒焦。",
+        "加入生抽、蚝油、白砂糖和剩余 30ml 清水，搅匀后煮沸约 30 秒。",
+        "将蒜蓉料汁均匀淋在西兰花上，趁热食用。"
+      ],
+      "nutrition": {
+        "calories": "187 大卡"
+      },
+      "videoTutorials": {
+        "platforms": [
+          {
+            "key": "bilibili",
+            "name": "哔哩哔哩",
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E8%92%9C%E8%93%89%E8%A5%BF%E5%85%B0%E8%8A%B1%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+          },
+          {
+            "key": "douyin",
+            "name": "抖音",
+            "searchUrl": "https://www.douyin.com/search/%E8%92%9C%E8%93%89%E8%A5%BF%E5%85%B0%E8%8A%B1%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+          }
+        ]
+      },
+      "source": {
+        "name": "HowToCook",
+        "repository": "Anduin2017/HowToCook",
+        "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
+        "license": "Unlicense",
+        "recipePath": "dishes/vegetable_dish/蒜蓉西兰花.md",
+        "imagePath": "File:Stir-fried broccoli.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Stir-fried broccoli.jpg",
+          "author": "Fumikas Sagisavas",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Stir-fried%20broccoli.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.06,
+          0.06,
+          0.9,
+          0.88
+        ],
+        "editorialCorrections": 21,
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E8%92%9C%E8%93%89%E8%A5%BF%E5%85%B0%E8%8A%B1.md"
+      }
+    },
+    {
       "id": 2298,
       "name": "糖拌西红柿",
       "image": "/images/dishes/htc-2298.jpg",
@@ -8685,65 +11625,78 @@
         "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
         "license": "Unlicense",
         "recipePath": "dishes/vegetable_dish/莴笋叶煎饼/莴笋叶煎饼.md",
-        "imagePath": "dishes/vegetable_dish/莴笋叶煎饼/3.jpeg",
+        "imagePath": "File:Egg and vegetable pancakes.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Egg and vegetable pancakes.jpg",
+          "author": "Fumikas Sagisavas",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Egg%20and%20vegetable%20pancakes.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.05,
+          0.05,
+          0.9,
+          0.9
+        ],
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E8%8E%B4%E7%AC%8B%E5%8F%B6%E7%85%8E%E9%A5%BC/%E8%8E%B4%E7%AC%8B%E5%8F%B6%E7%85%8E%E9%A5%BC.md"
       }
     },
     {
-      "id": 2301,
-      "name": "西红柿豆腐汤羹",
-      "image": "/images/dishes/htc-2301.jpg",
+      "id": 2300,
+      "name": "西红柿炒鸡蛋",
+      "image": "/images/dishes/htc-2300.jpg",
       "category": "素菜",
-      "taste": "清淡",
-      "cookingMethod": "炖煮",
+      "taste": "甜香",
+      "cookingMethod": "炒制",
       "difficulty": "简单",
       "cookingTime": "15分钟",
-      "servings": "每份：",
+      "servings": "每次制作前需要确定计划做几份。一份正好够 1 个人食用",
       "ingredients": [
         "西红柿",
         "鸡蛋",
-        "豆腐",
         "食用油",
         "盐",
-        "淀粉",
-        "鸡精",
-        "香葱",
-        "姜",
-        "开水"
+        "糖（可选）",
+        "葱花（可选）"
       ],
       "preparation": [
-        "西红柿 1 个",
-        "鸡蛋 1 个",
-        "豆腐 100 g",
-        "食用油 5 ml",
-        "盐 2 g",
-        "淀粉 5 g",
-        "鸡精 2 g",
-        "香葱 0.5 根",
-        "姜 1 片",
-        "开水 350 ml"
+        "西红柿 = 1 个（约 180g） * 份数",
+        "鸡蛋 = 1.5 个 * 份数，向上取整",
+        "食用油 = 4ml * 鸡蛋/个",
+        "盐 = 1.5-2g * 份数",
+        "糖 = 0-2g * 份数",
+        "葱花 = 0-10g * 份数"
       ],
       "steps": [
-        "西红柿切成小丁、鸡蛋打入碗中搅拌、豆腐切块备用",
-        "起锅烧油，放入姜片 5 S 后倒入入西红柿翻炒 30 S",
-        "锅中加入开水，汤水烧开，60 S 后到入鸡蛋液、豆腐块",
-        "汤水重新烧开后，加入水淀粉，沿一个方向搅拌 2 圈",
-        "加入鸡精、盐、香葱，30 S 后起锅"
+        "西红柿洗净",
+        "可选：去掉西红柿的外表皮；开水烫表皮，然后将西红柿放入冷水，剥去外皮",
+        "西红柿去蒂，切成边长不超过 4cm 的小块，即为 西红柿块",
+        "将鸡蛋打入碗中，加入 1g * 份数 的盐，搅匀，即为 鸡蛋液；可以考虑向鸡蛋中加入 1ml 醋，这可以去除腥味，令鸡蛋更蓬松",
+        "热锅，加入食用油",
+        "油热后，倒入 鸡蛋液。翻炒至鸡蛋结为固体且颜色微微发黄，即为 半熟鸡蛋",
+        "关火。将 半熟鸡蛋 盛盘，重新开火；注意：不要洗锅",
+        "加入 西红柿块，锅铲拍打并翻炒 20 秒，或至西红柿软烂",
+        "向锅中加入 半熟鸡蛋，翻炒均匀；可以考虑加入 10ml 番茄酱和 50ml 清水，增加汤汁；可以额外加入一些其它熟肉和材料",
+        "加入剩余的盐、糖（可选，如果倾向于甜味版本）、葱花（可选），翻炒均匀",
+        "关火，盛盘"
       ],
       "nutrition": {
-        "calories": "242 大卡"
+        "calories": "252 大卡"
       },
       "videoTutorials": {
         "platforms": [
           {
             "key": "bilibili",
             "name": "哔哩哔哩",
-            "searchUrl": "https://search.bilibili.com/all?keyword=%E8%A5%BF%E7%BA%A2%E6%9F%BF%E8%B1%86%E8%85%90%E6%B1%A4%E7%BE%B9%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
+            "searchUrl": "https://search.bilibili.com/all?keyword=%E8%A5%BF%E7%BA%A2%E6%9F%BF%E7%82%92%E9%B8%A1%E8%9B%8B%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B"
           },
           {
             "key": "douyin",
             "name": "抖音",
-            "searchUrl": "https://www.douyin.com/search/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E8%B1%86%E8%85%90%E6%B1%A4%E7%BE%B9%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
+            "searchUrl": "https://www.douyin.com/search/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E7%82%92%E9%B8%A1%E8%9B%8B%20%E5%AE%B6%E5%B8%B8%E5%81%9A%E6%B3%95%20%E6%95%99%E7%A8%8B?type=video"
           }
         ]
       },
@@ -8752,9 +11705,24 @@
         "repository": "Anduin2017/HowToCook",
         "revision": "c694a5c457d45e6e012ae6cd9a7724aab86e320b",
         "license": "Unlicense",
-        "recipePath": "dishes/vegetable_dish/西红柿豆腐汤羹/西红柿豆腐汤羹.md",
-        "imagePath": "dishes/vegetable_dish/西红柿豆腐汤羹/1.jpeg",
-        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E8%B1%86%E8%85%90%E6%B1%A4%E7%BE%B9/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E8%B1%86%E8%85%90%E6%B1%A4%E7%BE%B9.md"
+        "recipePath": "dishes/vegetable_dish/西红柿炒鸡蛋.md",
+        "imagePath": "File:Hunan cuisine, stir-fried tomato with eggs.jpg",
+        "imageSource": {
+          "name": "Wikimedia Commons",
+          "imagePath": "File:Hunan cuisine, stir-fried tomato with eggs.jpg",
+          "author": "Huangdan2060",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "url": "https://commons.wikimedia.org/wiki/File:Hunan%20cuisine%2C%20stir-fried%20tomato%20with%20eggs.jpg",
+          "modifications": "focus-cropped to the dish, resized, and re-encoded as JPEG"
+        },
+        "imageCrop": [
+          0.05,
+          0.05,
+          0.9,
+          0.9
+        ],
+        "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E8%A5%BF%E7%BA%A2%E6%9F%BF%E7%82%92%E9%B8%A1%E8%9B%8B.md"
       }
     },
     {
@@ -8882,6 +11850,12 @@
         "license": "Unlicense",
         "recipePath": "dishes/vegetable_dish/小炒藕丁/小炒藕丁.md",
         "imagePath": "dishes/vegetable_dish/小炒藕丁/小炒藕丁.jpg",
+        "imageCrop": [
+          0.14,
+          0.08,
+          0.72,
+          0.78
+        ],
         "url": "https://github.com/Anduin2017/HowToCook/blob/c694a5c457d45e6e012ae6cd9a7724aab86e320b/dishes/vegetable_dish/%E5%B0%8F%E7%82%92%E8%97%95%E4%B8%81/%E5%B0%8F%E7%82%92%E8%97%95%E4%B8%81.md"
       }
     },

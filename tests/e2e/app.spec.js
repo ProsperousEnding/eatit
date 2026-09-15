@@ -48,14 +48,18 @@ test('search, detail and pairing flows work without browser errors', async ({ pa
   expect(browserErrors).toEqual([])
 })
 
-test('restored recipe images render and keep their audited provenance', async ({ page }) => {
+test('restored and enriched recipe images render with audited provenance', async ({ page }) => {
   const restoredRecipes = [
     { id: 2004, name: '葱烧海参', credit: 'Zheng Zhou' },
+    { id: 2005, name: '葱油桂鱼' },
     { id: 2024, name: '香煎翘嘴鱼' },
     { id: 2073, name: '荷兰豆炒腊肠' },
     { id: 2087, name: '尖叫牛蛙' },
     { id: 2162, name: '淄博烧烤' },
+    { id: 2178, name: '皮蛋瘦肉粥', credit: 'Peachyeung316' },
     { id: 2187, name: '炒方便面' },
+    { id: 2231, name: '西红柿鸡蛋挂面' },
+    { id: 2239, name: '炸酱面', credit: 'N509FZ' },
     { id: 2295, name: '蒜蓉炒芹菜' }
   ]
 
@@ -72,6 +76,18 @@ test('restored recipe images render and keep their audited provenance', async ({
       )
     }
   }
+
+  await page.goto('recipe/2180')
+  const preparationHeading = page.getByRole('heading', { name: '食材准备' })
+  const cookingHeading = page.getByRole('heading', { name: '烹饪步骤' })
+  await expect(preparationHeading).toBeVisible()
+  await expect(cookingHeading).toBeVisible()
+  await expect(page.locator('.preparation-list')).toContainText('盐 3g')
+  await expect(page.locator('.steps-list')).toContainText('将蛋液细细淋入锅中')
+
+  const preparationBox = await preparationHeading.boundingBox()
+  const cookingBox = await cookingHeading.boundingBox()
+  expect(cookingBox?.y || 0).toBeGreaterThan(preparationBox?.y || 0)
 })
 
 test('video tutorial links expose only the two platform choices', async ({ page }) => {
@@ -198,7 +214,7 @@ test('desktop pages use the available width with stable responsive grids', async
   const shortcutBoxes = await page.locator('.shortcut-item').evaluateAll(items =>
     items.map(item => item.getBoundingClientRect().toJSON())
   )
-  expect(shortcutBoxes).toHaveLength(5)
+  expect(shortcutBoxes).toHaveLength(6)
   expect(Math.abs(shortcutBoxes[0].y - shortcutBoxes.at(-1).y)).toBeLessThan(2)
 
   const recommendBoxes = await page.locator('.recommend-item').evaluateAll(items =>
@@ -217,6 +233,7 @@ test('desktop pages use the available width with stable responsive grids', async
   const resultSearchButton = await page.getByRole('button', { name: '搜索', exact: true }).boundingBox()
   expect(resultSearchInput?.height).toBe(48)
   expect(resultSearchButton?.height).toBe(48)
+  await expect(page.locator('.recipe-item').first()).toBeVisible()
   const searchBoxes = await page.locator('.recipe-item').evaluateAll(items =>
     items.map(item => item.getBoundingClientRect().toJSON())
   )

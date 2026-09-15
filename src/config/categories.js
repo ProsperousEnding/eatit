@@ -3,7 +3,8 @@ export const RECIPE_CATEGORIES = [
   { id: 3, name: '素菜', sourceCategories: ['素菜'], icon: 'apple' },
   { id: 4, name: '荤菜', sourceCategories: ['荤菜'], icon: 'chicken' },
   { id: 5, name: '水产', sourceCategories: ['水产'], icon: 'food' },
-  { id: 6, name: '汤粥', sourceCategories: ['汤粥'], icon: 'bowl' }
+  { id: 6, name: '汤粥', sourceCategories: ['汤粥'], icon: 'bowl' },
+  { id: 7, name: '早餐', sourceCategories: ['早餐'], icon: 'bowl' }
 ]
 
 export const RECIPE_CATEGORIES_BY_ID = Object.fromEntries(

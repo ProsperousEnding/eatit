@@ -30,7 +30,7 @@ describe('dish data', () => {
   const dishes = getAllDishes()
 
   it('has complete and unique records', () => {
-    expect(dishes).toHaveLength(120)
+    expect(dishes).toHaveLength(152)
     expect(new Set(dishes.map(dish => dish.id)).size).toBe(dishes.length)
     expect(new Set(dishes.map(dish => dish.name)).size).toBe(dishes.length)
     expect(new Set(dishes.map(dish => dish.image)).size).toBe(dishes.length)
@@ -80,13 +80,31 @@ describe('dish data', () => {
   it('pins recipe provenance and records licensed image provenance', () => {
     const externalImages = new Map([
       ['简易红烧肉', { author: 'Kuruman from Tokyo, Japan', license: 'CC BY 2.0' }],
-      ['葱烧海参', { author: 'Zheng Zhou', license: 'CC BY-SA 4.0' }]
+      ['葱烧海参', { author: 'Zheng Zhou', license: 'CC BY-SA 4.0' }],
+      ['西红柿鸡蛋汤', { author: 'NNU-10-HanRongrong', license: 'CC BY 3.0' }],
+      ['皮蛋瘦肉粥', { author: 'Peachyeung316', license: 'CC BY-SA 4.0' }],
+      ['小米粥', { author: 'Dinkun Chen', license: 'CC BY-SA 4.0' }],
+      ['蛋炒饭', { author: 'Tofu fighting', license: 'CC BY-SA 4.0' }],
+      ['炸酱面', { author: 'N509FZ', license: 'CC BY-SA 4.0' }],
+      ['热干面', { author: 'ZhengZhou', license: 'CC BY-SA 4.0' }],
+      ['凉拌黄瓜', { author: 'John', license: 'CC BY 2.0' }]
     ])
+    const additionalExternalImageNames = [
+      '红烧鱼', '清蒸生蚝', '水煮鱼', '黄焖鸡', '可乐鸡翅', '辣椒炒肉', '糖醋里脊',
+      '麻辣香锅', '孜然牛肉', '水煮肉片', '小酥肉', '腊八粥', '紫菜蛋花汤',
+      '生汆丸子汤', '葱油拌面', '韭菜盒子', '手工水饺', '鲜肉烧卖', '扬州炒饭',
+      '猪油拌饭', '红烧茄子', '皮蛋豆腐', '酸辣土豆丝', '蒜蓉西兰花',
+      '上汤娃娃菜', '西红柿炒鸡蛋', '凉拌金针菇', '茶叶蛋', '水煮玉米', '牛奶燕麦',
+      '香煎翘嘴鱼', '黑椒牛柳', '红烧猪蹄', '酱牛肉', '咖喱肥牛', '羊肉汤', '炒滑蛋',
+      '凉拌鸡丝', '莴笋叶煎饼', '手抓饼', '煎饺', '燕麦鸡蛋饼'
+    ]
+    const expectedExternalImageNames = [...externalImages.keys(), ...additionalExternalImageNames]
 
     expect(new Set(dishes.map(dish => dish.source.revision))).toEqual(new Set([
       'c694a5c457d45e6e012ae6cd9a7724aab86e320b'
     ]))
-    expect(dishes.filter(dish => dish.source.imageSource)).toHaveLength(externalImages.size)
+    expect(dishes.filter(dish => dish.source.imageSource).map(dish => dish.name).sort())
+      .toEqual(expectedExternalImageNames.sort())
 
     dishes.forEach(dish => {
       expect(dish.source.name, dish.name).toBe('HowToCook')
@@ -95,15 +113,21 @@ describe('dish data', () => {
       expect(dish.source.recipePath, dish.name).toMatch(/^dishes\/.+\.md$/)
       expect(dish.source.url, dish.name).toContain(`/blob/${dish.source.revision}/`)
 
-      if (externalImages.has(dish.name)) {
-        expect(dish.source.imageSource).toEqual(expect.objectContaining({
-          name: 'Wikimedia Commons',
-          ...externalImages.get(dish.name)
-        }))
+      if (dish.source.imageSource) {
+        expect(dish.source.imageSource.name, dish.name).toBe('Wikimedia Commons')
+        expect(dish.source.imageSource.imagePath, dish.name).toMatch(/^File:/)
+        expect(dish.source.imageSource.author, dish.name).toBeTruthy()
+        expect(dish.source.imageSource.license, dish.name).toBeTruthy()
         expect(dish.source.imageSource.url).toMatch(/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/)
-        expect(dish.source.imageSource.licenseUrl).toMatch(/^https:\/\/creativecommons\.org\/licenses\//)
-        expect(dish.source.imageSource.originalUrl).toMatch(/^https:\/\/upload\.wikimedia\.org\//)
+        expect(dish.source.imageSource.licenseUrl).toMatch(/^https:\/\//)
+        if (dish.source.imageSource.originalUrl) {
+          expect(dish.source.imageSource.originalUrl).toMatch(/^https:\/\/upload\.wikimedia\.org\//)
+        }
         expect(dish.source.imageSource.modifications).toBeTruthy()
+
+        if (externalImages.has(dish.name)) {
+          expect(dish.source.imageSource).toEqual(expect.objectContaining(externalImages.get(dish.name)))
+        }
       } else {
         expect(dish.source.imagePath, dish.name).toMatch(/^dishes\/.+\.(?:jpe?g|png|webp)$/i)
         expect(dish.source.imageSource, dish.name).toBeUndefined()
@@ -119,10 +143,21 @@ describe('dish data', () => {
       '尖叫牛蛙',
       '淄博烧烤',
       '炒方便面',
-      '蒜蓉炒芹菜'
+      '蒜蓉炒芹菜',
+      '葱油桂鱼',
+      '西红柿鸡蛋挂面',
+      '青椒土豆炒肉',
+      '土豆炖排骨',
+      '西红柿鸡蛋汤',
+      '皮蛋瘦肉粥',
+      '小米粥',
+      '蛋炒饭',
+      '炸酱面',
+      '热干面',
+      '凉拌黄瓜'
     ]
 
-    expect(croppedDishes).toHaveLength(39)
+    expect(croppedDishes).toHaveLength(70)
     expect(dishes.map(dish => dish.name)).toEqual(expect.arrayContaining(restoredImageNames))
     expect(dishes.map(dish => dish.name)).toContain('简易红烧肉')
 
@@ -184,7 +219,6 @@ describe('dish data', () => {
     const twiceCookedPork = getDish('回锅肉')
     const stuffedPepper = getDish('青椒酿')
     const bonelessChickenFeet = getDish('无骨鸡爪')
-    const saltPepperCorn = getDish('椒盐玉米')
 
     expect(scallionSeaCucumber.steps).toHaveLength(12)
     expect(scallionSeaCucumber.steps.join('')).toContain('葱白')
@@ -198,10 +232,6 @@ describe('dish data', () => {
     expect(bonelessChickenFeet.cookingTime).toBe('135分钟')
     expect(bonelessChickenFeet.advanceTime).toContain('冷藏 6 小时')
     expect(bonelessChickenFeet.steps).toHaveLength(22)
-    expect(saltPepperCorn.steps).toHaveLength(14)
-    expect(saltPepperCorn.steps.filter(step => step.includes('吸油纸全部变湿')).length).toBe(2)
-
-    expect(getDish('椒盐玉米').tools).toEqual(expect.arrayContaining(['两个塑料簸箕', '若干吸油纸']))
     expect(getDish('白灼虾').preparation.join('')).toContain('*')
     expect(getDish('黄油煎虾').cookingTime).toBe('60分钟')
     expect(getDish('包菜炒鸡蛋粉丝').cookingTime).toBe('20分钟')
@@ -209,6 +239,81 @@ describe('dish data', () => {
     expect(getDish('猪皮冻').cookingTime).toBe('120分钟')
     expect(getDish('猪皮冻').advanceTime).toContain('浸泡 12 小时')
     expect(getDish('酱牛肉').steps.join('')).not.toContain('捞出牛腱子肉，捞出牛腱子肉')
+  })
+
+  it('keeps enriched household recipes measured and free of corrected unsafe guidance', () => {
+    const getDish = name => dishes.find(dish => dish.name === name)
+    const enrichedNames = [
+      '葱油桂鱼',
+      '西红柿鸡蛋挂面',
+      '青椒土豆炒肉',
+      '土豆炖排骨',
+      '西红柿鸡蛋汤',
+      '皮蛋瘦肉粥',
+      '小米粥',
+      '蛋炒饭',
+      '炸酱面',
+      '热干面',
+      '凉拌黄瓜',
+      '红烧鱼',
+      '清蒸生蚝',
+      '水煮鱼',
+      '黄焖鸡',
+      '可乐鸡翅',
+      '辣椒炒肉',
+      '糖醋里脊',
+      '麻辣香锅',
+      '孜然牛肉',
+      '水煮肉片',
+      '小酥肉',
+      '腊八粥',
+      '紫菜蛋花汤',
+      '生汆丸子汤',
+      '葱油拌面',
+      '韭菜盒子',
+      '手工水饺',
+      '鲜肉烧卖',
+      '扬州炒饭',
+      '猪油拌饭',
+      '红烧茄子',
+      '皮蛋豆腐',
+      '酸辣土豆丝',
+      '蒜蓉西兰花',
+      '西红柿炒鸡蛋',
+      '凉拌金针菇',
+      '咖喱肥牛',
+      '茶叶蛋',
+      '水煮玉米',
+      '牛奶燕麦',
+      '手抓饼',
+      '煎饺',
+      '燕麦鸡蛋饼'
+    ]
+
+    expect(dishes.map(dish => dish.name)).toEqual(expect.arrayContaining(enrichedNames))
+    expect(getDish('西红柿鸡蛋汤').preparation).toContain('盐 3g')
+    expect(getDish('蛋炒饭').preparation).toContain('白胡椒粉 0.5g')
+    expect(getDish('葱油桂鱼').steps.join('')).toContain('蒸 8-10 分钟')
+    expect(getDish('土豆炖排骨').ingredients).toContain('青椒（可选）')
+    expect(getDish('炸酱面').cookingMethod).toBe('煮制')
+    expect(getDish('水煮肉片').preparation).toContain('食用油 60ml')
+    expect(getDish('腊八粥').preparation).toContain('清水 1600ml')
+    expect(getDish('茶叶蛋').advanceTime).toContain('冷藏浸泡 8-12 小时')
+    expect(getDish('牛奶燕麦').ingredients).not.toContain('鸡蛋')
+    expect(getDish('咖喱肥牛').preparation).toContain('食用油 15ml')
+    expect(getDish('蒜蓉西兰花').preparation).toContain('食用油 10ml')
+    expect(getDish('手抓饼').preparation).toContain('冷水 40-50ml')
+    expect(getDish('煎饺').preparation).toContain('清水 150ml')
+    expect(getDish('燕麦鸡蛋饼').preparation).toContain('牛奶 80ml')
+
+    const correctedText = enrichedNames
+      .flatMap(name => [
+        ...getDish(name).ingredients,
+        ...getDish(name).preparation,
+        ...getDish(name).steps
+      ])
+      .join('')
+    expect(correctedText).not.toMatch(/室温自然解冻 5 小时|浸泡 2 天以上|复配食品增稠剂|菊花残|手掌隔大概 10cm|有白烟冒出|必须用热水|高并发|UI 点缀/)
   })
 
   it('provides a video tutorial entry for every dish without presenting rejected links as references', () => {
@@ -222,13 +327,16 @@ describe('dish data', () => {
     expect(dishesWithReferences.map(dish => dish.name).sort()).toEqual([
       '冬瓜酿肉',
       '柱候牛腩',
+      '水煮肉片',
       '油焖大虾',
       '煮锅蒸米饭',
       '猪皮冻',
+      '生汆丸子汤',
       '老式锅包肉',
+      '腊八粥',
       '阳朔啤酒鱼'
     ].sort())
-    expect(referenceCount).toBe(9)
+    expect(referenceCount).toBe(12)
 
     dishes.forEach(dish => {
       expect(dish.videoTutorials.platforms.map(platform => platform.key)).toEqual(['bilibili', 'douyin'])

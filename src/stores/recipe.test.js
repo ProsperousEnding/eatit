@@ -11,10 +11,10 @@ describe('recipe store', () => {
     const store = useRecipeStore()
     const dishes = store.getAllDishesArray()
 
-    expect(dishes).toHaveLength(120)
-    expect(new Set(dishes.map(dish => dish.id)).size).toBe(120)
+    expect(dishes).toHaveLength(152)
+    expect(new Set(dishes.map(dish => dish.id)).size).toBe(152)
     expect(new Set(dishes.map(dish => dish.category))).toEqual(new Set([
-      '素菜', '荤菜', '水产', '主食', '汤粥'
+      '素菜', '荤菜', '水产', '主食', '汤粥', '早餐'
     ]))
   })
 
@@ -23,9 +23,11 @@ describe('recipe store', () => {
 
     const dishResults = await store.searchRecipes({ keyword: '宫保鸡丁' })
     const stapleResults = await store.searchRecipes({ category: '主食' })
+    const breakfastResults = await store.searchRecipes({ category: '早餐' })
 
     expect(dishResults.map(dish => dish.name)).toContain('宫保鸡丁')
-    expect(stapleResults).toHaveLength(11)
+    expect(stapleResults).toHaveLength(21)
+    expect(breakfastResults).toHaveLength(6)
   })
 
   it('normalizes search values and treats whitespace as an empty query', async () => {
@@ -119,8 +121,9 @@ describe('recipe store', () => {
       '荤菜': [['素菜'], ['汤粥', '主食']],
       '水产': [['素菜'], ['汤粥', '主食']],
       '素菜': [['荤菜', '水产'], ['汤粥', '主食']],
-      '主食': [['荤菜', '水产'], ['素菜', '汤粥']],
-      '汤粥': [['荤菜', '水产'], ['素菜', '主食']]
+      '主食': [['荤菜', '水产', '早餐'], ['素菜', '汤粥']],
+      '汤粥': [['荤菜', '水产', '早餐'], ['素菜', '主食']],
+      '早餐': [['主食', '汤粥'], ['素菜', '荤菜']]
     }
 
     for (const recipe of store.getAllDishesArray()) {

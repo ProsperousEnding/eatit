@@ -31,8 +31,9 @@ const PAIRING_CATEGORY_TARGETS = {
   '荤菜': [['素菜'], ['汤粥', '主食']],
   '水产': [['素菜'], ['汤粥', '主食']],
   '素菜': [['荤菜', '水产'], ['汤粥', '主食']],
-  '主食': [['荤菜', '水产'], ['素菜', '汤粥']],
-  '汤粥': [['荤菜', '水产'], ['素菜', '主食']]
+  '主食': [['荤菜', '水产', '早餐'], ['素菜', '汤粥']],
+  '汤粥': [['荤菜', '水产', '早餐'], ['素菜', '主食']],
+  '早餐': [['主食', '汤粥'], ['素菜', '荤菜']]
 }
 
 const normalizeSearchValue = (value) => String(value ?? '').trim().slice(0, 80)
@@ -73,7 +74,8 @@ const getPairingReason = (currentDish, pairing) => {
     '荤菜': `补充一道荤菜，与${currentDish.name}搭配成餐。`,
     '水产': `补充一道水产，与${currentDish.name}搭配成餐。`,
     '主食': `补充一道主食，适合与${currentDish.name}一同上桌。`,
-    '汤粥': `搭配一道汤粥，让${currentDish.name}所在的一餐更完整。`
+    '汤粥': `搭配一道汤粥，让${currentDish.name}所在的一餐更完整。`,
+    '早餐': `补充一道早餐小食，与${currentDish.name}搭配更方便。`
   }
   const categoryReason = pairing.category === currentDish.category
     ? `${pairing.category}中的另一种选择，适合与${currentDish.name}搭配。`
